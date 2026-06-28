@@ -54,7 +54,7 @@ const Testimonial: React.FC = () => {
                 <SwiperSlide key={testimonial.id} className="h-auto">
                   <div className="bg-[var(--bg-card)] p-8 rounded-2xl h-full flex flex-col justify-between min-h-[380px] sm:min-h-[400px]">
                     <div>
-                      <div className="flex justify-center text-blue-400">
+                      <div className="flex justify-center text-[var(--brand-accent)]">
                         {[...Array(testimonial.rating)].map((_, i) => (<Star key={i} fill="currentColor" strokeWidth={0} size={20} />))}
                       </div>
                       <p className="text-[var(--text-muted)] mt-6 text-base sm:text-lg leading-relaxed text-center product-sans">"{testimonial.text}"</p>

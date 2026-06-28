@@ -17,6 +17,7 @@
     "@types/three": "^0.179.0",
     "autoprefixer": "^10.4.21",
     "imagekit": "^6.0.0",
+    "lenis": "^1.3.25",
     "lucide-react": "^0.535.0",
     "mongodb": "^7.2.0",
     "next": "15.4.5",

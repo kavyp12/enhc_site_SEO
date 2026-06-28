@@ -36,28 +36,68 @@ const ServicesPage = () => {
 
 
 
-  const aiServices = [
-    { number: "01", name: "Custom AI Solutions" }, { number: "02", name: "Machine Learning Models" },
-    { number: "03", name: "AI Automation" }, { number: "04", name: "AI Integration" },
-    { number: "05", name: "Predictive Analytics" },
-  ];
-
-  const consultingServices = [
-    { number: "01", name: "AI Strategy" }, { number: "02", name: "Data Analytics" },
-    { number: "03", name: "Process Optimization" }, { number: "04", name: "Digital Transformation" },
-    { number: "05", name: "AI Audit & Assessment" },
-  ];
-
-  const developmentServices = [
-    { number: "01", name: "Chatbot Development" }, { number: "02", name: "Computer Vision" },
-    { number: "03", name: "Natural Language Processing" }, { number: "04", name: "Recommendation Systems" },
-    { number: "05", name: "AI Model Training" },
-  ];
-
-  const supportServices = [
-    { number: "01", name: "AI Maintenance" }, { number: "02", name: "Performance Monitoring" },
-    { number: "03", name: "Model Updates" }, { number: "04", name: "Technical Support" },
-    { number: "05", name: "Training & Documentation" },
+  // Full AI-first IT solutions catalogue, organised into logical categories.
+  // Numbers are generated from the position within each category so the list
+  // can grow or shrink without manual renumbering.
+  const serviceCategories: { heading: string; description: string; items: string[] }[] = [
+    {
+      heading: "AI & ML",
+      description:
+        "AI engineers and data scientists in-house, building intelligent systems and models tailored to your business.",
+      items: [
+        "Custom AI Software Development",
+        "AI Agents & Intelligent Assistants",
+        "AI Chatbots for Support & Sales",
+        "Generative AI Solutions",
+        "Machine Learning Solutions",
+        "Predictive Analytics",
+      ],
+    },
+    {
+      heading: "Automation",
+      description:
+        "Streamline operations end-to-end with AI that handles the repetitive work and frees up your team.",
+      items: [
+        "AI Workflow Automation",
+        "AI Business Process Automation",
+        "AI-Powered Business Management Software",
+      ],
+    },
+    {
+      heading: "Software",
+      description:
+        "From idea to launch, we design and engineer scalable software products across web, mobile and enterprise.",
+      items: [
+        "Custom Web Application Development",
+        "Mobile App Development",
+        "SaaS Product Development",
+        "Enterprise Software Development",
+        "ERP Development",
+        "CRM Development",
+      ],
+    },
+    {
+      heading: "Web & Cloud",
+      description:
+        "A strong digital presence and the cloud foundations and integrations that keep it fast, secure and connected.",
+      items: [
+        "Business Web Presence (Websites & Landing Pages)",
+        "UI/UX Design",
+        "Cloud Solutions & Deployment",
+        "API Development & Integration",
+      ],
+    },
+    {
+      heading: "Consulting",
+      description:
+        "Strategic guidance to help you adopt AI, modernise your stack and transform the way your business works.",
+      items: [
+        "AI Consulting & Digital Transformation",
+        "IT Consulting",
+        "Digital Transformation Services",
+        "AI Training & Enterprise Workshops",
+      ],
+    },
   ];
 
   // Updated ServiceButton component - removed onClick functionality, kept hover effects
@@ -88,44 +128,31 @@ const ServicesPage = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-          <div><h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-tight tracking-tight">We're an AI company with cutting-edge expertise</h1></div>
+          <div><h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium leading-tight tracking-tight">We're an AI-first IT solutions company built to transform your business</h1></div>
           <div className="lg:justify-self-end lg:self-end lg:translate-y-38 mt-8 lg:mt-0">
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-lg text-[var(--text-main)] leading-tight font-normal">We bring our passion for intelligent solutions to forward-thinking businesses and deliver AI that transforms.</p>
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl max-w-lg text-[var(--text-main)] leading-tight font-normal">From AI and automation to software, web, mobile and cloud — we help you build, automate, transform and scale.</p>
           </div>
         </div>
 
         <div className="w-full h-px bg-[var(--border-secondary)] mt-16 lg:mt-24 mb-12 lg:mb-16 lg:translate-y-40"></div>
-        <div className="pt-16 lg:pt-24">
-          <h2 className="text-5xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-bold leading-none tracking-tighter">AI Development</h2>
-          <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 md:gap-y-16">
-            <div><p className="text-lg max-w-sm leading-relaxed font-medium">AI engineers and data scientists in-house building intelligent systems tailored to your business needs.</p></div>
-            <div><ul>{aiServices.map((service) => <ServiceButton key={service.number} service={service} />)}</ul></div>
-          </div>
-        </div>
-        <div className="w-full h-px bg-[var(--border-secondary)] mt-24 mb-12 md:mb-16"></div>
-        <div className="pt-16 lg:pt-24">
-          <h2 className="text-5xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-bold leading-none tracking-tighter">Consulting</h2>
-          <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 md:gap-y-16">
-            <div><p className="text-lg max-w-sm leading-relaxed font-medium">Strategic AI consultants helping you identify opportunities and implement AI-driven transformation.</p></div>
-            <div><ul>{consultingServices.map((service) => <ServiceButton key={service.number} service={service} />)}</ul></div>
-          </div>
-        </div>
-        <div className="w-full h-px bg-[var(--border-secondary)] mt-24 mb-12 md:mb-16"></div>
-        <div className="pt-16 lg:pt-24">
-          <h2 className="text-5xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-bold leading-none tracking-tighter">Solutions</h2>
-          <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 md:gap-y-16">
-            <div><p className="text-lg max-w-sm leading-relaxed font-medium">End-to-end AI solutions from concept to deployment, powered by the latest in artificial intelligence.</p></div>
-            <div><ul>{developmentServices.map((service) => <ServiceButton key={service.number} service={service} />)}</ul></div>
-          </div>
-        </div>
-        <div className="w-full h-px bg-[var(--border-secondary)] mt-24 mb-12 md:mb-16"></div>
-        <div className="pt-16 lg:pt-24">
-          <h2 className="text-5xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-bold leading-none tracking-tighter">Support</h2>
-          <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 md:gap-y-16">
-            <div><p className="text-lg max-w-sm leading-relaxed font-medium">Comprehensive support services ensuring your AI systems perform optimally and evolve with your business.</p></div>
-            <div><ul>{supportServices.map((service) => <ServiceButton key={service.number} service={service} />)}</ul></div>
-          </div>
-        </div>
+        {serviceCategories.map((category, categoryIndex) => (
+          <React.Fragment key={category.heading}>
+            {categoryIndex > 0 && <div className="w-full h-px bg-[var(--border-secondary)] mt-24 mb-12 md:mb-16"></div>}
+            <div className="pt-16 lg:pt-24">
+              <h2 className="text-5xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-bold leading-none tracking-tighter">{category.heading}</h2>
+              <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 md:gap-y-16">
+                <div><p className="text-lg max-w-sm leading-relaxed font-medium">{category.description}</p></div>
+                <div>
+                  <ul>
+                    {category.items.map((name, itemIndex) => (
+                      <ServiceButton key={name} service={{ number: String(itemIndex + 1).padStart(2, "0"), name }} />
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </React.Fragment>
+        ))}
         <div className="w-full h-px bg-[var(--border-secondary)] mt-24 mb-12 md:mb-16"></div>
 
         <section className="pt-16 lg:pt-24 pb-20">

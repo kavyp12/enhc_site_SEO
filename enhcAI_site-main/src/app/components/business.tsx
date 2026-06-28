@@ -107,7 +107,7 @@ export default function Business() {
           </div>
           <div className="flex flex-col items-start md:items-end text-left md:text-right">
             <p className="max-w-xs mb-6 text-[var(--text-muted)] product-sans">
-              We are an AI solutions provider with deep expertise, on a mission to help you take the next giant leap in your business's evolution.
+              We are an AI-first IT solutions company with deep expertise, on a mission to help you build, automate and scale your business with AI and modern software.
             </p>
             {/* ✅ Updated Button with router.push */}
             <button

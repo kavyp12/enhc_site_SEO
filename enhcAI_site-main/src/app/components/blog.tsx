@@ -105,8 +105,8 @@ export default function Blog() {
     <>
       <style dangerouslySetInnerHTML={{ __html: fontStyles }} />
       <section className="bg-[var(--bg-main)] text-[var(--text-main)] w-full py-20 lg:py-28 product-sans">
-        <div className="max-w-[90rem] mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-          <div className="lg:col-span-4 flex flex-col justify-between h-full text-left">
+        <div className="max-w-[90rem] mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="lg:col-span-4 flex flex-col justify-between h-full text-left lg:sticky lg:top-28">
             <div>
               <p className="font-semibold tracking-wider text-[var(--text-muted)] product-sans">• Blog</p>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semi mt-4 leading-tight product-sans">
@@ -114,53 +114,56 @@ export default function Blog() {
               </h2>
               <button
                 onClick={() => router.push("/blogs")}
-                className="mt-8 bg-[var(--brand-primary)] text-white font-bold py-3 px-6 rounded-full flex items-center gap-2 hover:bg-[var(--brand-primary-hover)] transition-colors duration-300 product-sans"
+                className="mt-8 bg-[var(--brand-primary)] text-white font-bold py-3 px-6 rounded-full inline-flex items-center gap-2 hover:bg-[var(--brand-primary-hover)] transition-colors duration-300 product-sans"
               >
                 View the blog <ArrowUpRight size={20} />
               </button>
             </div>
-            <div className="flex gap-4 mt-12 lg:mt-0">
-              <button className="blog-swiper-prev p-3 rounded-full bg-[var(--bg-card-secondary)] hover:bg-[var(--border-main)] transition-colors text-[var(--text-main)] disabled:opacity-50"><ArrowLeft size={24} /></button>
-              <button className="blog-swiper-next p-3 rounded-full bg-[var(--bg-card-secondary)] hover:bg-[var(--border-main)] transition-colors text-[var(--text-main)] disabled:opacity-50"><ArrowRight size={24} /></button>
+            <div className="flex gap-4 mt-12 lg:mt-16">
+              <button className="blog-swiper-prev p-3 rounded-full bg-[var(--bg-card-secondary)] hover:bg-[var(--brand-primary)] hover:text-white transition-colors text-[var(--text-main)] disabled:opacity-40"><ArrowLeft size={24} /></button>
+              <button className="blog-swiper-next p-3 rounded-full bg-[var(--bg-card-secondary)] hover:bg-[var(--brand-primary)] hover:text-white transition-colors text-[var(--text-main)] disabled:opacity-40"><ArrowRight size={24} /></button>
             </div>
           </div>
           <div className="lg:col-span-8 overflow-hidden">
             <Swiper
               modules={[Navigation]}
-              spaceBetween={30}
-              slidesPerView={1.2}
+              spaceBetween={24}
+              slidesPerView={1.1}
               navigation={{ prevEl: '.blog-swiper-prev', nextEl: '.blog-swiper-next' }}
               breakpoints={{
-                640: { slidesPerView: 1.5, spaceBetween: 20 },
-                768: { slidesPerView: 2.2, spaceBetween: 30 },
-                1024: { slidesPerView: 2.5, spaceBetween: 40 },
+                640: { slidesPerView: 1.4, spaceBetween: 24 },
+                768: { slidesPerView: 1.8, spaceBetween: 28 },
+                1024: { slidesPerView: 2.1, spaceBetween: 32 },
               }}
-              className="!overflow-visible"
+              className="!overflow-visible h-full"
             >
               {blogPosts.map((post) => (
-                <SwiperSlide key={post.id}>
-                  <div 
-                    className="flex flex-col text-left cursor-pointer group"
+                <SwiperSlide key={post.id} className="h-auto">
+                  <div
+                    className="flex flex-col text-left cursor-pointer group h-full"
                     onClick={() => handleBlogClick(post.id)}
                   >
                     <div className="relative overflow-hidden rounded-2xl">
-                      <img 
-                        src={post.imageUrl} 
-                        alt={post.title} 
-                        className="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-105" 
+                      <img
+                        src={post.imageUrl}
+                        alt={post.title}
+                        className="w-full h-72 object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300"></div>
+                      <span className="absolute top-4 left-4 bg-[var(--bg-main)]/90 backdrop-blur-sm text-[var(--text-main)] text-xs font-medium px-3 py-1.5 rounded-full capitalize">
+                        {post.category}
+                      </span>
                     </div>
-                    <div className="mt-4">
-                      <div className="flex items-center gap-3 mb-2">
+                    <div className="mt-5 flex flex-col flex-grow">
+                      <div className="flex items-center gap-3 mb-3">
                         {generateAvatar(post.author.name)}
                         <div>
                           <p className="text-sm font-medium text-[var(--text-main)]">{post.author.name}</p>
                           <p className="text-xs text-[var(--text-muted)]">{post.readTime}</p>
                         </div>
                       </div>
-                      <h3 className="text-xl font-bold mt-2 group-hover:text-blue-400 transition-colors product-sans">{post.title}</h3>
-                      <p className="text-[var(--text-muted)] mt-2 text-sm leading-relaxed product-sans">{post.description}</p>
+                      <h3 className="text-xl font-bold leading-snug group-hover:text-[var(--brand-accent)] transition-colors product-sans">{post.title}</h3>
+                      <p className="text-[var(--text-muted)] mt-2 text-sm leading-relaxed product-sans line-clamp-3">{post.description}</p>
                     </div>
                   </div>
                 </SwiperSlide>

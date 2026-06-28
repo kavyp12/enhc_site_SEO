@@ -128,7 +128,7 @@ const Team: React.FC = () => {
         }
       `}</style>
 
-      <div className="bg-[var(--bg-main)] text-[var(--text-main)] min-h-screen p-4 sm:p-8 md:p-16 lg:p-24">
+      <div className="bg-[var(--bg-main)] text-[var(--text-main)] py-16 px-4 sm:py-20 sm:px-8 md:px-16 lg:py-24 lg:px-24">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-12 sm:mb-16">
             <p className="text-[var(--text-muted)] text-sm tracking-widest uppercase">&bull; Leadership Team</p>
@@ -137,8 +137,8 @@ const Team: React.FC = () => {
             </h1>
           </div>
 
-          <div className="overflow-hidden w-full h-[300px] sm:h-[350px] md:h-[500px] mb-12 sm:mb-16">
-            <div className="flex w-full h-full items-center justify-center">
+          <div className="overflow-hidden w-full h-[360px] sm:h-[420px] md:h-[480px] mb-12 sm:mb-16">
+            <div className="flex w-full h-full items-center justify-center gap-4 sm:gap-6 md:gap-10">
               {teamMembers.map((member, index) => {
                 const isEven = index % 2 === 0;
                 return (

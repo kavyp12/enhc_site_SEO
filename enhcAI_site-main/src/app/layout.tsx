@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import GoogleAnalytics from './components/GoogleAnalytics';
 import StructuredData from './components/StructuredData';
+import SmoothScroll from './components/SmoothScroll';
 import { SITE_URL, SITE_NAME, LEGAL_NAME, DEFAULT_OG_IMAGE, TWITTER_HANDLE } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
+        <SmoothScroll />
         <StructuredData />
         {ga_id && <GoogleAnalytics ga_id={ga_id} />}
         <main className="w-full max-w-full overflow-x-hidden">

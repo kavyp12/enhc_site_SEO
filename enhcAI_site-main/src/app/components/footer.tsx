@@ -69,6 +69,7 @@ export default function Footer() {
     { text: "About", href: "/about" },
     { text: "Blogs", href: "/blogs" },
     { text: "Services", href: "/services" },
+    { text: "Industries", href: "/industries" },
     { text: "Web Development", href: "/web-development" },
     { text: "App Development", href: "/app-development" },
     { text: "Projects", href: "/project" },

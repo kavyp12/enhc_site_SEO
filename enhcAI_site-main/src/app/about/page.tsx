@@ -5,9 +5,9 @@ import Navbar from '@/app/components/navbar';
 import Team from '@/app/components/team';
 import Workwith from '@/app/components/workwith';
 import Testimonial from '@/app/components/testimonial';
-import Award from '@/app/components/award';
 import Blog from '@/app/components/blog';
 import Footer from '@/app/components/footer';
+import Reveal from '@/app/components/Reveal';
 import Link from 'next/link';
 
 export default function AboutPage() {
@@ -74,7 +74,7 @@ export default function AboutPage() {
     </Link>
 
         {/* About Us Section */}
-        <section className="bg-[var(--bg-main)] text-[var(--text-main)] py-16 px-4 sm:px-6 lg:px-20 w-full">
+        <Reveal as="section" className="bg-[var(--bg-main)] text-[var(--text-main)] py-16 px-4 sm:px-6 lg:px-20 w-full">
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-12">
             <div className="flex-1 space-y-4 text-center lg:text-left">
               <div className="flex items-center justify-center lg:justify-start space-x-2 text-sm">
@@ -104,15 +104,14 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-        </section>
+        </Reveal>
 
-        <Team />
-        <div className="w-full bg-[var(--bg-secondary)] mt-12">
+        <Reveal><Team /></Reveal>
+        <Reveal className="w-full bg-[var(--bg-secondary)] mt-12">
           <Workwith />
-        </div>
-        <Testimonial />
-        <Award />
-        <Blog />
+        </Reveal>
+        <Reveal><Testimonial /></Reveal>
+        <Reveal><Blog /></Reveal>
       </main>
         <Footer />
 

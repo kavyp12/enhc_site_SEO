@@ -17,7 +17,7 @@ export default function StructuredData() {
       foundingDate: COMPANY.founded,
       sameAs: COMPANY.social,
       description:
-        'enhc (Enhc Tech LLP) is an AI solutions company in Ahmedabad, India, building custom AI tools, AI automation and workflows, machine learning models, predictive analytics, web development and app development.',
+        'enhc (Enhc Tech LLP) is an AI-first IT solutions company in Ahmedabad, India, helping businesses build, automate, transform and scale with custom AI software, AI agents and automation, machine learning, predictive analytics, web and mobile apps, ERP, CRM, SaaS, cloud solutions and IT consulting.',
     },
     {
       '@type': 'LocalBusiness',

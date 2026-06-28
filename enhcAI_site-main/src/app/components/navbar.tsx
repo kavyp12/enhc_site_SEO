@@ -39,6 +39,7 @@ const globalStyles = `
     --border-secondary: #d1d5db;
     --brand-primary: #102d4d;
     --brand-primary-hover: #0d2640;
+    --brand-accent: #2563eb;
   }
 
   .dark {
@@ -54,6 +55,7 @@ const globalStyles = `
     --border-secondary: #4b5563;
     --brand-primary: #102d4d;
     --brand-primary-hover: #1a3b5f;
+    --brand-accent: #60a5fa;
   }
 
   body {
@@ -133,9 +135,10 @@ export default function Navbar() {
   ];
 
   const navLinks = [
-    { href: "/project", label: "Work" }, 
+    { href: "/industries", label: "Industries" },
+    { href: "/project", label: "Work" },
     { href: "/about", label: "About" },
-    { href: "/blogs", label: "Blog" }, 
+    { href: "/blogs", label: "Blog" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -184,8 +187,8 @@ export default function Navbar() {
                   <div className="flex gap-8">
                     <div className="flex-1">
                       <div className="mb-4">
-                        <h3 className="text-[var(--text-main)] text-lg font-semibold">View all AI Services</h3>
-                        <p className="text-[var(--text-muted)] text-sm mt-1">We're an AI company with cutting-edge expertise delivering intelligent solutions</p>
+                        <h3 className="text-[var(--text-main)] text-lg font-semibold">View all Services</h3>
+                        <p className="text-[var(--text-muted)] text-sm mt-1">An AI-first IT solutions company delivering AI, software, web, mobile and cloud</p>
                       </div>
                       <div className="space-y-3">
                         {services.map((service, index) => (

@@ -9,21 +9,23 @@ import Workwith from '@/app/components/workwith';
 import Testimonial from '@/app/components/testimonial';
 // import Team from '@/app/components/team';
 import Award from '@/app/components/award';
+import Reveal from '@/app/components/Reveal';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'AI Solutions, Automation & Software Development Company in Ahmedabad',
+  title: 'AI-First IT Solutions, Software & Automation Company in Ahmedabad',
   description:
-    'enhc is an AI solutions company in Ahmedabad, India, founded in 2022. We build custom AI tools, AI automation and workflows, machine learning models, predictive analytics, web development and app development that transform businesses.',
+    'enhc is an AI-first IT solutions company in Ahmedabad, India, founded in 2022. We help businesses build, automate, transform and scale with custom AI software, AI agents and automation, machine learning, web and mobile apps, ERP, CRM, SaaS and cloud solutions.',
   path: '/',
   keywords: [
-    'AI company Ahmedabad',
-    'AI solutions India',
+    'IT solutions company Ahmedabad',
+    'AI software development India',
     'AI automation',
-    'AI workflows',
+    'custom software development',
     'machine learning company',
     'web development Ahmedabad',
     'app development Ahmedabad',
+    'ERP CRM SaaS development',
   ],
 });
 
@@ -32,12 +34,12 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <Projects />
-      <Business />
-      <Aboutus />
+      <Reveal><Projects /></Reveal>
+      <Reveal><Business /></Reveal>
+      <Reveal><Aboutus /></Reveal>
       {/* <Team/> */}
-      <Workwith/>
-      <Blog />
+      <Reveal><Workwith/></Reveal>
+      <Reveal><Blog /></Reveal>
       {/* <Testimonial /> */}
       {/* <Award /> */}
       <Footer />
