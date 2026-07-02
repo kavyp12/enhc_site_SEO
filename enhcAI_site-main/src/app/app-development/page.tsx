@@ -117,11 +117,11 @@ const AppDevelopmentPage = () => {
           .animate-scroll-right { animation: scroll-right 30s linear infinite; }
           .left-text { animation: scroll-left 30s linear infinite; }
           .right-text { animation: scroll-right 30s linear infinite; }
-          * { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+          * { font-family: 'Product Sans', sans-serif; }
         `}</style>
 
         <style jsx global>{`
-          .font-product-sans { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+          .font-product-sans { font-family: 'Product Sans', sans-serif; }
           .blog-section * { text-align: inherit; }
           .blog-left-content { text-align: left !important; }
           .blog-card-content { text-align: left !important; }

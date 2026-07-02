@@ -144,14 +144,14 @@ const HelpWith = () => {
             }
             
             * {
-                font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+                font-family: 'Product Sans', sans-serif;
             }
         `}</style>
 
         {/* Styles for the blog section */}
         <style jsx global>{`
             .font-product-sans {
-                font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+                font-family: 'Product Sans', sans-serif;
             }
             
             .blog-section * {

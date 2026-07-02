@@ -12,7 +12,7 @@ import Link from "next/link";
 const fontStyles = `
   
   .product-sans {
-    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    font-family: 'Product Sans', sans-serif;
   }
 `;
 

@@ -188,7 +188,7 @@ const ServicesPage = () => {
         </section>
 
         <style jsx>{`
-          * { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+          * { font-family: 'Product Sans', sans-serif; }
         `}</style>
       </main>
       <Footer />

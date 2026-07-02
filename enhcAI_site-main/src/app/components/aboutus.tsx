@@ -9,7 +9,7 @@ export default function Aboutus() {
       <style jsx>{`
         
         * {
-          font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+          font-family: 'Product Sans', sans-serif;
         }
       `}</style>
       <style jsx>{`

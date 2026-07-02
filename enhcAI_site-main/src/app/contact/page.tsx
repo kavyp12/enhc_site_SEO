@@ -308,7 +308,7 @@ const ContactPage = () => {
         <FaqSection />
 
         <style jsx>{`
-            .font-google-sans { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+            .font-google-sans { font-family: 'Product Sans', sans-serif; }
             @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
             .animate-fade-in-left { animation: fadeIn 0.5s ease-out forwards; }
             .animate-fade-in-right { animation: fadeIn 0.5s ease-out 0.2s forwards; opacity: 0; }

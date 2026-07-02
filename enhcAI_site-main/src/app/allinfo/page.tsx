@@ -192,7 +192,7 @@ const PasswordLogin = ({ onLogin }: { onLogin: (password: string) => void }) => 
       <style jsx>{`
         
         .font-google-sans { 
-          font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+          font-family: 'Product Sans', sans-serif; 
         }
       `}</style>
 
@@ -619,7 +619,7 @@ const AdminPage = () => {
       <style jsx>{`
         
         .font-google-sans { 
-          font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+          font-family: 'Product Sans', sans-serif; 
         }
       `}</style>
 

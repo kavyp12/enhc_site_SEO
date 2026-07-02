@@ -61,7 +61,7 @@ body {
   /* Keep the Tailwind `font-sans` utility on the same brand stack as body —
      the old var(--font-geist-sans) was never defined, so it rendered
      inconsistently against the rest of the site. */
-  --font-sans: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-sans: 'Product Sans', sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
@@ -104,9 +104,9 @@ body {
 body {
   background: var(--background);
   color: var(--foreground);
-  /* Site-wide font: Product Sans (brand) with a consistent cross-platform
-     fallback, so every page renders the same when Product Sans isn't installed. */
-  font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  /* Site-wide font = the brand font used everywhere else (Product Sans),
+     falling back to the browser's default sans-serif — same as the original. */
+  font-family: 'Product Sans', sans-serif;
 }
 
 /* Container classes to prevent overflow */

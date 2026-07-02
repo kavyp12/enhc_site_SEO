@@ -307,7 +307,7 @@ export default function Navbar() {
           </div>
         </div>
         <style jsx>{`
-          nav, span, button, h3, h4, p { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+          nav, span, button, h3, h4, p { font-family: 'Product Sans', sans-serif; }
           `}</style>
         </header>
       </>

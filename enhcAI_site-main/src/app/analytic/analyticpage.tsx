@@ -8,7 +8,7 @@ import { getAnalyticsData, type AnalyticsData } from '@/data/analyticsData';
 const fontStyles = `
   
   .product-sans {
-    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    font-family: 'Product Sans', sans-serif;
   }
 `;
 

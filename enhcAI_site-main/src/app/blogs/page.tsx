@@ -93,7 +93,7 @@ const BlogsPage: React.FC = () => {
       />
       <Navbar />
       <style jsx>{`
-        main, nav, span, button, h3 { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+        main, nav, span, button, h3 { font-family: 'Product Sans', sans-serif; }
       `}</style>
       
       <main className="bg-[var(--bg-main)] text-[var(--text-main)] min-h-screen pt-20 md:pt-24 p-4 sm:p-10 md:p-16">

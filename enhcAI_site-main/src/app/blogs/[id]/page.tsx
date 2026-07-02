@@ -65,7 +65,7 @@ const globalStyles = `
     scrollbar-width: none;  /* Firefox */
   }
   .product-sans {
-    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    font-family: 'Product Sans', sans-serif;
   }
 `;
 
@@ -199,10 +199,10 @@ const DynamicBlogPage: React.FC = () => {
             <style jsx global>{`
                 
                 body, nav, span, button, h1, h2, h3, h4, p, a, div {
-                    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif !important;
+                    font-family: 'Product Sans', sans-serif !important;
                 }
                 .product-sans {
-                    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+                    font-family: 'Product Sans', sans-serif;
                 }
             `}</style>
 

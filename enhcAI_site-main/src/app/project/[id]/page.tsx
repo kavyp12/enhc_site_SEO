@@ -360,7 +360,7 @@ export default function ProjectPage() {
         }
         
         nav, span, button, h1, h2, h3, h4, h5, h6, p, div, a {
-          font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+          font-family: 'Product Sans', sans-serif;
         }
       `}</style>
       <Navbar />

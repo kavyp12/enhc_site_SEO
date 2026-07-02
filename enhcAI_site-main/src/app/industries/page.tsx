@@ -116,7 +116,7 @@ const IndustriesPage = () => {
 
       <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)]">
         <style jsx>{`
-          * { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+          * { font-family: 'Product Sans', sans-serif; }
         `}</style>
 
         {/* Hero Section */}

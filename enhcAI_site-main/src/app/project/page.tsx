@@ -188,7 +188,7 @@
 //         </div>
 
 //         <style jsx>{`
-//           section, div, p, h1, h2, h3, span, button { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+//           section, div, p, h1, h2, h3, span, button { font-family: 'Product Sans', sans-serif; }
 //         `}</style>
 //       </section>
 //       <Footer />
@@ -369,7 +369,7 @@ export default function App() {
         </div>
 
         <style jsx>{`
-          section, div, p, h1, h2, h3, span, button { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+          section, div, p, h1, h2, h3, span, button { font-family: 'Product Sans', sans-serif; }
         `}</style>
       </section>
       <Footer />
