@@ -1,4 +1,7 @@
-import { buildMetadata } from '@/lib/seo';
+import { buildMetadata, webPageJsonLd, faqJsonLd, breadcrumbJsonLd } from '@/lib/seo';
+import JsonLd from '@/app/components/JsonLd';
+import { contactFaq } from './faqData';
+
 export const metadata = buildMetadata({
   title: 'Contact enhc — AI Studio in Ahmedabad',
   description:
@@ -6,4 +9,27 @@ export const metadata = buildMetadata({
   path: '/contact',
   keywords: ['contact enhc', 'AI company contact', 'Ahmedabad AI studio'],
 });
-export default function Layout({ children }: { children: React.ReactNode }) { return <>{children}</>; }
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <JsonLd
+        data={[
+          webPageJsonLd({
+            type: 'ContactPage',
+            name: 'Contact enhc',
+            path: '/contact',
+            description:
+              'Contact enhc (Enhc Tech LLP), an AI-first IT solutions company in Ahmedabad, India.',
+          }),
+          breadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'Contact', path: '/contact' },
+          ]),
+          faqJsonLd(contactFaq),
+        ]}
+      />
+      {children}
+    </>
+  );
+}

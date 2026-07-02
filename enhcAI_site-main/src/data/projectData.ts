@@ -691,6 +691,112 @@ const projectData: Project[] = [
   ],
 },
 {
+  id: 'sulit-decohub',
+  year: 2026,
+  client: 'Sulit Bespoke Living',
+  title: 'Sulit DecoHub | Curtains Business Management Platform',
+  category: 'Business Management',
+  description:
+    'Sulit DecoHub is a complete business management platform built for Sulit Bespoke Living, a premium curtains and blinds company. It runs the entire business on one system - customer inquiries, a kanban sales pipeline, site measurement forms for curtains and blinds, product selections from company catalogs, automated price calculations for tracks, motorised systems and blinds, one-click quotation generation with PDF, email and print, daily work reports, payments tracking, and a full HRMS with employee attendance, leaves and team management.',
+  platform: 'Sulit DecoHub',
+  development: '20 Weeks',
+  images: {
+    main: '/Sulit/main image.jpeg',
+    secondary: '/Sulit/Screenshot 2026-07-02 104725.png',
+    analytics: '/Sulit/Screenshot 2026-07-02 104544.png',
+    machineLearning: '/Sulit/Screenshot 2026-07-02 104608.png',
+    idea: '/Sulit/Screenshot 2026-07-02 104555.png',
+    thumbnail: '/Sulit/Screenshot 2026-07-02 104544.png',
+    script: '/Sulit/Screenshot 2026-07-02 104648.png',
+    titleGeneration: '/Sulit/Screenshot 2026-07-02 104620.png',
+    outline: '/Sulit/Screenshot 2026-07-02 104657.png',
+    outline2: '/Sulit/Screenshot 2026-07-02 104705.png',
+    outlineMain: '/Sulit/Screenshot 2026-07-02 104636.png',
+    similarChannel: '/Sulit/Screenshot 2026-07-02 104530.png',
+  },
+  slides: [
+    {
+      id: 1,
+      content: {
+        type: 'testimonial',
+        testimonial:
+          'Sulit DecoHub runs our entire curtains business on one platform - every inquiry, measurement, selection, quotation and employee is tracked from first call to final installation.',
+        description: '- Sulit Bespoke Living, Ahmedabad',
+        image: '/Sulit/Screenshot 2026-07-02 104530.png',
+      },
+    },
+    {
+      id: 2,
+      content: {
+        type: 'features',
+        title: 'Curtains Business Suite',
+        features: [
+          { label: 'PIPELINE', image: '/Sulit/Screenshot 2026-07-02 104544.png' },
+          { label: 'MEASUREMENTS', image: '/Sulit/Screenshot 2026-07-02 104648.png' },
+          { label: 'QUOTATIONS', image: '/Sulit/Screenshot 2026-07-02 104620.png' },
+        ],
+      },
+    },
+    {
+      id: 3,
+      content: {
+        type: 'platform',
+        title: 'Calculation Hub',
+        description: '2026 • END-TO-END PLATFORM',
+        image: '/Sulit/Screenshot 2026-07-02 104608.png',
+      },
+    },
+    {
+      id: 4,
+      content: {
+        type: 'analytics',
+        title: 'Business Dashboard',
+        description:
+          'Track inquiries, selections, quotations, conversion rates and employee performance from one live dashboard.',
+        image: '/Sulit/Screenshot 2026-07-02 104530.png',
+      },
+    },
+  ],
+  showcaseSlides: [
+    {
+      id: 1,
+      year: '2026',
+      client: 'Sulit Bespoke Living',
+      title: 'Complete Curtains Business Management Platform',
+      imageUrl: '/Sulit/main image.jpeg',
+    },
+    {
+      id: 2,
+      year: '2026',
+      client: 'Sales Operations',
+      title: 'Sales Pipeline Tracking with Kanban Inquiry Boards',
+      imageUrl: '/Sulit/Screenshot 2026-07-02 104544.png',
+    },
+    {
+      id: 3,
+      year: '2026',
+      client: 'Site Execution',
+      title: 'Site Measurement Forms for Curtains and Blinds',
+      imageUrl: '/Sulit/Screenshot 2026-07-02 104648.png',
+    },
+    {
+      id: 4,
+      year: '2026',
+      client: 'Sales Advisors',
+      title: 'Automated Quotation Generation for Every Client',
+      imageUrl: '/Sulit/Screenshot 2026-07-02 104620.png',
+    },
+    {
+      id: 5,
+      year: '2026',
+      client: 'Team Management',
+      title: 'HRMS with Employee Attendance and Daily Reports',
+      imageUrl: '/Sulit/Screenshot 2026-07-02 104705.png',
+    },
+  ],
+},
+
+{
   id: 'finance-ai',
   year: 2024,
   client: 'FinTech Innovations',
@@ -785,6 +891,112 @@ const projectData: Project[] = [
       client: 'Threat Prevention',
       title: 'Automated Risk Scoring and Response',
       imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop',
+    },
+  ],
+},
+
+{
+  id: 'rama-realty',
+  year: 2026,
+  client: 'Rama Realty',
+  title: 'Rama Realty | AI-Powered Real Estate Platform',
+  category: 'Real Estate',
+  description:
+    'Rama Realty is a full-featured real estate listing platform built for Ahmedabad & Gandhinagar markets. It brings together verified residential, commercial and land properties in one place — with an AI Voice Search that understands English, Hindi and Gujarati, an interactive Map View where buyers can draw boundary zones and filter live results, a free AI Vastu Shastra Calculator that analyses floor plans and scores every room, detailed property pages with amenities, floor plans, RERA info and a contact form, and smart property cards across every listing.',
+  platform: 'Rama Realty',
+  development: '16 Weeks',
+  images: {
+    main: '/ramarealty/rama screenshots/main iamge.jpeg',
+    secondary: '/ramarealty/rama screenshots/WhatsApp Image 2026-07-02 at 11.10.44 AM.jpeg',
+    analytics: '/ramarealty/rama screenshots/screencapture-ramarealty-in-voice-search-2026-07-02-11_02_20.png',
+    machineLearning: '/ramarealty/rama screenshots/screencapture-ramarealty-in-vastu-calculator-2026-07-02-11_03_50.png',
+    idea: '/ramarealty/rama screenshots/screencapture-ramarealty-in-gujarat-ahmedabad-shela-rashmi-riesen-2026-07-02-11_01_05.png',
+    thumbnail: '/ramarealty/rama screenshots/WhatsApp Image 2026-07-02 at 11.10.44 AM.jpeg',
+    script: '/ramarealty/rama screenshots/screencapture-ramarealty-in-voice-search-2026-07-02-11_02_20.png',
+    titleGeneration: '/ramarealty/rama screenshots/screencapture-ramarealty-in-vastu-calculator-2026-07-02-11_03_50.png',
+    outline: '/ramarealty/rama screenshots/screencapture-ramarealty-in-gujarat-ahmedabad-shela-rashmi-riesen-2026-07-02-11_01_05.png',
+    outline2: '/ramarealty/rama screenshots/screencapture-ramarealty-in-voice-search-2026-07-02-11_02_20.png',
+    outlineMain: '/ramarealty/rama screenshots/screencapture-ramarealty-in-vastu-calculator-2026-07-02-11_03_50.png',
+    similarChannel: '/ramarealty/rama screenshots/WhatsApp Image 2026-07-02 at 11.10.44 AM.jpeg',
+  },
+  slides: [
+    {
+      id: 1,
+      content: {
+        type: 'testimonial',
+        testimonial:
+          'Rama Realty transformed how buyers discover properties in Ahmedabad. The AI voice search in Gujarati and Hindi is a game-changer for our clients.',
+        description: '- Rama Realty, Ahmedabad',
+        image: '/ramarealty/rama screenshots/WhatsApp Image 2026-07-02 at 11.10.44 AM.jpeg',
+      },
+    },
+    {
+      id: 2,
+      content: {
+        type: 'features',
+        title: 'Real Estate Intelligence Suite',
+        features: [
+          { label: 'MAP VIEW', image: '/ramarealty/rama screenshots/WhatsApp Image 2026-07-02 at 11.10.44 AM.jpeg' },
+          { label: 'AI SEARCH', image: '/ramarealty/rama screenshots/screencapture-ramarealty-in-voice-search-2026-07-02-11_02_20.png' },
+          { label: 'VASTU AI', image: '/ramarealty/rama screenshots/screencapture-ramarealty-in-vastu-calculator-2026-07-02-11_03_50.png' },
+        ],
+      },
+    },
+    {
+      id: 3,
+      content: {
+        type: 'platform',
+        title: 'AI Vastu Calculator',
+        description: '2026 • REAL ESTATE PLATFORM',
+        image: '/ramarealty/rama screenshots/screencapture-ramarealty-in-vastu-calculator-2026-07-02-11_03_50.png',
+      },
+    },
+    {
+      id: 4,
+      content: {
+        type: 'analytics',
+        title: 'Interactive Map Search',
+        description:
+          'Draw boundary zones on the live map to filter 160+ properties by location, type, BHK and budget — all updating in real time.',
+        image: '/ramarealty/rama screenshots/WhatsApp Image 2026-07-02 at 11.10.44 AM.jpeg',
+      },
+    },
+  ],
+  showcaseSlides: [
+    {
+      id: 1,
+      year: '2026',
+      client: 'Rama Realty',
+      title: 'AI-Powered Real Estate Platform for Ahmedabad',
+      imageUrl: '/ramarealty/rama screenshots/Screenshot 2026-07-02 110015.png',
+    },
+    {
+      id: 2,
+      year: '2026',
+      client: 'Property Buyers',
+      title: 'Interactive Map View with Boundary Drawing & Live Filters',
+      imageUrl: '/ramarealty/rama screenshots/WhatsApp Image 2026-07-02 at 11.10.44 AM.jpeg',
+    },
+    {
+      id: 3,
+      year: '2026',
+      client: 'AI Search',
+      title: 'AI Voice Search in English, Hindi & Gujarati',
+      imageUrl: '/ramarealty/rama screenshots/screencapture-ramarealty-in-voice-search-2026-07-02-11_02_20.png',
+    },
+    {
+      id: 4,
+      year: '2026',
+      client: 'Home Buyers',
+      title: 'Free AI Vastu Shastra Calculator with Floor Plan Analysis',
+      imageUrl: '/ramarealty/rama screenshots/screencapture-ramarealty-in-vastu-calculator-2026-07-02-11_03_50.png',
+    },
+    {
+      id: 5,
+      year: '2026',
+      client: 'Property Listings',
+      title: 'Verified Property Pages with Amenities, Floor Plans & RERA',
+      imageUrl: '/ramarealty/rama screenshots/screencapture-ramarealty-in-gujarat-ahmedabad-shela-rashmi-riesen-2026-07-02-11_01_05.png',
     },
   ],
 },

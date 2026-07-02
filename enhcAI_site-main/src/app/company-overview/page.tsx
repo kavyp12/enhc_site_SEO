@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 const fontStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   }
 `;
 
@@ -250,7 +249,6 @@ const Recognitions = () => {
   const recognitions = [
     { name: 'Microsoft', subtitle: 'Solutions Partner', type: 'partner' },
     { name: 'Google Rating', rating: '4.7', stars: 5, type: 'rating' },
-    { name: 'Webito Infotech reviews', rating: '4.7', recommendation: '91% would recommend', stars: 5, type: 'review' },
     { name: 'GoodFirms', badge: 'BEST COMPANY TO WORK WITH', type: 'badge' },
     { name: 'Clutch', subtitle: 'REVIEWED ON', rating: '5.0 RATING', stars: 5, type: 'rating' },
     { name: 'AppFutura', badge: 'VISIT OUR PROFILE AT', type: 'badge' }
@@ -272,7 +270,6 @@ const Recognitions = () => {
             <p className="font-bold text-gray-800 dark:text-[var(--text-main)] text-sm mb-1">{item.name}</p>
             {item.subtitle && <p className="text-xs text-gray-600 dark:text-[var(--text-muted)] mb-2">{item.subtitle}</p>}
             {item.rating && <p className="text-2xl font-bold text-yellow-500 mt-1">{item.rating}</p>}
-            {item.recommendation && <p className="text-xs text-gray-600 dark:text-[var(--text-muted)] mt-2">{item.recommendation}</p>}
             {item.badge && <div className="mt-2 px-3 py-1 bg-[var(--brand-primary)]/10 rounded-full">
               <p className="text-xs text-[var(--brand-primary)] font-bold">{item.badge}</p>
             </div>}
@@ -293,6 +290,7 @@ export default function CompanyOverviewPage() {
         
         <main className="pt-24 pb-12">
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-10">Company Overview</h1>
             <VisionMission />
             <StatsSection />
             <InitiativesGoals />

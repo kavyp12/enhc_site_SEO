@@ -67,9 +67,9 @@ const HelpWith = () => {
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 lg:mb-24">
         <div className="w-full lg:w-2/3">
           <p className="text-sm font-base text-gray-400 mb-4">• What we can help you with</p>
-          <h1 className="text-4xl sm:text-5xl md:text-5xl font-bold leading-tight md:leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-5xl font-bold leading-tight md:leading-tight">
             A team of web design <br /> experts that can help <br /> you design and build a <br />website you're proud of
-          </h1>
+          </h2>
         </div>
         <div className="mt-8 lg:mt-0">
           <button className="bg-[#D4FF40] text-black font-semibold py-4 px-8 rounded-full flex items-center gap-3 whitespace-nowrap transition-transform transform hover:scale-105">

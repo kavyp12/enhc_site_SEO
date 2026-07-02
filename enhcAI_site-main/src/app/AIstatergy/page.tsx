@@ -132,7 +132,6 @@ const HelpWith = () => {
     <><Navbar />
     <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)]">
        <style jsx>{`
-            @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
             
             @keyframes scroll-left {
                 0% { transform: translateX(0%); }
@@ -161,14 +160,14 @@ const HelpWith = () => {
             }
             
             * {
-                font-family: 'Product Sans', sans-serif;
+                font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
             }
         `}</style>
 
           {/* Styles for the new blog section */}
           <style jsx global>{`
                 .font-product-sans {
-                font-family: 'Product Sans', sans-serif;
+                font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
                 }
                 
                 /* Reset any inherited text alignment specifically for blog section */
@@ -358,10 +357,10 @@ const HelpWith = () => {
             <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
                 <div className="flex flex-col w-full text-center">
                     {/* Headline - Fixed alignment */}
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--text-main)] mt-2 max-w-5xl leading-tight">
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--text-main)] mt-2 max-w-5xl leading-tight">
                         <span>We use the latest technologies</span><br />
                         <span className="lg:inline-block lg:-translate-x-20">to craft future-proof AI strategies.</span>
-                    </h1>
+                    </h2>
                 </div>
 
                 {/* --- Animated Logo Carousel Section --- */}
@@ -423,9 +422,9 @@ const HelpWith = () => {
                         <div className="w-2 h-2 bg-[var(--brand-primary)] rounded-full" />
                         <span>What we can help you with</span>
                     </p>
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                         A team of AI strategists that can help you define and execute an AI plan you're proud of
-                    </h1>
+                    </h2>
                 </div>
                 <div className="mt-8 lg:mt-0 w-full lg:w-auto">
                     <Link

@@ -4,10 +4,9 @@ import { useRouter } from "next/navigation"; // ✅ Import router
 
 // Font import via CSS-in-JS
 const fontStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
 
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   }
 `;
 

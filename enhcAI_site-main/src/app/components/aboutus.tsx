@@ -7,10 +7,9 @@ export default function Aboutus() {
   return (
     <>
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
         
         * {
-          font-family: 'Product Sans', sans-serif;
+          font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
         }
       `}</style>
       <style jsx>{`
@@ -33,9 +32,9 @@ export default function Aboutus() {
                 <div className="w-2 h-2 bg-[var(--brand-primary)] rounded-full"></div>
                 <span className="text-[var(--text-muted)]">Innovating the Future</span>
               </div>
-              <h1 className="text-3xl lg:text-4xl font-normal leading-tight tracking-tight">
+              <h2 className="text-3xl lg:text-4xl font-normal leading-tight tracking-tight">
                 An AI innovation company in Ahmedabad, Gujarat that cares about solving complex problems for your brand, no matter the size or industry.
-              </h1>
+              </h2>
             </div>
 
             <div className="space-y-8 text-[var(--text-muted)]">

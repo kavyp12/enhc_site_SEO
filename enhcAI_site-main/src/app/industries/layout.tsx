@@ -1,4 +1,5 @@
-import { buildMetadata, SITE_URL, LEGAL_NAME } from '@/lib/seo';
+import { buildMetadata, serviceJsonLd, breadcrumbJsonLd } from '@/lib/seo';
+import JsonLd from '@/app/components/JsonLd';
 
 export const metadata = buildMetadata({
   title: 'Industries We Serve — AI & Software Solutions by Sector',
@@ -16,22 +17,24 @@ export const metadata = buildMetadata({
   ],
 });
 
-const industriesLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  serviceType: 'Industry AI & Software Solutions',
-  name: 'Industry Solutions',
-  url: `${SITE_URL}/industries`,
-  provider: { '@type': 'Organization', name: LEGAL_NAME, url: SITE_URL },
-  areaServed: 'Worldwide',
-  description:
-    'AI-first IT solutions tailored to specific industries including healthcare, real estate, education, transportation & logistics, and accounting & finance.',
-};
-
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(industriesLd) }} />
+      <JsonLd
+        data={[
+          serviceJsonLd({
+            serviceType: 'Industry AI & Software Solutions',
+            name: 'Industry Solutions',
+            path: '/industries',
+            description:
+              'AI-first IT solutions tailored to specific industries including healthcare, real estate, education, transportation & logistics, and accounting & finance.',
+          }),
+          breadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'Industries', path: '/industries' },
+          ]),
+        ]}
+      />
       {children}
     </>
   );

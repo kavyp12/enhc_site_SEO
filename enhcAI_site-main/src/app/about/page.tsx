@@ -1,6 +1,6 @@
 // aboutpage.tsx
 "use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Navbar from '@/app/components/navbar';
 import Team from '@/app/components/team';
 import Workwith from '@/app/components/workwith';
@@ -11,55 +11,50 @@ import Reveal from '@/app/components/Reveal';
 import Link from 'next/link';
 
 export default function AboutPage() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const images = [
-    { src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=560&fit=crop", alt: "Woman smiling in a modern office" },
-    { src: "https://images.unsplash.com/photo-1552581234-26160f608093?w=560&h=720&fit=crop", alt: "Team collaboration around a laptop" },
-    { src: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=560&h=720&fit=crop", alt: "Three men looking at a screen" },
-    { src: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=560&fit=crop", alt: "Man working on a laptop" }
+  // Horizontal moving strip of photos — glides left → right with a gap between
+  // each card. The array is duplicated in the markup so the loop is seamless.
+  const stripImages = [
+    { src: "/office_image.jpg", alt: "The enhcAI team at work", tilt: -3 },
+    { src: "/digital.jpg", alt: "Collaborating on an AI project", tilt: 2 },
+    { src: "/machine_learning.jpg", alt: "Machine learning in practice", tilt: -2 },
+    { src: "/neural_network.jpg", alt: "AI neural network visualization", tilt: 3 },
+    { src: "/computer_vision.jpg", alt: "Computer vision in action", tilt: -2 },
+    { src: "/Data_analysis.jpg", alt: "Data analysis in progress", tilt: 2 },
+    { src: "/vision_AI.jpg", alt: "Vision AI system", tilt: -3 },
+    { src: "/journy2.jpg", alt: "The road ahead", tilt: 2 },
   ];
-
-  const finalPositions = [
-    "w-[140px] h-[190px] -rotate-12 -translate-x-[110px] -translate-y-12 sm:w-[200px] sm:h-[260px] sm:-translate-x-[180px] md:w-[240px] md:h-[300px] md:-translate-x-[350px] lg:w-[280px] lg:h-[340px] lg:-translate-x-[400px] lg:-translate-y-16 z-10",
-    "w-[140px] h-[190px] -rotate-3 -translate-x-[30px] -translate-y-12 sm:w-[200px] sm:h-[260px] sm:-translate-x-[60px] md:w-[240px] md:h-[300px] md:-translate-x-[120px] lg:w-[280px] lg:h-[340px] lg:-translate-x-[150px] lg:-translate-y-16 z-20",
-    "w-[140px] h-[190px] rotate-3 translate-x-[30px] -translate-y-12 sm:w-[200px] sm:h-[260px] sm:translate-x-[60px] md:w-[240px] md:h-[300px] md:translate-x-[120px] lg:w-[280px] lg:h-[340px] lg:translate-x-[150px] lg:-translate-y-16 z-20",
-    "w-[140px] h-[190px] rotate-12 translate-x-[110px] -translate-y-12 sm:w-[200px] sm:h-[260px] sm:translate-x-[180px] md:w-[240px] md:h-[300px] md:translate-x-[350px] lg:w-[280px] lg:h-[340px] lg:translate-x-[400px] lg:-translate-y-16 z-10"
-  ];
-
-  const initialPositions = ["-translate-x-[1000px]", "-translate-x-[800px]", "translate-x-[600px]", "translate-x-[400px]"];
 
   return (
     <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)] overflow-x-hidden">
       <Navbar />
 
       <main className="flex flex-col justify-center items-center px-4 py-12 md:px-8 text-center font-sans pt-24 sm:pt-32">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight mb-0 tracking-tight max-w-2xl">
+        <div className="flex items-center justify-center space-x-2 text-sm mb-5">
+          <div className="w-2 h-2 bg-[var(--brand-primary)] rounded-full" />
+          <span className="text-[var(--text-muted)]">Pioneering Intelligence</span>
+        </div>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.05] mb-0 tracking-tight max-w-3xl">
           We build the future, one algorithm at a time.
         </h1>
 
-        <div className="relative flex justify-center items-center h-[300px] sm:h-[400px] md:h-[500px] w-full max-w-6xl mt-8 mb-8">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl transition-all duration-[3000ms] ease-out hover:scale-105 hover:z-50 ${
-                isVisible
-                  ? finalPositions[index]
-                  : `w-[140px] h-[190px] sm:w-[200px] sm:h-[260px] md:w-[240px] md:h-[300px] lg:w-[280px] lg:h-[340px] ${initialPositions[index]} opacity-0`
-              }`}
-              style={{
-                transitionDelay: `${index * 200}ms`,
-                opacity: isVisible ? 1 : 0
-              }}
-            >
-              <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
-            </div>
-          ))}
+        <div className="photo-marquee w-screen mt-10 mb-10 py-8 overflow-hidden">
+          <div className="photo-marquee-track flex w-max">
+            {[...stripImages, ...stripImages].map((img, index) => (
+              <div
+                key={index}
+                className="photo-marquee-card"
+                style={{ "--tilt": `${img.tilt}deg` } as React.CSSProperties}
+                aria-hidden={index >= stripImages.length ? true : undefined}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         <Link href="/project">
@@ -81,9 +76,9 @@ export default function AboutPage() {
                 <div className="w-2 h-2 bg-[var(--brand-primary)] rounded-full" />
                 <span className="text-[var(--text-muted)]">Pioneering Intelligence</span>
               </div>
-              <h1 className="text-3xl lg:text-4xl font-normal leading-tight tracking-tight">
+              <h2 className="text-3xl lg:text-4xl font-normal leading-tight tracking-tight">
                 We are enhcAI, a dedicated team turning the most complex data into intelligent, actionable solutions for your business.
-              </h1>
+              </h2>
             </div>
             <div className="flex-1 space-y-6 text-[var(--text-muted)] text-base lg:text-lg leading-relaxed text-center lg:text-left">
               <p>
@@ -116,9 +111,69 @@ export default function AboutPage() {
         <Footer />
 
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
         body, html { overflow-x: hidden; }
-        h1, button, span, p, div { font-family: 'Product Sans', sans-serif; }
+        h1, button, span, p, div { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+
+        /* Moving photo strip — glides left → right in a seamless loop.
+           Speed lives in --speed (lower = faster); gap between cards in --gap. */
+        .photo-marquee {
+          --gap: clamp(16px, 2.5vw, 40px);
+          --speed: 18s;
+          -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 6%,
+            #000 94%,
+            transparent
+          );
+          mask-image: linear-gradient(
+            to right,
+            transparent,
+            #000 6%,
+            #000 94%,
+            transparent
+          );
+        }
+        .photo-marquee-track {
+          animation: photo-marquee-move var(--speed) linear infinite;
+          will-change: transform;
+        }
+        /* -50% = exactly one full (duplicated) set incl. its trailing gap,
+           so the jump back is invisible. from -50% → 0 moves cards rightward. */
+        @keyframes photo-marquee-move {
+          from {
+            transform: translateX(-50%);
+          }
+          to {
+            transform: translateX(0);
+          }
+        }
+        .photo-marquee:hover .photo-marquee-track {
+          animation-play-state: paused;
+        }
+        .photo-marquee-card {
+          flex: 0 0 auto;
+          width: clamp(190px, 22vw, 290px);
+          aspect-ratio: 3 / 4;
+          margin-right: var(--gap);
+          border-radius: 1.25rem;
+          overflow: hidden;
+          box-shadow: 0 22px 45px -20px rgba(0, 0, 0, 0.45);
+          transform: rotate(var(--tilt));
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        @media (min-width: 640px) {
+          .photo-marquee-card { border-radius: 1.5rem; }
+        }
+        .photo-marquee-card:hover {
+          transform: rotate(0deg) scale(1.04);
+          box-shadow: 0 32px 60px -22px rgba(0, 0, 0, 0.55);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .photo-marquee-track {
+            animation: none;
+          }
+        }
       `}</style>
     </div>
   );

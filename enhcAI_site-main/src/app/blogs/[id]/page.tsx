@@ -65,7 +65,7 @@ const globalStyles = `
     scrollbar-width: none;  /* Firefox */
   }
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   }
 `;
 
@@ -106,7 +106,6 @@ const DynamicBlogPage: React.FC = () => {
 
     // Refs for the main scrollable article and each content section
     const articleRef = useRef<HTMLDivElement>(null);
-    const mainContainerRef = useRef<HTMLDivElement>(null);
     // Store DOM elements directly in the ref's current object, not ref objects themselves.
     const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
@@ -127,38 +126,33 @@ const DynamicBlogPage: React.FC = () => {
         const articleElement = articleRef.current;
         if (!articleElement || !currentBlog) return;
 
-        // Calculate scroll progress
-        const { scrollTop, scrollHeight, clientHeight } = articleElement;
-        const totalScrollableHeight = scrollHeight - clientHeight;
+        // Progress + active section are both measured against a "reading line" partway
+        // down the viewport. The bar reaches 100% only when the LAST line of the article
+        // reaches that line — not when the article's bottom first peeks in at the bottom
+        // of the screen (which made the bar jump to full while a whole screen was unread).
+        const viewportHeight = window.innerHeight;
+        const readingLine = viewportHeight * 0.4;
+        const rect = articleElement.getBoundingClientRect();
+        const totalScrollableHeight = rect.height - readingLine;
         if (totalScrollableHeight > 0) {
-            const currentProgress = (scrollTop / totalScrollableHeight) * 100;
-            setScrollProgress(currentProgress);
+            const scrolled = Math.min(Math.max(-rect.top, 0), totalScrollableHeight);
+            setScrollProgress((scrolled / totalScrollableHeight) * 100);
         } else {
-            setScrollProgress(0);
+            setScrollProgress(rect.bottom <= readingLine ? 100 : 0);
         }
-        
-        // Determine active section
-        const viewportOffset = articleElement.getBoundingClientRect().top;
+
+        // Determine active section by which heading has crossed the reading line.
         let currentSection = 'intro';
 
-        // Check intro section first
         const introEl = sectionRefs.current['intro'];
-        if (introEl) {
-            const introTop = introEl.getBoundingClientRect().top;
-            if (introTop - viewportOffset < clientHeight / 2) {
-                currentSection = 'intro';
-            }
+        if (introEl && introEl.getBoundingClientRect().top <= readingLine) {
+            currentSection = 'intro';
         }
         
         for (const section of currentBlog.sections) {
-            // Access the DOM element directly from sectionRefs.current
             const sectionEl = sectionRefs.current[section.id];
-            // Check for the element's existence
-            if (sectionEl) {
-                const sectionTop = sectionEl.getBoundingClientRect().top;
-                if (sectionTop - viewportOffset < clientHeight / 2) {
-                    currentSection = section.id;
-                }
+            if (sectionEl && sectionEl.getBoundingClientRect().top <= readingLine) {
+                currentSection = section.id;
             }
         }
         setActiveSection(currentSection);
@@ -166,95 +160,21 @@ const DynamicBlogPage: React.FC = () => {
 
     // Effect to handle scroll events for progress bar and active section
     useEffect(() => {
-        let isScrollingFromWheel = false;
-        let snapTimeout: NodeJS.Timeout | null = null;
+        updateScrollState();
 
-        const handleArticleScroll = () => {
-            if (!isScrollingFromWheel) {
-                updateScrollState();
-            }
+        let ticking = false;
+        const onScroll = () => {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => { updateScrollState(); ticking = false; });
         };
 
-        const snapToMainContent = () => {
-            const mainContainer = mainContainerRef.current;
-            
-            if (mainContainer) {
-                const mainRect = mainContainer.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                const scrollY = window.pageYOffset;
-                
-                const idealTop = 100;
-                const targetScrollY = scrollY + mainRect.top - idealTop;
-                
-                const snapZoneTop = windowHeight * 0.7;
-                const snapZoneBottom = -windowHeight * 0.3;
-                
-                const shouldSnapFromAbove = mainRect.top < snapZoneTop && mainRect.top > 0;
-                const shouldSnapFromBelow = mainRect.top < 0 && mainRect.top > snapZoneBottom;
-                
-                if (shouldSnapFromAbove || shouldSnapFromBelow) {
-                    window.scrollTo({
-                        top: targetScrollY,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        };
-
-        const handleWheelScroll = (e: WheelEvent) => {
-            const articleElement = articleRef.current;
-            const mainContainer = mainContainerRef.current;
-            
-            if (!articleElement || !mainContainer) return;
-
-            const mainRect = mainContainer.getBoundingClientRect();
-            const isInMainArea = e.clientY >= mainRect.top && e.clientY <= mainRect.bottom;
-            
-            if (isInMainArea) {
-                const { scrollTop, scrollHeight, clientHeight } = articleElement;
-                const scrollAmount = e.deltaY * 2;
-                
-                const isAtTop = scrollTop <= 1 && e.deltaY < 0;
-                const isAtBottom = (scrollTop + clientHeight) >= (scrollHeight - 1) && e.deltaY > 0;
-                
-                if (isAtTop || isAtBottom) {
-                    return;
-                }
-                
-                e.preventDefault();
-                isScrollingFromWheel = true;
-                
-                articleElement.scrollTop += scrollAmount;
-                updateScrollState();
-                
-                setTimeout(() => {
-                    isScrollingFromWheel = false;
-                }, 50);
-            }
-        };
-
-        const handlePageScroll = () => {
-            if (snapTimeout) {
-                clearTimeout(snapTimeout);
-            }
-            
-            snapTimeout = setTimeout(() => {
-                snapToMainContent();
-            }, 150);
-        };
-
-        const articleEl = articleRef.current;
-        articleEl?.addEventListener('scroll', handleArticleScroll);
-        document.addEventListener('wheel', handleWheelScroll, { passive: false });
-        window.addEventListener('scroll', handlePageScroll, { passive: true });
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
 
         return () => {
-            articleEl?.removeEventListener('scroll', handleArticleScroll);
-            document.removeEventListener('wheel', handleWheelScroll);
-            window.removeEventListener('scroll', handlePageScroll);
-            if (snapTimeout) {
-                clearTimeout(snapTimeout);
-            }
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', onScroll);
         };
     }, [currentBlog]);
 
@@ -277,13 +197,12 @@ const DynamicBlogPage: React.FC = () => {
         <div className="bg-[var(--bg-main)] min-h-screen text-[var(--text-main)]">
             <style jsx global>{globalStyles}</style>
             <style jsx global>{`
-                @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
                 
                 body, nav, span, button, h1, h2, h3, h4, p, a, div {
-                    font-family: 'Product Sans', sans-serif !important;
+                    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif !important;
                 }
                 .product-sans {
-                    font-family: 'Product Sans', sans-serif;
+                    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
                 }
             `}</style>
 
@@ -325,11 +244,11 @@ const DynamicBlogPage: React.FC = () => {
             </header>
 
             {/* Main Content Layout (Sidebar + Article) */}
-            <main ref={mainContainerRef} className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-12 px-4 sm:px-8 lg:px-16">
+            <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 py-12 px-4 sm:px-8 lg:px-16">
                 
                 {/* Left Column: Sticky Table of Contents */}
                 <aside className="lg:col-span-4 xl:col-span-3">
-                    <div className="sticky top-28">
+                    <div className="lg:sticky lg:top-28">
                         <div className="bg-[var(--bg-card)] rounded-lg p-6 border border-[var(--border-main)]">
                             <h3 className="font-bold text-[var(--text-main)] mb-4">Contents</h3>
                             <ul>
@@ -371,7 +290,7 @@ const DynamicBlogPage: React.FC = () => {
                 {/* Right Column: Scrollable Main Article */}
                 <div 
                     ref={articleRef} 
-                    className="lg:col-span-8 xl:col-span-9 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto pr-4 no-scrollbar"
+                    className="lg:col-span-8 xl:col-span-9"
                 >
                     <article>
                          {/* Use a callback ref to assign the DOM node to sectionRefs */}

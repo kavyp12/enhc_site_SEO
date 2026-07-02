@@ -190,9 +190,9 @@ const PasswordLogin = ({ onLogin }: { onLogin: (password: string) => void }) => 
       </div>
 
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&display=swap');
+        
         .font-google-sans { 
-          font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+          font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
         }
       `}</style>
 
@@ -617,9 +617,9 @@ const AdminPage = () => {
       </div>
 
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&display=swap');
+        
         .font-google-sans { 
-          font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+          font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
         }
       `}</style>
 

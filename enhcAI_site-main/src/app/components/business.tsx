@@ -4,10 +4,9 @@ import { useRouter } from "next/navigation"; // ✅ Import router
 
 // Font import via CSS-in-JS
 const fontStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   }
 `;
 
@@ -30,10 +29,11 @@ const ArrowIcon = () => (
 
 const services = [
   { title: "ML Models", description: "Custom machine learning models to uncover insights and automate complex processes.", image: "/machine_learning.jpg" },
-  { title: "NLP", description: "Harnessing the power of language with advanced NLP solutions for sentiment analysis and more.", image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=250&fit=crop&crop=center" },
   { title: "Vision AI", description: "State-of-the-art computer vision for image recognition, object detection, and video analysis.", image: "/vision_AI.jpg" },
-  { title: "Analytics", description: "Leveraging predictive analytics to forecast trends and provide actionable intelligence.", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop&crop=center" },
-  { title: "AI Strategy", description: "Expert consulting to help you identify opportunities and create a roadmap for AI integration.", image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=250&fit=crop&crop=center" }
+  { title: "Automation", description: "AI-powered workflow and business process automation that eliminates repetitive manual work.", image: "/journy.jpg" },
+  { title: "Website", description: "Custom websites and web applications, from landing pages to full-scale platforms, designed to convert.", image: "/digital.jpg" },
+  { title: "ERP", description: "Enterprise resource planning and CRM systems that streamline operations across your organization.", image: "/office_image.jpg" },
+  { title: "Industries", description: "Tailored solutions built for the unique workflows and challenges of your industry.", image: "/still-life-supply-chain-representation.jpg" }
 ];
 
 const ServiceItem = ({
@@ -59,11 +59,11 @@ const ServiceItem = ({
     onClick={onTouch}
   >
     <div className="flex items-center">
-      <h1
+      <h3
         className={`text-4xl md:text-8xl font-medium leading-tight transition-all duration-500 ease-out product-sans ${isHovered ? 'md:translate-x-56 sm:translate-x-40 translate-x-32 text-[var(--text-main)]' : 'translate-x-0'} ${isAnyHovered && !isHovered ? 'text-[var(--text-muted)]' : 'text-[var(--text-main)]'}`}
       >
         {title}
-      </h1>
+      </h3>
     </div>
 
     {/* Mobile content */}

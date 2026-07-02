@@ -6,6 +6,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 import Navbar from '@/app/components/navbar';
 import Footer from '@/app/components/footer';
 
@@ -24,11 +25,11 @@ interface BlogPost {
   slug: string;
 }
 
+// Latest posts from the enhc blog. `slug` maps to the real /blogs/<id> route.
 const blogPosts: BlogPost[] = [
-  { id: 1, image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', readTime: '11 min read', title: 'How To Create A Killer Web Design Brief (Free Template Included)', excerpt: 'So you want a new website but don\'t know how to write a website design brief? Here\'s our full guide, including FREE...', slug: 'how-to-create-killer-web-design-brief' },
-  { id: 2, image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', readTime: '6 min read', title: 'Our Culture, Our Value & Our Studio', excerpt: 'In our own words, how important culture, values and studio environment is to us as a web design agency at...', slug: 'our-culture-our-value-our-studio' },
-  { id: 3, image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', readTime: '4 min read', title: 'Why our clients choose Manchester', excerpt: 'Hi, I\'m Andrew, Creative Director of MadeByenhc. I wanted to share with you why our clients choose...', slug: 'why-our-clients-choose-manchester' },
-  { id: 4, image: 'https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', readTime: '8 min read', title: 'The Future of AI in Web Development', excerpt: 'Exploring how artificial intelligence is revolutionizing the way we build and design websites in 2024...', slug: 'future-ai-web-development' }
+  { id: 1, image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=800&auto=format&fit=crop', readTime: '8 min read', title: 'Demystifying Neural Networks: A Beginner\'s Guide', excerpt: 'A clear, beginner-friendly introduction to how neural networks learn — perceptrons, layers, activation functions and training.', slug: '1' },
+  { id: 2, image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80', readTime: '7 min read', title: 'Data Preprocessing: Transforming Data for ML', excerpt: 'Why clean, well-structured data is the foundation of every reliable machine learning model — and how we prepare it.', slug: '2' },
+  { id: 3, image: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80', readTime: '9 min read', title: 'Getting Started with Deep Learning in PyTorch', excerpt: 'A practical walkthrough of building and training your first deep learning model with PyTorch.', slug: '3' },
 ];
 
 const ServicesPage = () => {
@@ -168,7 +169,7 @@ const ServicesPage = () => {
               <Swiper modules={[Navigation]} spaceBetween={30} slidesPerView={1.2} navigation={{ prevEl: '.blog-swiper-prev', nextEl: '.blog-swiper-next', }} breakpoints={{ 768: { slidesPerView: 1.5, spaceBetween: 30 }, 1024: { slidesPerView: 2.2, spaceBetween: 40 }, }} className="!overflow-visible">
                 {blogPosts.map((post) => (
                   <SwiperSlide key={post.id}>
-                    <div className="rounded-2xl overflow-hidden h-full flex flex-col group transition-all duration-300" style={{ height: '500px' }}>
+                    <Link href={`/blogs/${post.slug}`} className="rounded-2xl overflow-hidden h-full flex flex-col group transition-all duration-300" style={{ height: '500px' }}>
                       <div className="relative overflow-hidden rounded-2xl mb-6">
                         <img src={post.image} alt={post.title} className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 rounded-2xl" onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'; }} />
                         <div className="absolute top-4 left-4 w-12 h-12 bg-[var(--brand-primary)] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="stroke-white" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
@@ -178,7 +179,7 @@ const ServicesPage = () => {
                         <h3 className="text-2xl font-bold mb-4 leading-tight group-hover:text-[var(--text-main)] transition-colors duration-300">{post.title}</h3>
                         <p className="text-[var(--text-muted)] text-base leading-relaxed flex-grow">{post.excerpt}</p>
                       </div>
-                    </div>
+                    </Link>
                   </SwiperSlide>
                 ))}
               </Swiper>
@@ -187,8 +188,7 @@ const ServicesPage = () => {
         </section>
 
         <style jsx>{`
-          @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap');
-          * { font-family: 'Plus Jakarta Sans', sans-serif; }
+          * { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
         `}</style>
       </main>
       <Footer />

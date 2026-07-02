@@ -2,21 +2,29 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getDb } from '@/lib/mongodb'
 import type { ProjectEnquiryDocument } from '@/lib/mongodb'
+import { verifyAdminPassword, rateLimit, getClientIp } from '@/lib/adminAuth'
 
 export async function GET(request: NextRequest) {
   try {
-    // Check for admin password in header
-    const adminPassword = request.headers.get('x-admin-password')
-    const correctPassword = process.env.ADMIN_PASSWORD
-    
-    if (!correctPassword) {
+    // Throttle brute-force attempts against the admin password.
+    const ip = getClientIp(request)
+    const limit = rateLimit(`admin-enquiries:${ip}`, 20, 60_000)
+    if (!limit.allowed) {
+      return NextResponse.json(
+        { error: 'Too many requests. Please slow down.' },
+        { status: 429, headers: { 'Retry-After': String(limit.retryAfter) } }
+      )
+    }
+
+    if (!process.env.ADMIN_PASSWORD) {
       return NextResponse.json(
         { error: 'Admin password not configured' },
         { status: 500 }
       )
     }
-    
-    if (!adminPassword || adminPassword !== correctPassword) {
+
+    // Constant-time comparison to avoid timing side-channels.
+    if (!verifyAdminPassword(request.headers.get('x-admin-password'))) {
       return NextResponse.json(
         { error: 'Unauthorized: Invalid admin password' },
         { status: 401 }

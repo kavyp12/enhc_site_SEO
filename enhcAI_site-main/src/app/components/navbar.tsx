@@ -205,7 +205,7 @@ export default function Navbar() {
                     </div>
                     <div className="w-72 flex-shrink-0">
                       <div className="w-full h-[400px] rounded-xl overflow-hidden">
-                        <img src="/service_image.jpg" alt="Professional workspace" className="w-full h-full object-cover"/>
+                        <img src="/service_image.jpg" alt="enhc AI and software services" loading="lazy" decoding="async" className="w-full h-full object-cover"/>
                       </div>
                     </div>
                   </div>
@@ -307,8 +307,7 @@ export default function Navbar() {
           </div>
         </div>
         <style jsx>{`
-          @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
-          nav, span, button, h3, h4, p { font-family: 'Product Sans', sans-serif; }
+          nav, span, button, h3, h4, p { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
           `}</style>
         </header>
       </>

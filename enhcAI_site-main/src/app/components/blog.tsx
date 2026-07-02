@@ -6,13 +6,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { ArrowUpRight, ArrowLeft, ArrowRight } from 'lucide-react';
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 // Font import via CSS-in-JS
 const fontStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   }
 `;
 
@@ -76,10 +76,6 @@ const blogPosts = [
 export default function Blog() {
   const router = useRouter();
 
-  const handleBlogClick = (blogId: number) => {
-    router.push(`/blogs/${blogId}`);
-  };
-
   // Function to generate avatar from initials
   const generateAvatar = (name: string) => {
   const initials = name.split(' ').map(word => word[0]).join('').toUpperCase();
@@ -139,9 +135,9 @@ export default function Blog() {
             >
               {blogPosts.map((post) => (
                 <SwiperSlide key={post.id} className="h-auto">
-                  <div
+                  <Link
+                    href={`/blogs/${post.id}`}
                     className="flex flex-col text-left cursor-pointer group h-full"
-                    onClick={() => handleBlogClick(post.id)}
                   >
                     <div className="relative overflow-hidden rounded-2xl">
                       <img
@@ -165,7 +161,7 @@ export default function Blog() {
                       <h3 className="text-xl font-bold leading-snug group-hover:text-[var(--brand-accent)] transition-colors product-sans">{post.title}</h3>
                       <p className="text-[var(--text-muted)] mt-2 text-sm leading-relaxed product-sans line-clamp-3">{post.description}</p>
                     </div>
-                  </div>
+                  </Link>
                 </SwiperSlide>
               ))}
             </Swiper>

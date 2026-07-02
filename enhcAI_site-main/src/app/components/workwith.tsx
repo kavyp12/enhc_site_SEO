@@ -4,10 +4,9 @@ import { useRouter } from "next/navigation"; // ✅ Import router
 
 // Font import via CSS-in-JS
 const fontStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   }
 `;
 
@@ -16,6 +15,43 @@ const LogoCard = ({ children }: { children: ReactNode }) => (
     {children}
   </div>
 );
+
+type Logo = { src: string; alt: string };
+
+const LogoImage = ({ src, alt }: Logo) => (
+  <LogoCard>
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      className="max-h-20 max-w-[80%] w-auto object-contain"
+    />
+  </LogoCard>
+);
+
+// Logos live in /public/logos. Filenames with spaces are URL-encoded.
+const logosRowOne: Logo[] = [
+  { src: "/logos/Adani_wimar.jpg", alt: "Adani Wilmar" },
+  { src: "/logos/Autotake%20AI.jpg", alt: "Autotake AI" },
+  { src: "/logos/DDC.png", alt: "DDC" },
+  { src: "/logos/FIRE.jpg", alt: "FIRE" },
+  { src: "/logos/GIPL.png", alt: "GIPL" },
+  { src: "/logos/LOGO_design.jpg", alt: "Logo Design" },
+  { src: "/logos/VILLION.jpeg", alt: "Villion" },
+  { src: "/logos/Vedcool_logo.jpg", alt: "Vedcool" },
+  { src: "/logos/Yohan_logo.jpg", alt: "Yohan" },
+];
+
+const logosRowTwo: Logo[] = [
+  { src: "/logos/adani%20uni.png", alt: "Adani University" },
+  { src: "/logos/beardo%20logo.jpg", alt: "Beardo" },
+  { src: "/logos/ev%20india.png", alt: "EV India" },
+  { src: "/logos/gujrat%20police.png", alt: "Gujarat Police" },
+  { src: "/logos/innovatiq.jpg", alt: "Innovatiq" },
+  { src: "/logos/invest%20in%20lothal.png", alt: "Invest in Lothal" },
+  { src: "/logos/kreato.png", alt: "Kreato" },
+  { src: "/logos/rama_realty_main_logo.png", alt: "Rama Realty" },
+];
 
 const Workwith = () => {
   const router = useRouter(); // ✅ Initialize router
@@ -30,10 +66,10 @@ const Workwith = () => {
               <span className="w-1.5 h-1.5 bg-[var(--text-main)] rounded-full"></span>
               Shameful Plug
             </div>
-            <h1 className="text-3xl sm:text-4xl font-semi text-[var(--text-main)] mt-2 max-w-5xl leading-tight text-left product-sans">
-              We work with start-up businesses <br className="hidden sm:block" />
+            <h2 className="text-3xl sm:text-4xl font-semi text-[var(--text-main)] mt-2 max-w-5xl leading-tight text-left product-sans">
+              We work with start-up businesses{' '}<br className="hidden sm:block" />
               through to global organisations.
-            </h1>
+            </h2>
             <div className="flex justify-start">
               {/* ✅ Updated Button with router.push */}
               <button
@@ -68,32 +104,9 @@ const Workwith = () => {
               <div className="flex animate-scroll-left gap-6">
                 {[...Array(2)].map((_, i) => (
                   <React.Fragment key={i}>
-                    <LogoCard>
-                      <div className="font-bold text-center text-xs product-sans">
-                        <p className="opacity-70">University of</p>
-                        <p className="text-2xl tracking-tighter my-0.5">Salford</p>
-                        <p className="font-light tracking-[0.2em] opacity-70">MANCHESTER</p>
-                      </div>
-                    </LogoCard>
-                    <LogoCard>
-                      <p className="font-serif text-3xl tracking-[0.2em] product-sans">ROSEBUD</p>
-                    </LogoCard>
-                    <LogoCard>
-                      <div className="text-center product-sans">
-                        <p className="text-2xl tracking-widest">L'OCCITANE</p>
-                        <p className="text-xs tracking-[0.3em] opacity-70 mt-1">EN PROVENCE</p>
-                      </div>
-                    </LogoCard>
-                    <LogoCard>
-                      <svg className="h-8" viewBox="0 0 101 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22.843 4.24H4.27v39.52h18.573c12.334 0 22.34-9.983 22.34-22.298V23.98c0-12.315-10.006-19.74-22.34-19.74Zm-5.783 26.603H11.37V11.157h5.69c4.71 0 8.527 3.82 8.527 8.528v5.632c0 4.71-3.818 8.526-8.527 8.526Z" />
-                        <path d="M96.73 4.24H55.047v39.52H96.73V29.026h-24.9v-5.046h24.9V11.157h-24.9V6.11h24.9V4.24Z" />
-                        <path d="M84.383 29.026V43.76h7.113V29.026h-7.113Z" />
-                      </svg>
-                    </LogoCard>
-                    <LogoCard>
-                      <p className="font-sans text-xl sm:text-2xl tracking-[0.2em] font-medium product-sans">GARY NEVILLE</p>
-                    </LogoCard>
+                    {logosRowOne.map((logo) => (
+                      <LogoImage key={logo.alt} src={logo.src} alt={logo.alt} />
+                    ))}
                   </React.Fragment>
                 ))}
               </div>
@@ -103,43 +116,9 @@ const Workwith = () => {
               <div className="flex animate-scroll-right gap-6">
                 {[...Array(2)].map((_, i) => (
                   <React.Fragment key={i}>
-                    <LogoCard>
-                      <div className="flex items-center gap-2.5">
-                        <svg className="h-6" viewBox="0 0 138 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M11.2 2.8C5.6 2.8 0 8.4 0 14s5.6 11.2 11.2 11.2S22.4 19.6 22.4 14 16.8 2.8 11.2 2.8zm0 18.2c-3.85 0-7-3.15-7-7s3.15-7 7-7 7 3.15 7 7-3.15 7-7 7zM42 2.8C36.4 2.8 30.8 8.4 30.8 14s5.6 11.2 11.2 11.2S53.2 19.6 53.2 14 47.6 2.8 42 2.8zm0 18.2c-3.85 0-7-3.15-7-7s3.15-7 7-7 7 3.15 7 7-3.15 7-7 7zM72.8 2.8c-5.6 0-11.2 5.6-11.2 11.2s5.6 11.2 11.2 11.2 11.2-5.6 11.2-11.2S78.4 2.8 72.8 2.8zm0 18.2c-3.85 0-7-3.15-7-7s3.15-7 7-7 7 3.15 7 7-3.15 7-7 7zM92.4 4.2h11.2v19.6h-11.2V4.2zM114.8 4.2c2.8 0 5.6 1.4 7 4.2l-5.6 4.2c-.35-.7-.7-1.4-2.1-1.4-1.4 0-2.8 1.4-2.8 3.5v9.1h-11.2V4.2h11.5zM128.8 4.2h11.2v19.6h-11.2V4.2z"/>
-                        </svg>
-                        <p className="font-bold text-lg sm:text-2xl product-sans">BlackBerry</p>
-                      </div>
-                    </LogoCard>
-                    <LogoCard>
-                      <div className="flex gap-1">
-                        <div className="bg-white text-black text-2xl sm:text-3xl font-bold w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center product-sans">B</div>
-                        <div className="bg-white text-black text-2xl sm:text-3xl font-bold w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center product-sans">B</div>
-                        <div className="bg-white text-black text-2xl sm:text-3xl font-bold w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center product-sans">C</div>
-                      </div>
-                    </LogoCard>
-                    <LogoCard>
-                      <svg className="h-12 sm:h-16" viewBox="0 0 100 115" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M64.8 80.3l-12.2-19c-1-1.5-.7-3.6.8-4.6l23.8-16.5-16.7-25.9L50 22.4 39.5 14.3 22.8 40.2l23.8 16.5c1.5 1 1.8 3.1.8 4.6L35.2 80.3H0v34.4h100V80.3H64.8zM50 0L15.4 24.3 35.7 55 50 44.4 64.3 55 84.6 24.4 50 0z"/>
-                      </svg>
-                    </LogoCard>
-                    <LogoCard>
-                      <div className="text-center">
-                        <svg className="h-8 mx-auto" viewBox="0 0 50 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M25 0L49.4355 18L25 36L0.564502 18L25 0Z" stroke="currentColor" strokeWidth="2"/>
-                          <path d="M13.916 23.332L25 15.5l11.084 7.832L25 31.166L13.916 23.332Z" stroke="currentColor" strokeWidth="1.5"/>
-                        </svg>
-                        <p className="font-semibold text-base sm:text-lg tracking-widest mt-2">ALLIANCE</p>
-                        <p className="text-xs tracking-[0.2em] opacity-70">RESTAURANTS</p>
-                      </div>
-                    </LogoCard>
-                    <LogoCard>
-                      <div className="flex items-center gap-2.5 text-2xl sm:text-3xl font-light product-sans">
-                        <span>inside</span>
-                        <span className="h-6 w-px bg-current"></span>
-                        <span>out</span>
-                      </div>
-                    </LogoCard>
+                    {logosRowTwo.map((logo) => (
+                      <LogoImage key={logo.alt} src={logo.src} alt={logo.alt} />
+                    ))}
                   </React.Fragment>
                 ))}
               </div>

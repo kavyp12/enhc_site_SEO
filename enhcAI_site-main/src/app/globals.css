@@ -5,9 +5,12 @@
   --foreground: #171717;
 }
 
-/* Fix for responsive layout issues */
+/* Fix for responsive layout issues.
+   IMPORTANT: do NOT set overflow-x on <html>. Any non-visible overflow on the
+   root element turns it into a scroll container, which breaks position: sticky
+   once Lenis drives the scroll (the sidebar stops sticking). Horizontal overflow
+   is clipped on <body> instead (see the body rule below). */
 html, body {
-  overflow-x: hidden;
   max-width: 100vw;
   width: 100%;
   margin: 0;
@@ -49,14 +52,17 @@ html.lenis body {
 body {
   position: relative;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Keep the Tailwind `font-sans` utility on the same brand stack as body —
+     the old var(--font-geist-sans) was never defined, so it rendered
+     inconsistently against the rest of the site. */
+  --font-sans: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -98,7 +104,9 @@ body {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Site-wide font: Product Sans (brand) with a consistent cross-platform
+     fallback, so every page renders the same when Product Sans isn't installed. */
+  font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
 /* Container classes to prevent overflow */

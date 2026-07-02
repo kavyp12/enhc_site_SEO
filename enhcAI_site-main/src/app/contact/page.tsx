@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import { contactFaq } from './faqData';
 
 const ArrowIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 sm:h-10 sm:w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>);
 const ArrowUpRightIcon = ({ className = "w-6 h-6" }: { className?: string }) => (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" /></svg>);
@@ -16,15 +17,6 @@ const GithubIcon = ({ className = "w-5 h-5" }) => (<svg className={className} fi
 
 const SocialLink = ({ href, children }: { href: string, children: React.ReactNode }) => (<a href={href} target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[var(--bg-card-secondary)] rounded-full flex items-center justify-center text-[var(--text-main)] hover:bg-[var(--brand-primary)] hover:text-white transition-all duration-300">{children}</a>);
 
-const faqData = [
-  { question: 'How long does a website project usually take to complete?', answer: (<div className="space-y-4"><p>Timelines depend on the spec of the website project, but here are some guidelines...</p><ul className="list-none space-y-3"><li>- <span className="underline">Shopify</span> projects usually take around four weeks.</li><li>- <span className="underline">Craft CMS</span> projects usually take a minimum of five weeks.</li><li>- <span className="underline">Craft Commerce</span> projects usually take a minimum of eight weeks.</li><li>- <span className="underline">Branding</span> projects usually take around four weeks.</li></ul></div>), },
-  { question: 'How much does a website cost?', answer: <p>Costs vary based on the project scope. We provide detailed quotes after an initial consultation to understand your specific needs.</p>, },
-  { question: 'We have a limited budget, will you still work with us?', answer: <p>We can often tailor a solution to fit your budget. Let's discuss your needs and see what's possible. We're open to finding a scope that works for both of us.</p>, },
-  { question: 'Do you outsource any work?', answer: <p>No, all our work is done in-house by our dedicated team of designers and developers. This ensures quality and seamless communication.</p>, },
-  { question: 'What services do you offer?', answer: <p>We offer a range of services including web design, web development, branding, e-commerce solutions (like Shopify and Craft Commerce), and digital strategy.</p>, },
-  { question: "We're not based in Manchester, does that matter?", answer: <p>Not at all! We work with clients from all over the world. We use video calls and project management tools to keep communication frequent and clear, no matter where you are.</p>, },
-];
-
 const FaqItem = ({ faq, isOpen, onToggle }: { faq: { question: string; answer: React.ReactNode }, isOpen: boolean, onToggle: () => void }) => {
     return (
         <div className="bg-[var(--bg-card)] rounded-2xl mb-4">
@@ -33,7 +25,7 @@ const FaqItem = ({ faq, isOpen, onToggle }: { faq: { question: string; answer: R
                 <div className="shrink-0 pt-1">{isOpen ? <FaqUpArrow /> : <ArrowUpRightIcon className="w-6 h-6 text-[var(--text-main)]" />}</div>
             </button>
             <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[500px]' : 'max-h-0'}`}>
-                <div className="px-6 pb-6 text-[var(--text-muted)] text-base sm:text-lg leading-relaxed">{isOpen && faq.answer}</div>
+                <div className="px-6 pb-6 text-[var(--text-muted)] text-base sm:text-lg leading-relaxed">{isOpen && <p>{faq.answer}</p>}</div>
             </div>
         </div>
     );
@@ -56,7 +48,7 @@ const FaqSection = () => {
                         <div className="bg-white/20 rounded-full p-0.5 transition-transform group-hover:rotate-45"><ArrowUpRightIcon className="w-4 h-4" /></div>
                     </a>
                 </div>
-                <div className="w-full lg:max-w-2xl mx-auto">{faqData.map((faq, index) => <FaqItem key={index} faq={faq} isOpen={openIndex === index} onToggle={() => handleToggle(index)} />)}</div>
+                <div className="w-full lg:max-w-2xl mx-auto">{contactFaq.map((faq, index) => <FaqItem key={index} faq={faq} isOpen={openIndex === index} onToggle={() => handleToggle(index)} />)}</div>
             </div>
         </div>
     );
@@ -267,7 +259,11 @@ const ContactPage = () => {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8 lg:mb-12">
                             <div>
                                 <h3 className="text-sm text-gray-500 mb-3 font-medium tracking-wide">Studio Address</h3>
-                                <p className="text-[var(--text-main)] leading-relaxed">MadeByenhc<br />Shivalik Shilp<br />Ahmedabad<br />Gujarat</p>
+                                <p className="text-[var(--text-main)] leading-relaxed">Enhc Tech LLP<br />Shivalik Shilp<br />Ahmedabad, Gujarat<br />India</p>
+                                <p className="text-[var(--text-main)] leading-relaxed mt-3">
+                                    <a href="tel:+919313153036" className="hover:underline">+91 93131 53036</a><br />
+                                    <a href="mailto:contact@enhc.tech" className="hover:underline">contact@enhc.tech</a>
+                                </p>
                             </div>
                             <div>
                             <h3 className="text-sm text-gray-500 mb-3 font-medium tracking-wide lg:-translate-x-20">
@@ -277,7 +273,7 @@ const ContactPage = () => {
                                 <SocialLink href="https://www.linkedin.com/company/enhctech/">
                                 <LinkedInIcon className="w-4 h-4" />
                                 </SocialLink>
-                                <SocialLink href="https://www.instagram.com/enhancemodel.ai?igsh=MXhsem82cnc1Zzl3ZA==">
+                                <SocialLink href="https://www.instagram.com/enhancemodel.ai">
                                 <InstagramIcon className="w-4 h-4" />
                                 </SocialLink>
                                 <SocialLink href="https://github.com/kavyp12">
@@ -312,8 +308,7 @@ const ContactPage = () => {
         <FaqSection />
 
         <style jsx>{`
-            @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700&display=swap');
-            .font-google-sans { font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+            .font-google-sans { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
             @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
             .animate-fade-in-left { animation: fadeIn 0.5s ease-out forwards; }
             .animate-fade-in-right { animation: fadeIn 0.5s ease-out 0.2s forwards; opacity: 0; }

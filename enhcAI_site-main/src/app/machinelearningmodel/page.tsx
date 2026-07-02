@@ -89,7 +89,7 @@ const testimonials = [
   {
     id: 2,
     rating: 5,
-    text: "Working with ModelCraft was a turning point. They developed a recommendation engine that boosted our user engagement by over 40%.",
+    text: "Working with enhc was a turning point. They developed a recommendation engine that boosted our user engagement by over 40%.",
     author: "Maria Garcia",
     company: "ConnectSphere",
     avatar: "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?q=80&w=2076&auto=format&fit=crop"
@@ -118,7 +118,6 @@ const HelpWith = () => {
       <Navbar />
       <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)]">
         <style jsx>{`
-          @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
           
           @keyframes scroll-left {
             0% { transform: translateX(0%); }
@@ -147,14 +146,14 @@ const HelpWith = () => {
           }
           
           * {
-            font-family: 'Product Sans', sans-serif;
+            font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
           }
         `}</style>
 
         {/* Styles for the blog section */}
         <style jsx global>{`
           .font-product-sans {
-            font-family: 'Product Sans', sans-serif;
+            font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
           }
           
           .blog-section * {
@@ -184,7 +183,7 @@ const HelpWith = () => {
             </div>
             <div className="flex-1 pt-2 text-base sm:text-lg leading-relaxed text-[var(--text-muted)] lg:text-xl text-center lg:text-left">
               <p className="mb-6">
-                Here at ModelCraft, we provide deep expertise, robust development practices, and a portfolio of high-impact ML models.
+                Here at enhc, we provide deep expertise, robust development practices, and a portfolio of high-impact ML models.
               </p>
               <p>
                 Predictive modeling, recommendation engines, MLOps, and model auditing — we master all facets of the machine learning lifecycle. We can help a startup with raw data build its first predictive model. We can enhance an existing application with intelligent features or help a large enterprise scale its ML operations with robust deployment pipelines. Our talented in-house <span className="text-[var(--text-main)] underline decoration-[var(--text-muted)] decoration-1 underline-offset-4">machine learning team</span> will collaborate with you to craft a model that solves your unique challenges, unlocks data-driven insights, and delivers tangible business value.
@@ -223,7 +222,7 @@ const HelpWith = () => {
               </h2>
               <div className="inline-flex justify-center lg:justify-start">
                 <Link href="/about" className="group bg-[var(--brand-primary)] text-white font-medium text-sm py-2 px-4 rounded-full self-start flex items-center gap-2 transition-transform hover:scale-105 hover:bg-[var(--brand-primary-hover)] mt-4">
-                  About ModelCraft
+                  About enhc
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17l9.2-9.2M17 17V7H7" />
                   </svg>
@@ -278,7 +277,7 @@ const HelpWith = () => {
               </h2>
               <div className="space-y-4 text-[var(--text-muted)] text-base sm:text-lg leading-relaxed">
                 <p>
-                  We don't <em className="italic">just</em> chase algorithms. Here at ModelCraft, we understand the entire ML lifecycle, from data acquisition and feature engineering to model deployment, monitoring, and governance. We tailor our services to your specific business problem and data landscape.
+                  We don't <em className="italic">just</em> chase algorithms. Here at enhc, we understand the entire ML lifecycle, from data acquisition and feature engineering to model deployment, monitoring, and governance. We tailor our services to your specific business problem and data landscape.
                 </p>
               </div>
               <div className="pt-4 flex justify-center lg:justify-start">
@@ -313,7 +312,7 @@ const HelpWith = () => {
               </h2>
               <div className="space-y-4 text-[var(--text-muted)] text-base sm:text-lg leading-relaxed">
                 <p>
-                  We don't <em className="italic">just</em> deliver a model file. Here at ModelCraft, we understand that a successful ML project requires robust engineering, from scalable data pipelines to efficient deployment and continuous monitoring. We tailor our MLOps approach to fit your infrastructure and project goals.
+                  We don't <em className="italic">just</em> deliver a model file. Here at enhc, we understand that a successful ML project requires robust engineering, from scalable data pipelines to efficient deployment and continuous monitoring. We tailor our MLOps approach to fit your infrastructure and project goals.
                 </p>
               </div>
             </div>
@@ -335,10 +334,10 @@ const HelpWith = () => {
         <div className="w-full bg-[var(--bg-main)] text-[var(--text-main)] px-8 sm:px-16 lg:px-24 py-16">
           <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
             <div className="flex flex-col w-full text-center">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--text-main)] mt-2 max-w-5xl leading-tight">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[var(--text-main)] mt-2 max-w-5xl leading-tight">
                 <span>We use the latest frameworks</span><br />
                 <span className="lg:inline-block lg:-translate-x-20">to build high-performance models.</span>
-              </h1>
+              </h2>
             </div>
             <div className="mt-16 overflow-hidden w-full">
               <div className="mb-6">
@@ -381,9 +380,9 @@ const HelpWith = () => {
                 <div className="w-2 h-2 bg-[var(--brand-primary)] rounded-full" />
                 <span>How we can help you</span>
               </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                 A team of ML experts who can help you build, deploy, and manage models you can trust.
-              </h1>
+              </h2>
             </div>
             <div className="mt-8 lg:mt-0 w-full lg:w-auto">
               <Link

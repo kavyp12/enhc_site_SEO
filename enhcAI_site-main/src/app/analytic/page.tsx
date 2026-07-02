@@ -8,10 +8,9 @@ import { ResponsiveLine } from '@nivo/line';
 
 
 const fontStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   }
 
   :root {
@@ -173,19 +172,32 @@ const PasswordProtection = ({ onUnlock }: { onUnlock: () => void }) => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setError('');
 
-    // Check password (use the ADMIN_PASSWORD from your env)
-    if (password === 'Enhc@123') {
-      onUnlock();
-    } else {
-      setError('Incorrect password. Please try again.');
+    // Verify server-side so the password is never embedded in the client bundle.
+    try {
+      const res = await fetch('/api/admin/verify', {
+        method: 'POST',
+        headers: { 'x-admin-password': password },
+      });
+      if (res.ok) {
+        onUnlock();
+      } else if (res.status === 429) {
+        setError('Too many attempts. Please wait a moment and try again.');
+        setPassword('');
+      } else {
+        setError('Incorrect password. Please try again.');
+        setPassword('');
+      }
+    } catch {
+      setError('Could not verify password. Please try again.');
       setPassword('');
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   return (

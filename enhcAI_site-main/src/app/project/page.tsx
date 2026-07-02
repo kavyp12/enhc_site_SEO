@@ -188,8 +188,7 @@
 //         </div>
 
 //         <style jsx>{`
-//           @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
-//           section, div, p, h1, h2, h3, span, button { font-family: 'Product Sans', sans-serif; }
+//           section, div, p, h1, h2, h3, span, button { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
 //         `}</style>
 //       </section>
 //       <Footer />
@@ -228,6 +227,7 @@ function ProjectFilters({ categories, selectedCategory, onCategorySelect }: {
   return (
     <div className="mb-12 sm:mb-20">
       <p className="text-sm text-[var(--text-muted)] mb-6">• Our Work</p>
+      <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-6">AI Projects &amp; Case Studies</h1>
       <div className="flex flex-wrap gap-x-4 sm:gap-x-8 gap-y-4 items-center">
         {categories.map((category) => (
           <button
@@ -300,6 +300,7 @@ function getDynamicHeading(category: string): string {
     'education': 'Revolutionizing education<br />through AI learning',
     'construction': 'Revolutionizing construction<br />with AI precision',
     'marketing': 'Boosting marketing<br />with AI strategies',
+    'business management': 'Running businesses<br />end-to-end with software',
   };
   return headings[category.toLowerCase()] || 'Discover our<br />AI innovations';
 }
@@ -313,6 +314,8 @@ export default function App() {
     { id: 'healthcare', year: 2024, client: 'MedAI Innovations', title: 'AI Healthcare Management System', imageUrl: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1920&auto=format&fit=crop', column: 'left', tags: ['AI', 'Healthcare', 'Monitoring'], category: 'healthcare' },
     { id: 'autotakeoff-hvac', year: 2024, client: 'Real Estate & Construction', title: 'AutoTakeoff HVAC AI Construction Platform', imageUrl: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1920&auto=format&fit=crop', column: 'left', tags: ['AI', 'Construction', 'HVAC', 'Measurement'], category: 'construction' },
     { id: 'edusmartai-platform', year: 2024, client: 'Educational Institutions', title: 'EduSmart AI', imageUrl:'/vedcool/main hero section.png', column: 'right', tags: ['AI', 'Education', 'School Management'], category: 'education' },
+    { id: 'sulit-decohub', year: 2026, client: 'Sulit Bespoke Living', title: 'Sulit DecoHub Curtains Business Management Platform', imageUrl: '/Sulit/main image.jpeg', column: 'right', tags: ['CRM', 'Quotations', 'HRMS'], category: 'business management' },
+    { id: 'rama-realty', year: 2026, client: 'Rama Realty', title: 'Rama Realty | AI-Powered Real Estate Platform', imageUrl: '/ramarealty/rama screenshots/main iamge.jpeg', column: 'left', tags: ['Real Estate', 'AI Search', 'Vastu AI'], category: 'real estate' },
   ];
 
   const categoryData: Category[] = [
@@ -321,6 +324,8 @@ export default function App() {
     { name: 'education', count: projectData.filter(p => p.category === 'education').length },
     { name: 'marketing', count: projectData.filter(p => p.category === 'marketing').length },
     { name: 'construction', count: projectData.filter(p => p.category === 'construction').length },
+    { name: 'business management', count: projectData.filter(p => p.category === 'business management').length },
+    { name: 'real estate', count: projectData.filter(p => p.category === 'real estate').length },
   ];
 
   const filteredProjects = selectedCategory.toLowerCase() === 'explore all' 
@@ -364,8 +369,7 @@ export default function App() {
         </div>
 
         <style jsx>{`
-          @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
-          section, div, p, h1, h2, h3, span, button { font-family: 'Product Sans', sans-serif; }
+          section, div, p, h1, h2, h3, span, button { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
         `}</style>
       </section>
       <Footer />

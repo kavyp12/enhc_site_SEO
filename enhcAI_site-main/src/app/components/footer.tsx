@@ -3,10 +3,9 @@ import React from "react";
 
 // Font import via CSS-in-JS
 const fontStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   }
 `;
 
@@ -54,7 +53,7 @@ export default function Footer() {
     },
     {
       icon: IconInstagram,
-      href: "https://www.instagram.com/enhancemodel.ai?igsh=MXhsem82cnc1Zzl3ZA==",
+      href: "https://www.instagram.com/enhancemodel.ai",
       "aria-label": "Instagram",
     },
     {
@@ -69,6 +68,11 @@ export default function Footer() {
     { text: "About", href: "/about" },
     { text: "Blogs", href: "/blogs" },
     { text: "Services", href: "/services" },
+    { text: "Custom AI Solutions", href: "/customeAIsolution" },
+    { text: "Machine Learning", href: "/machinelearningmodel" },
+    { text: "AI Automation", href: "/AIautomation" },
+    { text: "Predictive Analytics", href: "/predictiveAnalytics" },
+    { text: "AI Strategy & Consulting", href: "/AIstatergy" },
     { text: "Industries", href: "/industries" },
     { text: "Web Development", href: "/web-development" },
     { text: "App Development", href: "/app-development" },
@@ -181,9 +185,9 @@ export default function Footer() {
 
           {/* Big tagline */}
           <div className="text-center py-16 lg:py-24">
-            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[180px] font-extrabold tracking-tighter text-[var(--text-main)] leading-none product-sans">
+            <p className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[180px] font-extrabold tracking-tighter text-[var(--text-main)] leading-none product-sans">
               Building Intelligence since 2022
-            </h1>
+            </p>
           </div>
 
           {/* Bottom bar */}

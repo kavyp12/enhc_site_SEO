@@ -4,10 +4,9 @@ import Link from 'next/link';
 
 // Font import via CSS-in-JS
 const fontStyles = `
-  @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   }
 `;
 
@@ -66,6 +65,8 @@ export default function App() {
     { id: 'ai-core-platform', year: 2023, client: 'Digital Marketing Agencies', title: 'KretoAI', imageUrl: '/kretoAI/main_page_kretoAI.png', column: 'left', tags: ['Sales Tool', 'Business Growth', 'AI CRM'] },
     { id: 'career-guide-ai', year: 2024, client: 'CareerPath Analytics', title: 'AI Career Guidance Assessment Platform', imageUrl: '/carrer-Guide-AI/main page.png', column: 'right', tags: ['AI', 'Education', 'Career Guidance'] },
     { id: 'healthcare', year: 2024, client: 'MedAI Innovations', title: 'AI Healthcare Management System', imageUrl: '/hospital appointment system/first page.png', column: 'left', tags: ['AI', 'Healthcare', 'Monitoring'] },
+    { id: 'sulit-decohub', year: 2026, client: 'Sulit Bespoke Living', title: 'Sulit DecoHub Curtains Business Management Platform', imageUrl: '/Sulit/main image.jpeg', column: 'left', tags: ['CRM', 'Quotations', 'HRMS'] },
+    { id: 'rama-realty', year: 2026, client: 'Rama Realty', title: 'Rama Realty | AI-Powered Real Estate Platform', imageUrl: '/ramarealty/rama screenshots/main iamge.jpeg', column: 'right', tags: ['Real Estate', 'AI Search', 'Vastu AI'] },
     { id: 'edusmartai-platform', year: 2024, client: 'Educational Institutions', title: 'EduSmart AI', imageUrl: '/vedcool/main hero section.png', column: 'right', tags: ['AI', 'Education', 'School Management'] },
   ];
   const leftColumnProjects = projectData.filter(p => p.column === 'left');

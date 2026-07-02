@@ -332,7 +332,6 @@ export default function ProjectPage() {
   return (
     <>
       <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=Product+Sans&display=swap');
         
         :root {
           --bg-main: #0a0a0a;
@@ -361,7 +360,7 @@ export default function ProjectPage() {
         }
         
         nav, span, button, h1, h2, h3, h4, h5, h6, p, div, a {
-          font-family: 'Product Sans', sans-serif;
+          font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
         }
       `}</style>
       <Navbar />
@@ -387,7 +386,7 @@ export default function ProjectPage() {
           <main className="mt-8 sm:mt-8">
             <div className="relative">
               <div className="relative z-10 mb-4 sm:mb-8 px-4 sm:px-0 lg:translate-x-150">
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-[var(--text-main)]">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl font-semibold leading-tight text-[var(--text-main)]">
               {project.title.split('|').map((part, index) => (
                 <React.Fragment key={index}>
                   {part}
@@ -472,21 +471,21 @@ export default function ProjectPage() {
 
             <section className="mt-10">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div className="h-[400px] md:h-[600px] rounded-3xl overflow-hidden">
+                <div className="aspect-video rounded-3xl overflow-hidden bg-[var(--bg-secondary)] p-2 border border-[var(--border-color)] flex items-center justify-center">
                   <img
                     src={project.images.analytics}
                     alt={`${project.title} Analytics Dashboard`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain rounded-2xl"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop';
                     }}
                   />
                 </div>
-                <div className="h-[400px] md:h-[600px] rounded-3xl overflow-hidden">
+                <div className="aspect-video rounded-3xl overflow-hidden bg-[var(--bg-secondary)] p-2 border border-[var(--border-color)] flex items-center justify-center">
                   <img
                     src={project.images.machineLearning}
                     alt={`${project.title} Machine Learning Models`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain rounded-2xl"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=800&auto=format&fit=crop';
                     }}
@@ -597,21 +596,21 @@ export default function ProjectPage() {
 
             <section className="mt-10">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div className="h-[400px] md:h-[600px] rounded-3xl overflow-hidden">
+                <div className="aspect-video rounded-3xl overflow-hidden bg-[var(--bg-secondary)] p-2 border border-[var(--border-color)] flex items-center justify-center">
                   <img
                     src={project.images.outline}
                     alt={`${project.title} Content Outline Generator`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain rounded-2xl"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop';
                     }}
                   />
                 </div>
-                <div className="h-[400px] md:h-[600px] rounded-3xl overflow-hidden">
+                <div className="aspect-video rounded-3xl overflow-hidden bg-[var(--bg-secondary)] p-2 border border-[var(--border-color)] flex items-center justify-center">
                   <img
                     src={project.images.outline2}
                     alt={`${project.title} Advanced Outline Features`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain rounded-2xl"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop';
                     }}

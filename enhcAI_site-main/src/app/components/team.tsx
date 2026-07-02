@@ -106,7 +106,7 @@ const teamMembers = [
 ];
 
 const stats = [
-  { title: "Clients", value: "50+", description: "With over a decade of experience, enhc is an energetic, fresh and vibrant team offering creative talent and industry knowledge." },
+  { title: "Clients", value: "50+", description: "Founded in 2022, enhc is an energetic, fresh and vibrant team offering creative talent and deep AI and software engineering expertise." },
   { title: "Referrals", value: "55%", description: "A significant 55% of our projects are sourced through client referrals, reflecting the strong, trust-based relationships we build." },
   { title: "Male:Female ratio", value: "56:44", description: "In a male-dominated industry, we are proud to say we're striving for equal gender roles at enhc." },
   { title: "Team Size", value: "10-15", description: "A close-knit team of passionate developers, designers, and strategists dedicated to your success." },
@@ -132,9 +132,9 @@ const Team: React.FC = () => {
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-12 sm:mb-16">
             <p className="text-[var(--text-muted)] text-sm tracking-widest uppercase">&bull; Leadership Team</p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold mt-2 px-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mt-2 px-4">
               Visionary Leadership, <br className="sm:hidden" /> Proven Excellence.
-            </h1>
+            </h2>
           </div>
 
           <div className="overflow-hidden w-full h-[360px] sm:h-[420px] md:h-[480px] mb-12 sm:mb-16">

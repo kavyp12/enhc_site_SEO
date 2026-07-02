@@ -9,27 +9,62 @@ export const SITE_URL = (
 
 export const SITE_NAME = 'enhc';
 export const LEGAL_NAME = 'Enhc Tech LLP';
-export const DEFAULT_OG_IMAGE = '/enhc_logo.jpg';
+// 1200x630 branded social card (generated). Falls back gracefully if absent.
+export const DEFAULT_OG_IMAGE = '/og-image.png';
 export const TWITTER_HANDLE = '@enhctech';
 
 // Company facts reused across metadata and structured data.
+// Keep NAP (name / address / phone) here identical to the footer + Google
+// Business Profile — NAP consistency is a top local-ranking signal.
 export const COMPANY = {
   legalName: LEGAL_NAME,
   brand: SITE_NAME,
   founded: '2022',
   email: 'contact@enhc.tech',
   phone: '+91 9313153036',
+  // Digits-only form for tel: links / schema (E.164).
+  phoneE164: '+919313153036',
   street: 'Shivalik Shilp',
   city: 'Ahmedabad',
   region: 'Gujarat',
+  // TODO(enhc): set your exact PIN code (e.g. '380015') and keep it identical
+  // on the site footer, LocalBusiness schema and Google Business Profile.
+  postalCode: '',
   country: 'IN',
   geo: { lat: 23.027206768268236, lng: 72.50625586930879 },
+  // Service-area for a primarily service-based (SAB) AI/IT firm.
+  areaServed: ['Ahmedabad', 'Gujarat', 'India'],
+  // TODO(enhc): confirm real business hours (used for local "open now" ranking).
+  openingHours: {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '10:00',
+    closes: '19:00',
+  },
   social: [
     'https://www.linkedin.com/company/enhctech/',
     'https://www.instagram.com/enhancemodel.ai',
     'https://github.com/kavyp12',
   ],
 };
+
+// Stable @id anchors so every JSON-LD node references ONE organization / website
+// / local-business entity across the whole site (entity consolidation).
+export const ORG_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const LOCALBUSINESS_ID = `${SITE_URL}/#localbusiness`;
+
+// Typed schema.org areaServed nodes derived from COMPANY.areaServed.
+export const AREA_SERVED = [
+  { '@type': 'City', name: 'Ahmedabad' },
+  { '@type': 'AdministrativeArea', name: 'Gujarat' },
+  { '@type': 'Country', name: 'India' },
+];
+
+/** Resolve a site-relative path to an absolute URL on the canonical host. */
+export function absoluteUrl(path: string): string {
+  if (/^https?:\/\//.test(path)) return path;
+  return `${SITE_URL}${path === '/' ? '' : path.startsWith('/') ? path : `/${path}`}`;
+}
 
 type PageSeo = {
   title: string;
@@ -89,5 +124,154 @@ export function buildMetadata({
       description,
       images: [image],
     },
+  };
+}
+
+/* -------------------------------------------------------------------------- */
+/*  JSON-LD builders                                                          */
+/*  Each returns a plain schema.org node WITHOUT @context — wrap for output   */
+/*  with the <JsonLd> component, which adds @context (and @graph for arrays). */
+/* -------------------------------------------------------------------------- */
+
+type ServiceSeo = {
+  serviceType: string;
+  name: string;
+  /** Path beginning with "/" e.g. "/machinelearningmodel" */
+  path: string;
+  description: string;
+};
+
+/** Service offered by enhc, tied to the single #organization provider. */
+export function serviceJsonLd({ serviceType, name, path, description }: ServiceSeo) {
+  return {
+    '@type': 'Service',
+    '@id': `${absoluteUrl(path)}#service`,
+    serviceType,
+    name,
+    url: absoluteUrl(path),
+    provider: { '@id': ORG_ID },
+    areaServed: AREA_SERVED,
+    description,
+  };
+}
+
+/** BreadcrumbList from an ordered list of { name, path } crumbs. */
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: it.name,
+      item: absoluteUrl(it.path),
+    })),
+  };
+}
+
+type BlogPostingSeo = {
+  id: number | string;
+  title: string;
+  description: string;
+  image?: string;
+  authorName: string;
+  authorRole?: string;
+  /** ISO 8601 date, e.g. "2025-07-17". Omitted from output when falsy. */
+  datePublished?: string;
+  dateModified?: string;
+};
+
+/** BlogPosting node for a single article, publisher = #organization. */
+export function blogPostingJsonLd({
+  id,
+  title,
+  description,
+  image,
+  authorName,
+  authorRole,
+  datePublished,
+  dateModified,
+}: BlogPostingSeo) {
+  const url = absoluteUrl(`/blogs/${id}`);
+  const node: Record<string, unknown> = {
+    '@type': 'BlogPosting',
+    '@id': `${url}#article`,
+    headline: title,
+    description,
+    image: [image ? absoluteUrl(image) : absoluteUrl(DEFAULT_OG_IMAGE)],
+    author: {
+      '@type': 'Person',
+      name: authorName,
+      ...(authorRole ? { jobTitle: authorRole } : {}),
+    },
+    publisher: { '@id': ORG_ID },
+    mainEntityOfPage: { '@id': url },
+    inLanguage: 'en',
+  };
+  if (datePublished) node.datePublished = datePublished;
+  if (datePublished || dateModified) node.dateModified = dateModified || datePublished;
+  return node;
+}
+
+type CreativeWorkSeo = {
+  id: string;
+  name: string;
+  description: string;
+  category?: string;
+  year?: number | string;
+  image?: string;
+  client?: string;
+};
+
+/** CreativeWork node for a project case study, creator = #organization. */
+export function creativeWorkJsonLd({ id, name, description, category, year, image, client }: CreativeWorkSeo) {
+  const url = absoluteUrl(`/project/${id}`);
+  const node: Record<string, unknown> = {
+    '@type': 'CreativeWork',
+    '@id': `${url}#work`,
+    name,
+    url,
+    description,
+    creator: { '@id': ORG_ID },
+  };
+  if (category) node.about = category;
+  if (year) node.datePublished = String(year);
+  if (image) node.image = absoluteUrl(image);
+  if (client) node.sourceOrganization = { '@type': 'Organization', name: client };
+  return node;
+}
+
+/** WebPage subtype (AboutPage / ContactPage / CollectionPage / WebPage). */
+export function webPageJsonLd({
+  type,
+  name,
+  path,
+  description,
+}: {
+  type: 'WebPage' | 'AboutPage' | 'ContactPage' | 'CollectionPage';
+  name: string;
+  path: string;
+  description: string;
+}) {
+  return {
+    '@type': type,
+    '@id': `${absoluteUrl(path)}#webpage`,
+    url: absoluteUrl(path),
+    name,
+    description,
+    isPartOf: { '@id': WEBSITE_ID },
+    about: { '@id': ORG_ID },
+    inLanguage: 'en',
+  };
+}
+
+/** FAQPage from question/answer pairs (kept for AI-answer citability). */
+export function faqJsonLd(items: { question: string; answer: string }[]) {
+  return {
+    '@type': 'FAQPage',
+    mainEntity: items.map((it) => ({
+      '@type': 'Question',
+      name: it.question,
+      acceptedAnswer: { '@type': 'Answer', text: it.answer },
+    })),
   };
 }

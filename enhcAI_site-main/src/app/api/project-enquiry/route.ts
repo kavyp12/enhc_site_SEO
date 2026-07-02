@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getDb } from '@/lib/mongodb'
 import type { ProjectEnquiryInsert, ProjectEnquiryDocument } from '@/lib/mongodb'
 import ImageKit from 'imagekit'
+import { rateLimit, getClientIp } from '@/lib/adminAuth'
 
 // Helper to get ImageKit instance lazily to avoid build errors when keys are not defined
 let imagekitInstance: ImageKit | null = null
@@ -28,6 +29,17 @@ function getImageKit() {
 
 export async function POST(request: NextRequest) {
   try {
+    // Limit abuse of the file-upload endpoint (ImageKit storage costs money):
+    // 5 submissions per minute per IP.
+    const ip = getClientIp(request)
+    const limit = rateLimit(`project-enquiry:${ip}`, 5, 60_000)
+    if (!limit.allowed) {
+      return NextResponse.json(
+        { error: 'Too many submissions. Please try again in a minute.' },
+        { status: 429, headers: { 'Retry-After': String(limit.retryAfter) } }
+      )
+    }
+
     // Validate environment variables
     if (!process.env.MONGODB_URI) {
       console.error('Missing MongoDB configuration')

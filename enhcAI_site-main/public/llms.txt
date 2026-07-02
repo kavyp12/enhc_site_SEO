@@ -1,0 +1,29 @@
+# enhc — Enhc Tech LLP
+
+> enhc (Enhc Tech LLP) is an AI-first IT solutions company based in Ahmedabad, Gujarat, India, founded in 2022. We build custom AI software, machine learning models, AI automation, predictive analytics, and web and mobile applications for startups and enterprises across India and worldwide.
+
+## Services
+- [Services overview](https://enhc.tech/services): Full range of AI, automation, software, web, mobile and cloud services.
+- [Custom AI Solutions](https://enhc.tech/customeAIsolution): Bespoke AI software, NLP, computer vision and LLM integration.
+- [Machine Learning Development](https://enhc.tech/machinelearningmodel): Custom ML models — training, deployment and MLOps.
+- [AI Automation](https://enhc.tech/AIautomation): Intelligent process automation and AI agents.
+- [Predictive Analytics](https://enhc.tech/predictiveAnalytics): Forecasting and data-driven decision models.
+- [AI Strategy & Consulting](https://enhc.tech/AIstatergy): AI opportunity assessment and adoption roadmaps.
+- [Web Development](https://enhc.tech/web-development): Websites and web apps with React, Next.js and TypeScript.
+- [App Development](https://enhc.tech/app-development): Native and cross-platform iOS and Android apps.
+- [Industries](https://enhc.tech/industries): Sector solutions for healthcare, real estate, education, logistics and finance.
+
+## Company
+- [About enhc](https://enhc.tech/about): Team, mission and approach.
+- [Work / Case studies](https://enhc.tech/project): Portfolio of delivered AI, ML, web and app projects.
+- [Blog](https://enhc.tech/blogs): Articles on AI, machine learning, automation and data science.
+- [Contact](https://enhc.tech/contact): Get in touch to scope a project.
+
+## Key facts
+- Legal name: Enhc Tech LLP
+- Brand: enhc
+- Founded: 2022
+- Location: Shivalik Shilp, Ahmedabad, Gujarat, India
+- Email: contact@enhc.tech
+- Phone: +91 9313153036
+- Focus areas: custom AI, machine learning, AI automation, predictive analytics, web & app development, ERP/CRM/SaaS, cloud, IT consulting.

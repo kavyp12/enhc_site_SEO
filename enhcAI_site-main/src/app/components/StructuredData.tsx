@@ -1,54 +1,92 @@
 // src/app/components/StructuredData.tsx
 // Sitewide JSON-LD structured data. Rendered once in the root layout so that
-// Organization, LocalBusiness and WebSite schemas appear on every page.
-import { SITE_URL, SITE_NAME, COMPANY, DEFAULT_OG_IMAGE } from '@/lib/seo';
+// Organization, LocalBusiness (ProfessionalService) and WebSite schemas appear
+// on every page, all cross-referenced by stable @id anchors.
+import {
+  SITE_URL,
+  SITE_NAME,
+  COMPANY,
+  DEFAULT_OG_IMAGE,
+  ORG_ID,
+  WEBSITE_ID,
+  LOCALBUSINESS_ID,
+  AREA_SERVED,
+} from '@/lib/seo';
 
 export default function StructuredData() {
+  const address = {
+    '@type': 'PostalAddress',
+    streetAddress: COMPANY.street,
+    addressLocality: COMPANY.city,
+    addressRegion: COMPANY.region,
+    ...(COMPANY.postalCode ? { postalCode: COMPANY.postalCode } : {}),
+    addressCountry: COMPANY.country,
+  };
+
+  const contactPoint = {
+    '@type': 'ContactPoint',
+    telephone: COMPANY.phone,
+    email: COMPANY.email,
+    contactType: 'sales',
+    areaServed: 'IN',
+    availableLanguage: ['en', 'hi'],
+  };
+
   const graph = [
     {
       '@type': 'Organization',
-      '@id': `${SITE_URL}/#organization`,
+      '@id': ORG_ID,
       name: COMPANY.legalName,
       alternateName: SITE_NAME,
       url: SITE_URL,
       logo: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
+      image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
       email: COMPANY.email,
       telephone: COMPANY.phone,
       foundingDate: COMPANY.founded,
+      foundingLocation: { '@type': 'Place', name: `${COMPANY.city}, ${COMPANY.region}, India` },
+      address,
+      contactPoint,
       sameAs: COMPANY.social,
       description:
         'enhc (Enhc Tech LLP) is an AI-first IT solutions company in Ahmedabad, India, helping businesses build, automate, transform and scale with custom AI software, AI agents and automation, machine learning, predictive analytics, web and mobile apps, ERP, CRM, SaaS, cloud solutions and IT consulting.',
     },
     {
-      '@type': 'LocalBusiness',
-      '@id': `${SITE_URL}/#localbusiness`,
+      // ProfessionalService is a LocalBusiness subtype — a better fit for a
+      // service-based AI/IT firm than the bare LocalBusiness type.
+      '@type': 'ProfessionalService',
+      '@id': LOCALBUSINESS_ID,
       name: COMPANY.legalName,
+      alternateName: SITE_NAME,
       image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
       url: SITE_URL,
       email: COMPANY.email,
       telephone: COMPANY.phone,
       priceRange: '$$',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: COMPANY.street,
-        addressLocality: COMPANY.city,
-        addressRegion: COMPANY.region,
-        addressCountry: COMPANY.country,
-      },
+      parentOrganization: { '@id': ORG_ID },
+      address,
       geo: {
         '@type': 'GeoCoordinates',
         latitude: COMPANY.geo.lat,
         longitude: COMPANY.geo.lng,
       },
-      areaServed: 'Worldwide',
+      hasMap: `https://www.google.com/maps?q=${COMPANY.geo.lat},${COMPANY.geo.lng}`,
+      areaServed: AREA_SERVED,
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: COMPANY.openingHours.days,
+        opens: COMPANY.openingHours.opens,
+        closes: COMPANY.openingHours.closes,
+      },
       sameAs: COMPANY.social,
     },
     {
       '@type': 'WebSite',
-      '@id': `${SITE_URL}/#website`,
+      '@id': WEBSITE_ID,
       url: SITE_URL,
       name: SITE_NAME,
-      publisher: { '@id': `${SITE_URL}/#organization` },
+      inLanguage: 'en',
+      publisher: { '@id': ORG_ID },
     },
   ];
 

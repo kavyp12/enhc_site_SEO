@@ -4,6 +4,8 @@ import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Navbar from '@/app/components/navbar';
 import Footer from '../components/footer';
+import JsonLd from '@/app/components/JsonLd';
+import { webPageJsonLd, breadcrumbJsonLd } from '@/lib/seo';
 
 type BlogCategory = 'all' | 'machine learning' | 'data science' | 'ai ethics' | 'industry news' | 'tutorials';
 
@@ -74,15 +76,30 @@ const BlogsPage: React.FC = () => {
 
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd({
+            type: 'CollectionPage',
+            name: 'enhc Blog — AI & Software Insights',
+            path: '/blogs',
+            description:
+              'Articles and tutorials on AI, machine learning, automation and software from enhc.',
+          }),
+          breadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'Blog', path: '/blogs' },
+          ]),
+        ]}
+      />
       <Navbar />
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Product+Sans:wght@400;500;600&display=swap');
-        main, nav, span, button, h3 { font-family: 'Product Sans', sans-serif; }
+        main, nav, span, button, h3 { font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
       `}</style>
       
       <main className="bg-[var(--bg-main)] text-[var(--text-main)] min-h-screen pt-20 md:pt-24 p-4 sm:p-10 md:p-16">
         <header className="mb-10">
           <span className="text-base text-[var(--text-muted)]">• The Blog</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight mt-3">AI &amp; Software Insights</h1>
           <nav className="flex flex-wrap gap-x-4 sm:gap-x-8 gap-y-2 sm:gap-y-4 mt-5">
             {categories.map(category => (
               <button
