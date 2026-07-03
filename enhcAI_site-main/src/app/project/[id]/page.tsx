@@ -367,7 +367,7 @@ export default function ProjectPage() {
       <div className="min-h-screen text-[var(--text-main)] p-4 sm:p-6 lg:p-8">
         <div className="max-w-7xl mx-auto">
           <header className="flex items-center justify-between py-6 mt-8 sm:mt-0">
-            <nav className="flex space-x-3 lg:translate-y-35">
+            <nav className="flex space-x-3 lg:translate-y-20">
               <button className="bg-[var(--bg-secondary)] text-[var(--text-main)] text-xs sm:text-sm font-medium py-2 px-3 sm:px-5 rounded-full hover:bg-[var(--bg-tertiary)] transition-colors">
                 {project.platform}
               </button>
