@@ -27,12 +27,12 @@ const ArrowIcon: React.FC<{ className?: string }> = ({ className }) => (
 );
 
 const allBlogPosts: BlogPost[] = [
-    { id: 1, category: 'machine learning', title: 'Demystifying Neural Networks: A Beginner\'s Guide', readTime: '8 min read', imageUrl: '/neural_network.jpg', author: { name: 'Dr. Sarah Chen' } },
-    { id: 2, category: 'data science', title: 'The Art of Feature Engineering: Transforming Data for ML', readTime: '15 min read', imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80', author: { name: 'Johnathan Chen' } },
-    { id: 3, category: 'tutorials', title: 'Building Your First Image Classifier with PyTorch', readTime: '18 min read', imageUrl: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80', author: { name: 'Peter Jones' } },
-    { id: 4, category: 'industry news', title: 'Generative AI: The State of the Industry in 2025', readTime: '8 min read', imageUrl: 'https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=800&q=80', author: { name: 'Mike Williams' } },
-    { id: 5, category: 'ai ethics', title: 'Algorithmic Bias: How to Identify and Mitigate It', readTime: '10 min read', imageUrl: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80', author: { name: 'Emily White' } },
-    { id: 6, category: 'data science', title: 'From Big Data to Smart Data: Strategies for Success', readTime: '9 min read', imageUrl: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&q=80', author: { name: 'Chris Green' } },
+    { id: 1, category: 'machine learning', title: 'Demystifying Neural Networks: A Beginner\'s Guide', readTime: '8 min read', imageUrl: '/neural_network.jpg', author: { name: 'Kavy Patel' } },
+    { id: 2, category: 'data science', title: 'The Art of Feature Engineering: Transforming Data for ML', readTime: '15 min read', imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80', author: { name: 'Kavy Patel' } },
+    { id: 3, category: 'tutorials', title: 'Building Your First Image Classifier with PyTorch', readTime: '18 min read', imageUrl: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80', author: { name: 'Kavy Patel' } },
+    { id: 4, category: 'industry news', title: 'Generative AI: The State of the Industry in 2025', readTime: '8 min read', imageUrl: 'https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=800&q=80', author: { name: 'Harsh Gajera' } },
+    { id: 5, category: 'ai ethics', title: 'Algorithmic Bias: How to Identify and Mitigate It', readTime: '10 min read', imageUrl: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80', author: { name: 'Kavy Patel' } },
+    { id: 6, category: 'data science', title: 'From Big Data to Smart Data: Strategies for Success', readTime: '9 min read', imageUrl: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&q=80', author: { name: 'Harsh Gajera' } },
     { id: 7, category: 'industry news', title: 'Our Mission to Advance AI Innovation', readTime: '6 min read', imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=2070&q=80', author: { name: 'Kavy Patel' } },
 ];
 
@@ -93,7 +93,7 @@ const BlogsPage: React.FC = () => {
       />
       <Navbar />
       <style jsx>{`
-        main, nav, span, button, h3 { font-family: 'Product Sans', sans-serif; }
+        main, nav, span, button, h3 { font-family: var(--font-poppins), sans-serif; }
       `}</style>
       
       <main className="bg-[var(--bg-main)] text-[var(--text-main)] min-h-screen pt-20 md:pt-24 p-4 sm:p-10 md:p-16">
@@ -124,6 +124,8 @@ const BlogsPage: React.FC = () => {
                   <img
                     src={post.imageUrl}
                     alt={post.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-64 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>

@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 const fontStyles = `
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: var(--font-poppins), sans-serif;
   }
 `;
 
@@ -73,7 +73,7 @@ const VisionMission = () => (
       <div className="flex justify-end">
         <img 
           src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop" 
-          alt="Vision illustration" 
+          alt="Vision illustration" decoding="async"
           className="w-48 h-48 object-contain"
         />
       </div>
@@ -89,7 +89,7 @@ const VisionMission = () => (
       <div className="flex justify-end">
         <img 
           src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&h=200&fit=crop" 
-          alt="Mission illustration" 
+          alt="Mission illustration" loading="lazy" decoding="async"
           className="w-48 h-48 object-contain"
         />
       </div>

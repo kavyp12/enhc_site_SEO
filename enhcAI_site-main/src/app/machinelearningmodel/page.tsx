@@ -146,14 +146,14 @@ const HelpWith = () => {
           }
           
           * {
-            font-family: 'Product Sans', sans-serif;
+            font-family: var(--font-poppins), sans-serif;
           }
         `}</style>
 
         {/* Styles for the blog section */}
         <style jsx global>{`
           .font-product-sans {
-            font-family: 'Product Sans', sans-serif;
+            font-family: var(--font-poppins), sans-serif;
           }
           
           .blog-section * {

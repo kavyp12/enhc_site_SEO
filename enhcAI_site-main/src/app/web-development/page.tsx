@@ -117,11 +117,11 @@ const WebDevelopmentPage = () => {
           .animate-scroll-right { animation: scroll-right 30s linear infinite; }
           .left-text { animation: scroll-left 30s linear infinite; }
           .right-text { animation: scroll-right 30s linear infinite; }
-          * { font-family: 'Product Sans', sans-serif; }
+          * { font-family: var(--font-poppins), sans-serif; }
         `}</style>
 
         <style jsx global>{`
-          .font-product-sans { font-family: 'Product Sans', sans-serif; }
+          .font-product-sans { font-family: var(--font-poppins), sans-serif; }
           .blog-section * { text-align: inherit; }
           .blog-left-content { text-align: left !important; }
           .blog-card-content { text-align: left !important; }
@@ -157,7 +157,7 @@ const WebDevelopmentPage = () => {
           <div className="relative w-full max-w-7xl mx-auto h-[40vh] sm:h-[50vh] lg:h-[60vh] overflow-hidden rounded-2xl sm:rounded-3xl">
             <img
               src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=2070&q=80"
-              alt="Modern responsive website design displayed on multiple devices"
+              alt="Modern responsive website design displayed on multiple devices" decoding="async"
               className="w-full h-full object-cover"
             />
             <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-[var(--bg-secondary)] bg-opacity-80 px-4 py-2 sm:px-5 sm:py-3 rounded-full backdrop-blur-sm">
@@ -254,7 +254,7 @@ const WebDevelopmentPage = () => {
                 <div className="absolute bottom-0 left-0 right-0 h-full rounded-2xl overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=2070&q=80"
-                    alt="Developer reviewing analytics and website performance"
+                    alt="Developer reviewing analytics and website performance" loading="lazy" decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -271,7 +271,7 @@ const WebDevelopmentPage = () => {
                 <div className="absolute bottom-0 left-0 right-0 h-full rounded-2xl overflow-hidden">
                   <img
                     src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2070&q=80"
-                    alt="Team collaborating on a web application build"
+                    alt="Team collaborating on a web application build" loading="lazy" decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -470,7 +470,7 @@ const WebDevelopmentPage = () => {
                       <div className="flex items-center gap-4 mt-8 justify-center sm:justify-start">
                         <img
                           src={testimonial.avatar}
-                          alt={testimonial.author}
+                          alt={testimonial.author} loading="lazy" decoding="async"
                           className="w-12 h-12 rounded-full object-cover"
                           onError={(e) => { e.currentTarget.src = 'https://randomuser.me/api/portraits/lego/1.jpg'; }}
                         />
@@ -528,7 +528,7 @@ const WebDevelopmentPage = () => {
                     <div className="bg-[var(--bg-secondary)] rounded-3xl overflow-hidden transition-transform duration-300 hover:scale-105 relative">
                       <div className="relative h-[400px] bg-gradient-to-br from-blue-900 to-gray-900 flex items-center justify-center">
                         <div className="absolute inset-0">
-                          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=2070&q=80" alt="Corporate website redesign" className="w-full h-full object-cover opacity-30" />
+                          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=2070&q=80" alt="Corporate website redesign" loading="lazy" decoding="async" className="w-full h-full object-cover opacity-30" />
                         </div>
                         <div className="relative z-10 text-center p-8">
                           <div className="text-[var(--text-main)] text-5xl font-bold flex items-center justify-center flex-col gap-4">
@@ -553,7 +553,7 @@ const WebDevelopmentPage = () => {
                   <div className="group cursor-pointer">
                     <div className="bg-[var(--bg-secondary)] rounded-3xl overflow-hidden transition-transform duration-300 hover:scale-105 relative">
                       <div className="relative h-[400px] flex items-center justify-center">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=2070&q=80" alt="E-commerce platform" className="w-full h-full object-cover" />
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=2070&q=80" alt="E-commerce platform" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                       </div>
                     </div>
                     <div className="mt-6">
@@ -570,7 +570,7 @@ const WebDevelopmentPage = () => {
                   <div className="group cursor-pointer">
                     <div className="bg-[var(--bg-secondary)] rounded-3xl overflow-hidden transition-transform duration-300 hover:scale-105 relative">
                       <div className="relative h-[400px] bg-gray-800 flex items-center justify-center p-8">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2070&q=80" alt="Analytics dashboard web app" className="w-full h-full object-cover" />
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2070&q=80" alt="Analytics dashboard web app" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                       </div>
                     </div>
                     <div className="mt-6">

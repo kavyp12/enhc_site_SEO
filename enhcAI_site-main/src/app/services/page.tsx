@@ -171,7 +171,7 @@ const ServicesPage = () => {
                   <SwiperSlide key={post.id}>
                     <Link href={`/blogs/${post.slug}`} className="rounded-2xl overflow-hidden h-full flex flex-col group transition-all duration-300" style={{ height: '500px' }}>
                       <div className="relative overflow-hidden rounded-2xl mb-6">
-                        <img src={post.image} alt={post.title} className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 rounded-2xl" onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'; }} />
+                        <img src={post.image} alt={post.title} decoding="async" className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300 rounded-2xl" onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'; }} />
                         <div className="absolute top-4 left-4 w-12 h-12 bg-[var(--brand-primary)] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="stroke-white" strokeWidth="2"><path d="M7 17L17 7M17 7H7M17 7V17" strokeLinecap="round" strokeLinejoin="round" /></svg></div>
                       </div>
                       <div className="flex flex-col flex-grow">
@@ -188,7 +188,7 @@ const ServicesPage = () => {
         </section>
 
         <style jsx>{`
-          * { font-family: 'Product Sans', sans-serif; }
+          * { font-family: var(--font-poppins), sans-serif; }
         `}</style>
       </main>
       <Footer />

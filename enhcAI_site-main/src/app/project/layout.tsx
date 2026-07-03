@@ -1,5 +1,4 @@
-import { buildMetadata, webPageJsonLd, breadcrumbJsonLd } from '@/lib/seo';
-import JsonLd from '@/app/components/JsonLd';
+import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
   title: 'Our Work — AI Projects & Case Studies',
@@ -9,25 +8,10 @@ export const metadata = buildMetadata({
   keywords: ['AI projects', 'case studies', 'AI portfolio', 'machine learning projects'],
 });
 
+// This layout also wraps /project/[id] case studies, so it only carries the
+// listing's metadata. The CollectionPage + BreadcrumbList JSON-LD live in
+// project/page.tsx so individual case studies don't inherit a CollectionPage
+// node (which would misclassify a detail page as a listing).
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <JsonLd
-        data={[
-          webPageJsonLd({
-            type: 'CollectionPage',
-            name: 'enhc Work — AI Projects & Case Studies',
-            path: '/project',
-            description:
-              'Portfolio of AI, machine learning, automation, web and app development case studies by enhc.',
-          }),
-          breadcrumbJsonLd([
-            { name: 'Home', path: '/' },
-            { name: 'Work', path: '/project' },
-          ]),
-        ]}
-      />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

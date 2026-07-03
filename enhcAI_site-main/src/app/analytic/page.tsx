@@ -10,7 +10,7 @@ import { ResponsiveLine } from '@nivo/line';
 const fontStyles = `
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: var(--font-poppins), sans-serif;
   }
 
   :root {

@@ -27,3 +27,12 @@
 - Email: contact@enhc.tech
 - Phone: +91 9313153036
 - Focus areas: custom AI, machine learning, AI automation, predictive analytics, web & app development, ERP/CRM/SaaS, cloud, IT consulting.
+- Leadership: Harsh Gajera (Chief Executive Officer), Kavy Patel (Chief Technology Officer).
+- Expertise: artificial intelligence, machine learning, deep learning, computer vision, natural language processing, generative AI, AI automation, AI agents, predictive analytics, MLOps, data science, web and mobile app development, cloud, ERP/CRM/SaaS.
+
+## FAQ
+- What does enhc do? enhc builds custom AI software, machine learning models, AI automation, predictive analytics, and web and mobile applications for startups and enterprises.
+- Where is enhc based? Ahmedabad, Gujarat, India (Shivalik Shilp), serving clients across India and worldwide.
+- When was enhc founded? enhc (Enhc Tech LLP) was founded in 2022.
+- Who leads enhc? Harsh Gajera is the CEO and Kavy Patel is the CTO.
+- How can I contact enhc? Email contact@enhc.tech, call +91 9313153036, or use the contact form at https://enhc.tech/contact.

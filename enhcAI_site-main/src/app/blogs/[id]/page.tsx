@@ -65,7 +65,7 @@ const globalStyles = `
     scrollbar-width: none;  /* Firefox */
   }
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: var(--font-poppins), sans-serif;
   }
 `;
 
@@ -199,10 +199,10 @@ const DynamicBlogPage: React.FC = () => {
             <style jsx global>{`
                 
                 body, nav, span, button, h1, h2, h3, h4, p, a, div {
-                    font-family: 'Product Sans', sans-serif !important;
+                    font-family: var(--font-poppins), sans-serif !important;
                 }
                 .product-sans {
-                    font-family: 'Product Sans', sans-serif;
+                    font-family: var(--font-poppins), sans-serif;
                 }
             `}</style>
 
@@ -370,6 +370,7 @@ const DynamicBlogPage: React.FC = () => {
                                                 key={imageIndex}
                                                 src={image.src} 
                                                 alt={image.alt} 
+                                                decoding="async"
                                                 className="rounded-lg object-cover w-full h-[500px]"
                                             />
                                         ))}
@@ -421,7 +422,7 @@ const DynamicBlogPage: React.FC = () => {
                             {currentBlog.relatedPosts.map((post) => (
                                 <SwiperSlide key={post.id}>
                                     <div className="flex flex-col text-left">
-                                        <img src={post.image} alt={post.title} className="w-full h-72 object-cover rounded-2xl" />
+                                        <img src={post.image} alt={post.title} loading="lazy" decoding="async" className="w-full h-72 object-cover rounded-2xl" />
                                         <div className="mt-4">
                                             <p className="text-sm text-[var(--text-muted)] product-sans">• {post.readTime}</p>
                                             <h3 className="text-xl font-bold mt-2 hover:text-[#C5F277] transition-colors cursor-pointer product-sans text-[var(--text-main)]">{post.title}</h3>

@@ -112,7 +112,7 @@ export default function AboutPage() {
 
       <style jsx>{`
         body, html { overflow-x: hidden; }
-        h1, button, span, p, div { font-family: 'Product Sans', sans-serif; }
+        h1, button, span, p, div { font-family: var(--font-poppins), sans-serif; }
 
         /* Moving photo strip — glides left → right in a seamless loop.
            Speed lives in --speed (lower = faster); gap between cards in --gap. */

@@ -6,7 +6,7 @@ import Link from 'next/link';
 const fontStyles = `
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: var(--font-poppins), sans-serif;
   }
 `;
 
@@ -29,6 +29,8 @@ function ProjectCard({ project }: { project: Project }) {
           <img
             src={project.imageUrl}
             alt={project.title}
+            loading="lazy"
+            decoding="async"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-[var(--bg-overlay)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>

@@ -9,7 +9,7 @@ export default function Aboutus() {
       <style jsx>{`
         
         * {
-          font-family: 'Product Sans', sans-serif;
+          font-family: var(--font-poppins), sans-serif;
         }
       `}</style>
       <style jsx>{`

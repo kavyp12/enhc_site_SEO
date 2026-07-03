@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"; // ✅ Import router
 const fontStyles = `
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: var(--font-poppins), sans-serif;
   }
 `;
 
@@ -69,7 +69,7 @@ const ServiceItem = ({
     {/* Mobile content */}
     <div className={`block md:hidden mt-4 transition-all duration-500 ease-out ${isHovered ? 'opacity-100 max-h-40' : 'opacity-0 max-h-0'}`}>
       <div className="w-full h-32 rounded-lg overflow-hidden shadow-2xl">
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+        <img src={image} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
       </div>
       <p className="mt-3 text-sm text-[var(--text-muted)] product-sans">{description}</p>
     </div>
@@ -77,7 +77,7 @@ const ServiceItem = ({
     {/* Desktop image preview */}
     <div className={`hidden md:block absolute left-0 top-1/2 transform -translate-y-1/2 transition-all duration-500 ease-out ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
       <div className="w-48 h-32 rounded-lg overflow-hidden shadow-2xl">
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+        <img src={image} alt={title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
       </div>
     </div>
   </div>

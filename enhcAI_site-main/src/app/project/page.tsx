@@ -188,7 +188,7 @@
 //         </div>
 
 //         <style jsx>{`
-//           section, div, p, h1, h2, h3, span, button { font-family: 'Product Sans', sans-serif; }
+//           section, div, p, h1, h2, h3, span, button { font-family: var(--font-poppins), sans-serif; }
 //         `}</style>
 //       </section>
 //       <Footer />
@@ -202,6 +202,8 @@ import React, { useState } from 'react';
 import Navbar from '@/app/components/navbar';
 import Footer from '@/app/components/footer';
 import Link from 'next/link';
+import JsonLd from '@/app/components/JsonLd';
+import { webPageJsonLd, breadcrumbJsonLd } from '@/lib/seo';
 
 interface Project {
   id: string;
@@ -262,6 +264,8 @@ function ProjectCard({ project }: { project: Project }) {
             <img
               src={project.imageUrl}
               alt={project.title}
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-[var(--bg-overlay)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
@@ -340,6 +344,21 @@ export default function App() {
 
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd({
+            type: 'CollectionPage',
+            name: 'enhc Work — AI Projects & Case Studies',
+            path: '/project',
+            description:
+              'Portfolio of AI, machine learning, automation, web and app development case studies by enhc.',
+          }),
+          breadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'Work', path: '/project' },
+          ]),
+        ]}
+      />
       <Navbar />
       <section className="bg-[var(--bg-main)] text-[var(--text-main)] pt-24 sm:pt-32 pb-16 px-4 sm:px-8 lg:px-16">
         <div className="max-w-screen-2xl mx-auto mb-24">
@@ -369,7 +388,7 @@ export default function App() {
         </div>
 
         <style jsx>{`
-          section, div, p, h1, h2, h3, span, button { font-family: 'Product Sans', sans-serif; }
+          section, div, p, h1, h2, h3, span, button { font-family: var(--font-poppins), sans-serif; }
         `}</style>
       </section>
       <Footer />

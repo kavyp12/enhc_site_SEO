@@ -5,6 +5,18 @@ import GoogleAnalytics from './components/GoogleAnalytics';
 import StructuredData from './components/StructuredData';
 import SmoothScroll from './components/SmoothScroll';
 import { SITE_URL, SITE_NAME, LEGAL_NAME, DEFAULT_OG_IMAGE, TWITTER_HANDLE } from '@/lib/seo';
+import { Poppins } from 'next/font/google';
+
+// Site-wide brand typeface (Poppins). Self-hosted by next/font — no external
+// request, no layout shift. Exposed as the --font-poppins CSS variable and
+// applied to <html>, so every element renders in Poppins — the per-component
+// font declarations were all rewritten to reference this same variable.
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -72,8 +84,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const ga_id = process.env.NEXT_PUBLIC_GA_ID;
 
   return (
-    <html lang="en">
+    <html lang="en" className={poppins.variable}>
       <body className="min-h-screen bg-gray-900 text-white overflow-x-clip">
+        {/* Warm up the connections the pages actually use (remote hero/blog
+            imagery + analytics) so their TLS handshake isn't on the critical
+            path. React 19 hoists these <link> tags into <head>. */}
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <SmoothScroll />
         <StructuredData />
         {ga_id && <GoogleAnalytics ga_id={ga_id} />}

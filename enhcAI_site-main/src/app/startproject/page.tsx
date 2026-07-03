@@ -686,7 +686,7 @@ export default function StartProject() {
       <style jsx global>{`
 
         .product-sans {
-          font-family: "Product Sans", sans-serif;
+          font-family: var(--font-poppins), sans-serif;
         }
 
         * {

@@ -300,7 +300,7 @@ const ContactPage = () => {
 
                 </div>
                 <div className="lg:col-span-2 w-full h-80 sm:h-96 lg:h-[500px] rounded-2xl overflow-hidden order-1 lg:order-2">
-                    <img src="/office_image.jpg" alt="Office space" className="w-full h-full object-cover" onError={(e) => { const target = e.target as HTMLImageElement; target.onerror = null; target.src = 'https://placehold.co/600x800/1c1c1c/ffffff?text=Our+Studio'; }} />
+                    <img src="/office_image.jpg" alt="Office space" decoding="async" className="w-full h-full object-cover" onError={(e) => { const target = e.target as HTMLImageElement; target.onerror = null; target.src = 'https://placehold.co/600x800/1c1c1c/ffffff?text=Our+Studio'; }} />
                 </div>
             </div>
         </div>
@@ -308,7 +308,7 @@ const ContactPage = () => {
         <FaqSection />
 
         <style jsx>{`
-            .font-google-sans { font-family: 'Product Sans', sans-serif; }
+            .font-google-sans { font-family: var(--font-poppins), sans-serif; }
             @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
             .animate-fade-in-left { animation: fadeIn 0.5s ease-out forwards; }
             .animate-fade-in-right { animation: fadeIn 0.5s ease-out 0.2s forwards; opacity: 0; }

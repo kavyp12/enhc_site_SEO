@@ -10,65 +10,68 @@ import Link from "next/link";
 
 // Font import via CSS-in-JS
 const fontStyles = `
-  
+
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: var(--font-poppins), sans-serif;
   }
 `;
 
+// Author bylines reflect the real enhc team: technical/engineering posts are
+// authored by CTO Kavy Patel; industry/business posts by CEO Harsh Gajera.
+// (Keep these in sync with src/data/blogData.ts, which powers the Person schema.)
 const blogPosts = [
-  { 
-    id: 7, 
+  {
+    id: 7,
     category: 'industry news',
-    title: 'Our Mission to Advance AI Innovation', 
-    readTime: '6 min read', 
-    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=2070&q=80', 
+    title: 'Our Mission to Advance AI Innovation',
+    readTime: '6 min read',
+    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=2070&q=80',
     author: { name: 'Kavy Patel' },
     description: 'In our own words, how enhc is pushing the boundaries of artificial intelligence to solve real-world problems...'
   },
-  { 
-    id: 1, 
-    category: 'machine learning', 
-    title: 'Demystifying Neural Networks: A Beginner\'s Guide', 
-    readTime: '8 min read', 
-    imageUrl: '/neural_network.jpg', 
-    author: { name: 'Dr. Sarah Chen' },
+  {
+    id: 1,
+    category: 'machine learning',
+    title: 'Demystifying Neural Networks: A Beginner\'s Guide',
+    readTime: '8 min read',
+    imageUrl: '/neural_network.jpg',
+    author: { name: 'Kavy Patel' },
     description: 'Learn the fundamentals of neural networks and how they power modern AI applications...'
   },
-  { 
-    id: 2, 
-    category: 'data science', 
-    title: 'The Art of Feature Engineering: Transforming Data for ML', 
-    readTime: '15 min read', 
-    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80', 
-    author: { name: 'Johnathan Chen' },
+  {
+    id: 2,
+    category: 'data science',
+    title: 'The Art of Feature Engineering: Transforming Data for ML',
+    readTime: '15 min read',
+    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    author: { name: 'Kavy Patel' },
     description: 'Master the techniques and strategies for effective feature engineering in machine learning projects...'
   },
-  { 
-    id: 3, 
-    category: 'tutorials', 
-    title: 'Building Your First Image Classifier with PyTorch', 
-    readTime: '18 min read', 
-    imageUrl: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80', 
-    author: { name: 'Peter Jones' },
+  {
+    id: 3,
+    category: 'tutorials',
+    title: 'Building Your First Image Classifier with PyTorch',
+    readTime: '18 min read',
+    imageUrl: 'https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80',
+    author: { name: 'Kavy Patel' },
     description: 'Step-by-step tutorial to create and train your own image classification model...'
   },
-  { 
-    id: 4, 
-    category: 'industry news', 
-    title: 'Generative AI: The State of the Industry in 2025', 
-    readTime: '8 min read', 
-    imageUrl: 'https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=800&q=80', 
-    author: { name: 'Mike Williams' },
+  {
+    id: 4,
+    category: 'industry news',
+    title: 'Generative AI: The State of the Industry in 2025',
+    readTime: '8 min read',
+    imageUrl: 'https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=800&q=80',
+    author: { name: 'Harsh Gajera' },
     description: 'Exploring the latest developments and trends in generative artificial intelligence...'
   },
-  { 
-    id: 5, 
-    category: 'ai ethics', 
-    title: 'Algorithmic Bias: How to Identify and Mitigate It', 
-    readTime: '10 min read', 
-    imageUrl: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80', 
-    author: { name: 'Emily White' },
+  {
+    id: 5,
+    category: 'ai ethics',
+    title: 'Algorithmic Bias: How to Identify and Mitigate It',
+    readTime: '10 min read',
+    imageUrl: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80',
+    author: { name: 'Kavy Patel' },
     description: 'Understanding and addressing bias in machine learning systems for fair and equitable AI...'
   },
 ];
@@ -80,7 +83,7 @@ export default function Blog() {
   const generateAvatar = (name: string) => {
   const initials = name.split(' ').map(word => word[0]).join('').toUpperCase();
   const colors = [
-    'bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-pink-500', 
+    'bg-blue-500', 'bg-green-500', 'bg-purple-500', 'bg-pink-500',
     'bg-indigo-500', 'bg-red-500', 'bg-yellow-500', 'bg-teal-500'
   ];
   // Use consistent hash function like in blogData.ts
@@ -89,7 +92,7 @@ export default function Blog() {
     hash = name.charCodeAt(i) + ((hash << 5) - hash);
   }
   const color = colors[Math.abs(hash) % colors.length];
-  
+
   return (
     <div className={`w-10 h-10 rounded-full ${color} flex items-center justify-center text-white text-sm font-bold`}>
       {initials}
@@ -143,6 +146,8 @@ export default function Blog() {
                       <img
                         src={post.imageUrl}
                         alt={post.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-72 object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300"></div>

@@ -50,6 +50,26 @@ export default function StructuredData() {
       sameAs: COMPANY.social,
       description:
         'enhc (Enhc Tech LLP) is an AI-first IT solutions company in Ahmedabad, India, helping businesses build, automate, transform and scale with custom AI software, AI agents and automation, machine learning, predictive analytics, web and mobile apps, ERP, CRM, SaaS, cloud solutions and IT consulting.',
+      slogan: 'An AI-first IT solutions company.',
+      // Entity/topical signals — helps search + AI engines understand exactly
+      // what enhc is an authority on (strengthens brand-entity association).
+      knowsAbout: [
+        'Artificial intelligence',
+        'Machine learning',
+        'Deep learning',
+        'Computer vision',
+        'Natural language processing',
+        'Generative AI',
+        'AI automation',
+        'AI agents',
+        'Predictive analytics',
+        'MLOps',
+        'Data science',
+        'Web development',
+        'Mobile app development',
+        'Cloud computing',
+        'ERP, CRM and SaaS development',
+      ],
     },
     {
       // ProfessionalService is a LocalBusiness subtype — a better fit for a

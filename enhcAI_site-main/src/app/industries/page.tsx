@@ -116,7 +116,7 @@ const IndustriesPage = () => {
 
       <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)]">
         <style jsx>{`
-          * { font-family: 'Product Sans', sans-serif; }
+          * { font-family: var(--font-poppins), sans-serif; }
         `}</style>
 
         {/* Hero Section */}
@@ -156,7 +156,7 @@ const IndustriesPage = () => {
               {/* Image */}
               <div className={`flex-1 relative w-full ${index % 2 === 1 ? 'order-2 lg:order-1' : 'order-2 lg:order-2'}`}>
                 <div className="group relative h-[300px] sm:h-[400px] lg:h-[480px] w-full rounded-2xl overflow-hidden">
-                  <img src={industry.image} alt={industry.alt} className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                  <img src={industry.image} alt={industry.alt} decoding="async" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   <span className="absolute bottom-5 left-5 text-white text-sm font-medium tracking-wide bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 rounded-full">
                     {industry.label}

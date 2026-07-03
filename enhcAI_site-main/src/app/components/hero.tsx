@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"; // ✅ Import router
 const fontStyles = `
 
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: var(--font-poppins), sans-serif;
   }
 `;
 
@@ -45,6 +45,10 @@ const Button = ({ children, variant = "glass", className = "", onClick, ...props
 
 export default function   Hero() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  // Defer mounting the ~24MB showreel until the browser is idle so it never
+  // competes with first paint / LCP on the homepage. The lightweight poster
+  // image renders immediately and the video crossfades in once it is ready.
+  const [startVideo, setStartVideo] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter(); // ✅ Initialize router
 
@@ -57,19 +61,17 @@ export default function   Hero() {
   };
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const handleLoadedData = () => {
-      setIsVideoLoaded(true);
+    const win = window as typeof window & {
+      requestIdleCallback?: (cb: () => void) => number;
+      cancelIdleCallback?: (id: number) => void;
     };
-
-    video.addEventListener("loadeddata", handleLoadedData);
-    video.load();
-
-    return () => {
-      video.removeEventListener("loadeddata", handleLoadedData);
-    };
+    const begin = () => setStartVideo(true);
+    if (typeof win.requestIdleCallback === "function") {
+      const id = win.requestIdleCallback(begin);
+      return () => win.cancelIdleCallback?.(id);
+    }
+    const timer = setTimeout(begin, 1500);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -85,6 +87,8 @@ export default function   Hero() {
                 src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                 alt="AI Technology Background"
                 className="w-full h-full object-cover"
+                fetchPriority="high"
+                decoding="async"
                 style={{
                   filter: 'contrast(1.1) brightness(1.05) saturate(1.1)',
                 }}
@@ -92,24 +96,28 @@ export default function   Hero() {
             </div>
           )}
 
-          {/* Video background */}
-          <div className={`absolute inset-0 transform transition-all duration-700 group-hover:scale-105 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}>
-            <video
-              ref={videoRef}
-              className="w-full h-full object-cover"
-              src="/shape-showreel-2024_looping-v3.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              style={{
-                filter: 'contrast(1.1) brightness(1.05) saturate(1.1)',
-              }}
-            >
-              Your browser does not support the video tag.
-            </video>
-          </div>
+          {/* Video background — mounted only once the browser is idle so the
+              24MB showreel never blocks first paint / LCP. */}
+          {startVideo && (
+            <div className={`absolute inset-0 transform transition-all duration-700 group-hover:scale-105 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}>
+              <video
+                ref={videoRef}
+                className="w-full h-full object-cover"
+                src="/shape-showreel-2024_looping-v3.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                onLoadedData={() => setIsVideoLoaded(true)}
+                style={{
+                  filter: 'contrast(1.1) brightness(1.05) saturate(1.1)',
+                }}
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          )}
 
           {/* Lighter overlay system */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/10 dark:from-black/70 dark:via-black/50 dark:to-black/20" />

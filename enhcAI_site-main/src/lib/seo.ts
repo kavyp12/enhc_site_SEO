@@ -202,6 +202,9 @@ export function blogPostingJsonLd({
       '@type': 'Person',
       name: authorName,
       ...(authorRole ? { jobTitle: authorRole } : {}),
+      // Tie the (real) author to the single #organization entity — an E-E-A-T
+      // signal that the byline is a genuine member of the company.
+      worksFor: { '@id': ORG_ID },
     },
     publisher: { '@id': ORG_ID },
     mainEntityOfPage: { '@id': url },

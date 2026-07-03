@@ -61,8 +61,10 @@ body {
   /* Keep the Tailwind `font-sans` utility on the same brand stack as body —
      the old var(--font-geist-sans) was never defined, so it rendered
      inconsistently against the rest of the site. */
-  --font-sans: 'Product Sans', sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: var(--font-poppins), sans-serif;
+  /* Brand is a single typeface everywhere — even the `font-mono` utility
+     resolves to Poppins so no text renders in a different font. */
+  --font-mono: var(--font-poppins), ui-monospace, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -101,12 +103,28 @@ body {
   }
 }
 
+html {
+  /* Ensure the brand typeface applies even before <body> inherits it. */
+  font-family: var(--font-poppins), sans-serif;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  /* Site-wide font = the brand font used everywhere else (Product Sans),
-     falling back to the browser's default sans-serif — same as the original. */
-  font-family: 'Product Sans', sans-serif;
+  /* Site-wide brand typeface = Poppins (self-hosted via next/font in
+     layout.tsx, exposed as --font-poppins), falling back to sans-serif. */
+  font-family: var(--font-poppins), sans-serif;
+}
+
+/* Native form controls (button, input, select, textarea) do NOT inherit
+   font-family by default — force them onto the brand typeface so no UI text
+   ever falls back to the browser's default font. */
+button,
+input,
+select,
+textarea,
+optgroup {
+  font-family: inherit;
 }
 
 /* Container classes to prevent overflow */

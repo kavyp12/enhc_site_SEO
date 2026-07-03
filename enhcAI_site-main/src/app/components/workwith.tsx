@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"; // ✅ Import router
 const fontStyles = `
   
   .product-sans {
-    font-family: 'Product Sans', sans-serif;
+    font-family: var(--font-poppins), sans-serif;
   }
 `;
 
