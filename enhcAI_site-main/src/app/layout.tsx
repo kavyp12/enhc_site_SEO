@@ -54,8 +54,8 @@ export const metadata: Metadata = {
     ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
     : {}),
   icons: {
-    // Browser-tab favicon = the enhc wordmark only (no tile). icon.svg adapts to
-    // the tab theme (navy on light, white on dark); favicon.ico is the fallback.
+    // Browser-tab favicon = the enhc wordmark on a white tile, so it reads on any
+    // tab (light or dark). icon.svg is crisp on modern browsers; .ico is fallback.
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico', sizes: 'any' },
