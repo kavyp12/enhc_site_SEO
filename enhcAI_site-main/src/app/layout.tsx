@@ -54,10 +54,14 @@ export const metadata: Metadata = {
     ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
     : {}),
   icons: {
+    // Browser-tab favicon = the enhc wordmark only (no tile). icon.svg adapts to
+    // the tab theme (navy on light, white on dark); favicon.ico is the fallback.
     icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
     ],
+    // Apple touch icon stays the opaque tile — iOS home screens ignore
+    // transparency (a bare logo would render on a black square).
     apple: [{ url: '/icon-192.png', sizes: '180x180' }],
   },
   manifest: '/manifest.webmanifest',
