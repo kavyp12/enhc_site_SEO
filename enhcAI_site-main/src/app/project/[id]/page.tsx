@@ -76,7 +76,7 @@ const SliderSection = ({ slides }: { slides: Project['slides'] }) => {
             <div className="h-1/2 w-full mt-4 rounded-lg overflow-hidden relative z-10">
               <img
                 src={content.image}
-                alt="Slide Image"
+                alt="Product screenshot supporting a customer testimonial"
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=800&auto=format&fit=crop';

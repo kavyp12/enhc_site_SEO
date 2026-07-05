@@ -4,7 +4,6 @@ import React from 'react';
 import Navbar from '@/app/components/navbar';
 import Team from '@/app/components/team';
 import Workwith from '@/app/components/workwith';
-import Testimonial from '@/app/components/testimonial';
 import Blog from '@/app/components/blog';
 import Footer from '@/app/components/footer';
 import Reveal from '@/app/components/Reveal';
@@ -14,7 +13,7 @@ export default function AboutPage() {
   // Horizontal moving strip of photos — glides left → right with a gap between
   // each card. The array is duplicated in the markup so the loop is seamless.
   const stripImages = [
-    { src: "/office_image.jpg", alt: "The enhcAI team at work", tilt: -3 },
+    { src: "/office_image.jpg", alt: "The enhc team at work", tilt: -3 },
     { src: "/digital.jpg", alt: "Collaborating on an AI project", tilt: 2 },
     { src: "/machine_learning.jpg", alt: "Machine learning in practice", tilt: -2 },
     { src: "/neural_network.jpg", alt: "AI neural network visualization", tilt: 3 },
@@ -77,12 +76,12 @@ export default function AboutPage() {
                 <span className="text-[var(--text-muted)]">Pioneering Intelligence</span>
               </div>
               <h2 className="text-3xl lg:text-4xl font-normal leading-tight tracking-tight">
-                We are enhcAI, a dedicated team turning the most complex data into intelligent, actionable solutions for your business.
+                We are enhc, a dedicated team turning the most complex data into intelligent, actionable solutions for your business.
               </h2>
             </div>
             <div className="flex-1 space-y-6 text-[var(--text-muted)] text-base lg:text-lg leading-relaxed text-center lg:text-left">
               <p>
-                Founded in 2022, enhcAI is at the forefront of the artificial intelligence revolution. We specialize in creating bespoke AI solutions in{' '}
+                Founded in 2022, enhc is at the forefront of the artificial intelligence revolution. We specialize in creating bespoke AI solutions in{' '}
                 <span className="underline">Machine Learning</span>,{' '}
                 <span className="underline">Deep Learning</span>,{' '}
                 <span className="underline">Computer Vision</span>, and{' '}
@@ -105,7 +104,6 @@ export default function AboutPage() {
         <Reveal className="w-full bg-[var(--bg-secondary)] mt-12">
           <Workwith />
         </Reveal>
-        <Reveal><Testimonial /></Reveal>
         <Reveal><Blog /></Reveal>
       </main>
         <Footer />

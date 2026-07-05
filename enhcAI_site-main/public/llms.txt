@@ -15,6 +15,7 @@
 
 ## Company
 - [About enhc](https://enhc.tech/about): Team, mission and approach.
+- [Company overview](https://enhc.tech/company-overview): Detailed profile of Enhc Tech LLP — who we are and what we build.
 - [Work / Case studies](https://enhc.tech/project): Portfolio of delivered AI, ML, web and app projects.
 - [Blog](https://enhc.tech/blogs): Articles on AI, machine learning, automation and data science.
 - [Contact](https://enhc.tech/contact): Get in touch to scope a project.

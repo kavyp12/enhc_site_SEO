@@ -13,9 +13,9 @@ import Reveal from '@/app/components/Reveal';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'AI-First IT Solutions, Software & Automation Company in Ahmedabad',
+  title: 'AI, Automation & Software Development in Ahmedabad',
   description:
-    'enhc is an AI-first IT solutions company in Ahmedabad, India, founded in 2022. We help businesses build, automate, transform and scale with custom AI software, AI agents and automation, machine learning, web and mobile apps, ERP, CRM, SaaS and cloud solutions.',
+    'enhc is an AI-first IT solutions company in Ahmedabad building custom AI software, automation, machine learning, and web & mobile apps to help businesses scale.',
   path: '/',
   keywords: [
     'IT solutions company Ahmedabad',

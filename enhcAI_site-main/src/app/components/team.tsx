@@ -102,14 +102,14 @@ import React from "react";
 // The original array with just the CEO and CTO
 const teamMembers = [
   { name: "Harsh Gajera", role: "Chief Executive Officer", avatar: "/gajera pic.jpg" },
-  { name: "Kavy Patel", role: "Chief Technology Officer", avatar: "kavy pic2.jpg" },
+  { name: "Kavy Patel", role: "Chief Technology Officer", avatar: "/kavy pic2.jpg" },
 ];
 
 const stats = [
-  { title: "Clients", value: "50+", description: "Founded in 2022, enhc is an energetic, fresh and vibrant team offering creative talent and deep AI and software engineering expertise." },
-  { title: "Referrals", value: "55%", description: "A significant 55% of our projects are sourced through client referrals, reflecting the strong, trust-based relationships we build." },
-  { title: "Male:Female ratio", value: "56:44", description: "In a male-dominated industry, we are proud to say we're striving for equal gender roles at enhc." },
-  { title: "Team Size", value: "10-15", description: "A close-knit team of passionate developers, designers, and strategists dedicated to your success." },
+  { title: "Founded", value: "2022", description: "enhc was founded in 2022 — an energetic, AI-first team blending creative talent with deep engineering expertise." },
+  { title: "Clients", value: "50+", description: "Businesses across India and beyond that we've helped build, automate and scale with AI and software." },
+  { title: "Case Studies", value: "9+", description: "Delivered projects across AI, machine learning, web and mobile — explore the full portfolio on our work page." },
+  { title: "Team Size", value: "10-15", description: "A close-knit team of passionate developers, designers and strategists dedicated to your success." },
 ];
 
 const Team: React.FC = () => {
@@ -156,15 +156,6 @@ const Team: React.FC = () => {
           </div>
 
           <div className="mt-12 sm:mt-16 md:mt-24">
-            <div className="flex justify-center mb-12 sm:mb-16">
-              <button className="flex items-center space-x-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-[var(--brand-primary)] text-white rounded-full font-bold text-xs sm:text-sm transition-transform duration-300 hover:scale-105">
-                <span>Learn More About Our Leadership</span>
-                <svg xmlns="http://www.w.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </button>
-            </div>
-            
             <div className="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 md:gap-12 lg:grid-cols-4 lg:gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center px-4 sm:px-0 sm:text-left">

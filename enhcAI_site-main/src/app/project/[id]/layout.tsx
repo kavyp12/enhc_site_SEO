@@ -32,6 +32,7 @@ export async function generateMetadata(
     path: `/project/${project.id}`,
     image: project.images?.main || undefined,
     keywords: [project.category, project.client, 'case study', 'AI project'],
+    ogType: 'article',
   });
 }
 

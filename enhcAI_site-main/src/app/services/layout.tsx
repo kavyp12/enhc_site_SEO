@@ -4,7 +4,7 @@ import JsonLd from '@/app/components/JsonLd';
 export const metadata = buildMetadata({
   title: 'Services — AI, Automation, Software, Web, Mobile & Cloud',
   description:
-    'enhc is an AI-first IT solutions company. Explore our full range of services: custom AI software, AI agents and chatbots, automation, machine learning, predictive analytics, web and mobile apps, ERP, CRM, SaaS, cloud and IT consulting.',
+    'AI-first IT services from enhc: custom AI software, AI agents & chatbots, automation, machine learning, web & mobile apps, ERP, CRM, SaaS and cloud solutions.',
   path: '/services',
   keywords: ['AI software development', 'IT solutions company', 'custom software development', 'AI automation services', 'ERP development', 'CRM development', 'SaaS development', 'web and app development', 'AI consulting'],
 });

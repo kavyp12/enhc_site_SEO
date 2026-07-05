@@ -25,7 +25,7 @@ const FaqItem = ({ faq, isOpen, onToggle }: { faq: { question: string; answer: R
                 <div className="shrink-0 pt-1">{isOpen ? <FaqUpArrow /> : <ArrowUpRightIcon className="w-6 h-6 text-[var(--text-main)]" />}</div>
             </button>
             <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[500px]' : 'max-h-0'}`}>
-                <div className="px-6 pb-6 text-[var(--text-muted)] text-base sm:text-lg leading-relaxed">{isOpen && <p>{faq.answer}</p>}</div>
+                <div className="px-6 pb-6 text-[var(--text-muted)] text-base sm:text-lg leading-relaxed"><p>{faq.answer}</p></div>
             </div>
         </div>
     );
@@ -261,7 +261,7 @@ const ContactPage = () => {
                                 <h3 className="text-sm text-gray-500 mb-3 font-medium tracking-wide">Studio Address</h3>
                                 <p className="text-[var(--text-main)] leading-relaxed">Enhc Tech LLP<br />Shivalik Shilp<br />Ahmedabad, Gujarat<br />India</p>
                                 <p className="text-[var(--text-main)] leading-relaxed mt-3">
-                                    <a href="tel:+919313153036" className="hover:underline">+91 93131 53036</a><br />
+                                    <a href="tel:+919313153036" className="hover:underline">+91 9313153036</a><br />
                                     <a href="mailto:contact@enhc.tech" className="hover:underline">contact@enhc.tech</a>
                                 </p>
                             </div>

@@ -4,7 +4,7 @@ import JsonLd from '@/app/components/JsonLd';
 export const metadata = buildMetadata({
   title: 'Industries We Serve — AI & Software Solutions by Sector',
   description:
-    'enhc delivers AI-first IT solutions tailored to your industry — healthcare, real estate, education, transportation & logistics, and accounting & finance. See how our AI and software solve real business problems in your sector.',
+    'enhc builds AI-first IT solutions for healthcare, real estate, education, logistics and finance — see how our AI and software solve problems in your sector.',
   path: '/industries',
   keywords: [
     'AI solutions by industry',

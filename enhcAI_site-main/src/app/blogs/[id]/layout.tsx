@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { blogData } from '@/data/blogData';
-import { buildMetadata, blogPostingJsonLd, breadcrumbJsonLd } from '@/lib/seo';
+import { buildMetadata, blogPostingJsonLd, breadcrumbJsonLd, toIso } from '@/lib/seo';
 import JsonLd from '@/app/components/JsonLd';
 
 // Only the known posts are valid; any other /blogs/<id> returns a real 404
@@ -11,20 +11,7 @@ export function generateStaticParams() {
   return Object.keys(blogData).map((id) => ({ id }));
 }
 
-const MONTHS: Record<string, string> = {
-  jan: '01', feb: '02', mar: '03', apr: '04', may: '05', jun: '06',
-  jul: '07', aug: '08', sep: '09', oct: '10', nov: '11', dec: '12',
-};
-
-/** Parse a human date ("Updated on 17 Jul 2025") into ISO "2025-07-17". */
-function toIso(input?: string): string | undefined {
-  if (!input) return undefined;
-  const m = input.match(/(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{4})/);
-  if (!m) return undefined;
-  const mm = MONTHS[m[2].slice(0, 3).toLowerCase()];
-  if (!mm) return undefined;
-  return `${m[3]}-${mm}-${m[1].padStart(2, '0')}`;
-}
+// toIso (human date -> ISO) is imported from '@/lib/seo', shared with sitemap.ts.
 
 function postTitle(post: (typeof blogData)[number]): string {
   return [post.title, post.subtitle].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
@@ -43,12 +30,17 @@ export async function generateMetadata(
       noindex: true,
     });
   }
+  const date = toIso(post.publishDate);
   return buildMetadata({
     title: postTitle(post),
     description: postTitle(post).slice(0, 200),
     path: `/blogs/${id}`,
     image: post.heroImage || undefined,
     keywords: ['AI', 'machine learning', 'data science', post.title],
+    ogType: 'article',
+    publishedTime: date,
+    modifiedTime: date,
+    authors: post.author?.name ? [post.author.name] : undefined,
   });
 }
 

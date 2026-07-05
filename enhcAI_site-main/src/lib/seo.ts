@@ -27,9 +27,9 @@ export const COMPANY = {
   street: 'Shivalik Shilp',
   city: 'Ahmedabad',
   region: 'Gujarat',
-  // TODO(enhc): set your exact PIN code (e.g. '380015') and keep it identical
-  // on the site footer, LocalBusiness schema and Google Business Profile.
-  postalCode: '',
+  // PIN code — keep identical to the Google Business Profile + site footer for
+  // NAP consistency. Flows into the LocalBusiness/Organization PostalAddress.
+  postalCode: '382330',
   country: 'IN',
   geo: { lat: 23.027206768268236, lng: 72.50625586930879 },
   // Service-area for a primarily service-based (SAB) AI/IT firm.
@@ -40,10 +40,13 @@ export const COMPANY = {
     opens: '10:00',
     closes: '19:00',
   },
+  // sameAs (below) must identify the ORGANISATION entity, so this lists only
+  // brand-owned profiles. x.com/enhctech matches TWITTER_HANDLE. The CTO's
+  // personal GitHub lives on his Person node in StructuredData.tsx, not here.
   social: [
     'https://www.linkedin.com/company/enhctech/',
     'https://www.instagram.com/enhancemodel.ai',
-    'https://github.com/kavyp12',
+    'https://x.com/enhctech',
   ],
 };
 
@@ -60,6 +63,37 @@ export const AREA_SERVED = [
   { '@type': 'Country', name: 'India' },
 ];
 
+// Real, named leadership. Emitted once as Person nodes in the sitewide JSON-LD
+// @graph (founders of #organization) and reused as blog-author identities so a
+// byline and the founder resolve to ONE Person entity. Only genuine profile
+// URLs go in sameAs — never invent a profile.
+export const LEADERS: { id: string; name: string; jobTitle: string; sameAs: string[] }[] = [
+  { id: `${SITE_URL}/#harsh-gajera`, name: 'Harsh Gajera', jobTitle: 'Chief Executive Officer', sameAs: [] },
+  { id: `${SITE_URL}/#kavy-patel`, name: 'Kavy Patel', jobTitle: 'Chief Technology Officer', sameAs: ['https://github.com/kavyp12'] },
+];
+
+/** Map an author's display name to their stable Person @id, when a known leader. */
+export const AUTHOR_ID_BY_NAME: Record<string, string> = Object.fromEntries(
+  LEADERS.map((l) => [l.name, l.id]),
+);
+
+// Shared human-date -> ISO parser (used by the blog layout and the sitemap so
+// lastmod reflects real publish dates rather than build time).
+const MONTHS: Record<string, string> = {
+  jan: '01', feb: '02', mar: '03', apr: '04', may: '05', jun: '06',
+  jul: '07', aug: '08', sep: '09', oct: '10', nov: '11', dec: '12',
+};
+
+/** Parse a human date ("Updated on 17 Jul 2025") into ISO "2025-07-17". */
+export function toIso(input?: string): string | undefined {
+  if (!input) return undefined;
+  const m = input.match(/(\d{1,2})\s+([A-Za-z]{3,})\s+(\d{4})/);
+  if (!m) return undefined;
+  const mm = MONTHS[m[2].slice(0, 3).toLowerCase()];
+  if (!mm) return undefined;
+  return `${m[3]}-${mm}-${m[1].padStart(2, '0')}`;
+}
+
 /** Resolve a site-relative path to an absolute URL on the canonical host. */
 export function absoluteUrl(path: string): string {
   if (/^https?:\/\//.test(path)) return path;
@@ -75,6 +109,13 @@ type PageSeo = {
   image?: string;
   /** Set true for thin/utility pages that should not be indexed */
   noindex?: boolean;
+  /** og:type — 'article' for blog posts / case studies, otherwise 'website'. */
+  ogType?: 'website' | 'article';
+  /** ISO 8601 times, only emitted when ogType === 'article'. */
+  publishedTime?: string;
+  modifiedTime?: string;
+  /** Author name(s) for article Open Graph tags. */
+  authors?: string[];
 };
 
 /**
@@ -88,8 +129,45 @@ export function buildMetadata({
   keywords,
   image = DEFAULT_OG_IMAGE,
   noindex = false,
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
+  authors,
 }: PageSeo): Metadata {
   const url = `${SITE_URL}${path === '/' ? '' : path}`;
+
+  // Only the default social card is verified 1200x630. For custom per-page
+  // images (blog heroes, project screenshots of varied aspect) omit width/height
+  // so crawlers read the intrinsic size instead of a false declared ratio.
+  const ogImage =
+    image === DEFAULT_OG_IMAGE
+      ? { url: image, width: 1200, height: 630, alt: title }
+      : { url: image, alt: title };
+
+  const openGraph: Metadata['openGraph'] =
+    ogType === 'article'
+      ? {
+          type: 'article',
+          url,
+          siteName: SITE_NAME,
+          title,
+          description,
+          locale: 'en_US',
+          images: [ogImage],
+          ...(publishedTime ? { publishedTime } : {}),
+          ...(modifiedTime ? { modifiedTime } : {}),
+          ...(authors && authors.length ? { authors } : {}),
+        }
+      : {
+          type: 'website',
+          url,
+          siteName: SITE_NAME,
+          title,
+          description,
+          locale: 'en_US',
+          images: [ogImage],
+        };
+
   return {
     title,
     description,
@@ -108,15 +186,7 @@ export function buildMetadata({
             'max-video-preview': -1,
           },
         },
-    openGraph: {
-      type: 'website',
-      url,
-      siteName: SITE_NAME,
-      title,
-      description,
-      locale: 'en_US',
-      images: [{ url: image, width: 1200, height: 630, alt: title }],
-    },
+    openGraph,
     twitter: {
       card: 'summary_large_image',
       site: TWITTER_HANDLE,
@@ -200,6 +270,9 @@ export function blogPostingJsonLd({
     image: [image ? absoluteUrl(image) : absoluteUrl(DEFAULT_OG_IMAGE)],
     author: {
       '@type': 'Person',
+      // Resolve a known leader's byline to their stable Person @id so the author
+      // and the #organization founder merge into ONE entity (E-E-A-T signal).
+      ...(AUTHOR_ID_BY_NAME[authorName] ? { '@id': AUTHOR_ID_BY_NAME[authorName] } : {}),
       name: authorName,
       ...(authorRole ? { jobTitle: authorRole } : {}),
       // Tie the (real) author to the single #organization entity — an E-E-A-T

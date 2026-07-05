@@ -11,6 +11,7 @@ import {
   WEBSITE_ID,
   LOCALBUSINESS_ID,
   AREA_SERVED,
+  LEADERS,
 } from '@/lib/seo';
 
 export default function StructuredData() {
@@ -39,7 +40,18 @@ export default function StructuredData() {
       name: COMPANY.legalName,
       alternateName: SITE_NAME,
       url: SITE_URL,
-      logo: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
+      // Dedicated clean logo (used in the knowledge panel + as the publisher
+      // logo on every BlogPosting). The 1200x630 og-image is the separate
+      // representative `image` below — it is a text-heavy card, not a logo.
+      logo: {
+        '@type': 'ImageObject',
+        '@id': `${SITE_URL}/#logo`,
+        url: `${SITE_URL}/enhc_logo.jpg`,
+        contentUrl: `${SITE_URL}/enhc_logo.jpg`,
+        width: 648,
+        height: 454,
+        caption: COMPANY.legalName,
+      },
       image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
       email: COMPANY.email,
       telephone: COMPANY.phone,
@@ -70,6 +82,9 @@ export default function StructuredData() {
         'Cloud computing',
         'ERP, CRM and SaaS development',
       ],
+      // Named founders as Person references — the full Person entities are
+      // emitted below in the same @graph and reused as blog-author identities.
+      founder: LEADERS.map((l) => ({ '@id': l.id })),
     },
     {
       // ProfessionalService is a LocalBusiness subtype — a better fit for a
@@ -108,6 +123,17 @@ export default function StructuredData() {
       inLanguage: 'en',
       publisher: { '@id': ORG_ID },
     },
+    // Real, named leadership as Person entities (E-E-A-T). The same @id is
+    // reused by blog author bylines so each byline resolves to one credentialed
+    // human who is also a founder of #organization.
+    ...LEADERS.map((l) => ({
+      '@type': 'Person',
+      '@id': l.id,
+      name: l.name,
+      jobTitle: l.jobTitle,
+      worksFor: { '@id': ORG_ID },
+      ...(l.sameAs.length ? { sameAs: l.sameAs } : {}),
+    })),
   ];
 
   const jsonLd = { '@context': 'https://schema.org', '@graph': graph };

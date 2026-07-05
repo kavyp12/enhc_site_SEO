@@ -21,11 +21,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'enhc | AI Solutions, Automation & Software Development Company in Ahmedabad',
+    default: 'enhc | AI, Automation & Software Company in Ahmedabad',
     template: '%s | enhc',
   },
   description:
-    'enhc (Enhc Tech LLP) is an AI solutions company in Ahmedabad, India. We build custom AI tools, AI automation and workflows, machine learning models, predictive analytics, web development and app development that transform businesses.',
+    'enhc (Enhc Tech LLP) is an AI solutions company in Ahmedabad building custom AI tools, automation, machine learning and predictive analytics for businesses.',
   applicationName: SITE_NAME,
   authors: [{ name: LEGAL_NAME, url: SITE_URL }],
   creator: LEGAL_NAME,
@@ -46,7 +46,20 @@ export const metadata: Metadata = {
     'enhc',
   ],
   alternates: { canonical: SITE_URL },
-  icons: { icon: '/enhc_logo.jpg', apple: '/enhc_logo.jpg' },
+  // Google Search Console HTML-tag verification. Set GOOGLE_SITE_VERIFICATION
+  // (the token from GSC's "HTML tag" method) in .env.local + Vercel to emit the
+  // <meta name="google-site-verification"> tag. Left unset it renders nothing —
+  // in that case verify GSC via the already-installed GA4 property instead.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: [{ url: '/icon-192.png', sizes: '180x180' }],
+  },
   manifest: '/manifest.webmanifest',
   robots: {
     index: true,
