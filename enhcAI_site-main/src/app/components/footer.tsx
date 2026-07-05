@@ -81,6 +81,12 @@ export default function Footer() {
     { text: "Start Project", href: "/startproject" },
   ];
 
+  const regionLinks = [
+    { text: "United States", href: "/us" },
+    { text: "Europe & UK", href: "/europe" },
+    { text: "Middle East", href: "/middle-east" },
+  ];
+
   const contactDetails = [
     { icon: "📞", text: "+91 9313153036", href: "tel:+919313153036" },
     { icon: "✉️", text: "contact@enhc.tech", href: "mailto:contact@enhc.tech" },
@@ -159,8 +165,25 @@ export default function Footer() {
               </ul>
             </div>
 
+            {/* Regions */}
+            <div className="col-span-1 sm:col-span-2 lg:col-span-2 text-center sm:text-left">
+              <h3 className="font-bold mb-4 product-sans">Regions</h3>
+              <ul className="space-y-2 text-[var(--text-muted)]">
+                {regionLinks.map((link, index) => (
+                  <li key={index}>
+                    <a
+                      href={link.href}
+                      className="hover:text-[var(--text-main)] transition-colors product-sans"
+                    >
+                      {link.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Contact */}
-            <div className="col-span-1 sm:col-span-2 lg:col-span-3 text-center sm:text-left">
+            <div className="col-span-1 sm:col-span-2 lg:col-span-2 text-center sm:text-left">
               <h3 className="font-bold mb-4 product-sans">Get in touch</h3>
               <ul className="space-y-4 text-[var(--text-muted)]">
                 {contactDetails.map((item, index) => (
