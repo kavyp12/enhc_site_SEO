@@ -30,17 +30,17 @@ export default function Aboutus() {
             <div className="space-y-2">
               <div className="relative -top-4 flex items-center space-x-2 text-sm">
                 <div className="w-2 h-2 bg-[var(--brand-primary)] rounded-full"></div>
-                <span className="text-[var(--text-muted)]">Innovating the Future</span>
+                <span className="text-[var(--text-muted)]">Your global AI partner</span>
               </div>
               <h2 className="text-3xl lg:text-4xl font-normal leading-tight tracking-tight">
-                An AI innovation company in Ahmedabad, Gujarat that cares about solving complex problems for your brand, no matter the size or industry.
+                An AI development partner for ambitious businesses across the US, Europe and the Middle East — solving complex problems for your brand, whatever your size or industry.
               </h2>
             </div>
 
             <div className="space-y-8 text-[var(--text-muted)]">
               <div className="flex flex-col space-y-4">
                 <p className="text-base lg:text-lg leading-relaxed">
-                  Founded in 2022, enhc is a leading AI solutions provider based in Shivalik Shilp, Ahmedabad, Gujarat, specialising in{' '}
+                  Founded in 2022 and headquartered in Shivalik Shilp, Ahmedabad, India, enhc is an AI development partner for global businesses, specialising in{' '}
                   <span className="underline">Machine Learning</span>,{' '}
                   <span className="underline">Data Science</span>,{' '}
                   <span className="underline">Computer Vision</span>, and{' '}
@@ -49,10 +49,10 @@ export default function Aboutus() {
                 <p className="text-base lg:text-lg leading-relaxed">
                   Our technology stack is built on cutting-edge frameworks like{' '}
                   <span className="underline">TensorFlow</span> and{' '}
-                  <span className="underline">PyTorch</span>, allowing us to build scalable and powerful AI models that integrate seamlessly with your existing systems.
+                  <span className="underline">PyTorch</span>, allowing us to build scalable, production-grade AI models that integrate seamlessly with your existing systems.
                 </p>
                 <p className="text-base lg:text-lg leading-relaxed">
-                  So, if you need a professional AI partner to support you with your next big project,{' '}
+                  We work as an extension of your team — senior engineers, transparent delivery, and working hours that overlap the US, Europe and the Middle East. If you need a professional AI partner for your next project,{' '}
                   <span className="underline">get in touch</span> with us today.
                 </p>
               </div>

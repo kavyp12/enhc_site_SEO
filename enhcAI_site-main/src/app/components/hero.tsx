@@ -60,6 +60,10 @@ export default function   Hero() {
     router.push("/about"); // ✅ Redirects to /about
   };
 
+  const handleStartProject = () => {
+    router.push("/startproject"); // ✅ Redirects to /startproject
+  };
+
   useEffect(() => {
     const win = window as typeof window & {
       requestIdleCallback?: (cb: () => void) => number;
@@ -131,20 +135,32 @@ export default function   Hero() {
                 <div className="flex items-center justify-center md:justify-start gap-3 animate-fade-in">
                   <span className="w-2.5 h-2.5 bg-[var(--brand-primary)] rounded-full animate-pulse shadow-lg shadow-[var(--brand-primary)]/50"></span>
                   <span className="text-white/95 dark:text-white text-sm font-medium tracking-wider uppercase bg-white/10 dark:bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm border border-[var(--brand-primary)]/40 dark:border-[var(--brand-primary)]/60 product-sans">
-                    Welcome to the Future 🤖
+                    Your AI Development Partner
                   </span>
                 </div>
 
                 <h1 className="text-white dark:text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] md:leading-[0.9] mb-8 animate-slide-up product-sans drop-shadow-2xl">
-                  <span className="block drop-shadow-lg">An AI-first IT</span>
+                  <span className="block drop-shadow-lg">Your AI development</span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--brand-primary)] to-white drop-shadow-lg">
-                    solutions company
+                    partner, built for scale
                   </span>
                 </h1>
 
+                <p className="text-white/90 text-base sm:text-lg lg:text-xl leading-relaxed product-sans drop-shadow-lg max-w-xl">
+                  We design, build and ship custom AI, automation and software for businesses across the US, Europe and the Middle East — senior-engineer quality, better economics, and real timezone overlap.
+                </p>
+
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center md:justify-start animate-fade-in-up delay-300">
-                  <Button variant="primary" onClick={handleViewWork}>View Our AI Solutions</Button>
-                  <Button variant="glass" onClick={handleAboutCompany}>About Us</Button>
+                  <Button variant="primary" onClick={handleStartProject}>Start Your AI Project</Button>
+                  <Button variant="glass" onClick={handleViewWork}>See Our Work</Button>
+                </div>
+
+                <div className="flex flex-wrap gap-2 sm:gap-3 justify-center md:justify-start">
+                  {['US · Europe · Middle East', 'Timezone-aligned delivery', 'Senior AI engineers', 'NDA & IP-secure'].map((chip) => (
+                    <span key={chip} className="text-white/95 dark:text-white text-xs sm:text-sm font-medium tracking-wide bg-white/10 dark:bg-white/20 px-3 py-1.5 rounded-full backdrop-blur-sm border border-[var(--brand-primary)]/40 dark:border-[var(--brand-primary)]/60 product-sans">
+                      {chip}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
@@ -161,15 +177,15 @@ export default function   Hero() {
           </div>
           <div className="max-w-4xl space-y-8">
             <p className="text-[var(--text-main)] text-xl sm:text-2xl lg:text-3xl font-semibold leading-snug tracking-tight product-sans">
-              An independent AI-first IT solutions company based in{' '}
-              <span className="text-[var(--brand-primary)] relative font-bold">Ahmedabad, Gujarat<span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-primary)]/50"></span></span>{' '}
-              established in <span className="text-[var(--brand-primary)] font-bold">2022</span>. We help businesses build, automate, transform and scale with custom AI software, intelligent automation, machine learning, and modern web, mobile and cloud development that{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--brand-primary)] via-[--text-main] to-[var(--brand-primary)] font-bold">transform businesses</span>{' '}
-              across every industry.
+              An AI-first software company founded in{' '}
+              <span className="text-[var(--brand-primary)] font-bold">2022</span>, headquartered in{' '}
+              <span className="text-[var(--brand-primary)] relative font-bold">Ahmedabad, India<span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-primary)]/50"></span></span>, that partners with startups and enterprises across the{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--brand-primary)] via-[--text-main] to-[var(--brand-primary)] font-bold">US, Europe &amp; the Middle East</span>{' '}
+              to design, build and scale custom AI software, automation, ML and modern web, mobile and cloud products — delivering senior-level engineering at a strong cost advantage, with hours that overlap the client&rsquo;s timezone.
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-              <Button variant="primary" onClick={handleAboutCompany}>About Our AI Company</Button>
-              <Button variant="outline" onClick={handleAboutCompany}>About Us</Button>
+              <Button variant="primary" onClick={handleAboutCompany}>Why Global Teams Choose enhc</Button>
+              <Button variant="outline" onClick={handleStartProject}>Start a Project</Button>
             </div>
           </div>
         </div>

@@ -13,18 +13,21 @@ import Reveal from '@/app/components/Reveal';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'AI, Automation & Software Development in Ahmedabad',
+  title: 'AI Development Partner for US, Europe & Middle East',
   description:
-    'enhc is an AI-first IT solutions company in Ahmedabad building custom AI software, automation, machine learning, and web & mobile apps to help businesses scale.',
+    'enhc is an AI development partner for the US, Europe & Middle East — custom AI software, automation, machine learning and web & mobile apps, with senior-engineer quality and timezone-aligned delivery from Ahmedabad, India.',
   path: '/',
   keywords: [
-    'IT solutions company Ahmedabad',
+    'AI development company',
+    'AI development partner',
+    'offshore AI development company',
+    'custom AI software development',
+    'AI automation company',
+    'machine learning development company',
+    'hire AI developers',
     'AI software development India',
-    'AI automation',
-    'custom software development',
-    'machine learning company',
-    'web development Ahmedabad',
-    'app development Ahmedabad',
+    'AI development company Ahmedabad',
+    'web and app development',
     'ERP CRM SaaS development',
   ],
 });
