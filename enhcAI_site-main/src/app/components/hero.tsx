@@ -141,7 +141,7 @@ export default function   Hero() {
 
                 <h1 className="text-white dark:text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] md:leading-[0.9] mb-8 animate-slide-up product-sans drop-shadow-2xl">
                   <span className="block drop-shadow-lg">Your AI development</span>
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-[var(--brand-primary)] to-white drop-shadow-lg">
+                  <span className="block text-white drop-shadow-lg">
                     partner, built for scale
                   </span>
                 </h1>
@@ -180,7 +180,7 @@ export default function   Hero() {
               An AI-first software company founded in{' '}
               <span className="text-[var(--brand-primary)] font-bold">2022</span>, headquartered in{' '}
               <span className="text-[var(--brand-primary)] relative font-bold">Ahmedabad, India<span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-[var(--brand-primary)] to-[var(--brand-primary)]/50"></span></span>, that partners with startups and enterprises across the{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--brand-primary)] via-[--text-main] to-[var(--brand-primary)] font-bold">US, Europe &amp; the Middle East</span>{' '}
+              <span className="text-[var(--brand-primary)] font-bold">US, Europe &amp; the Middle East</span>{' '}
               to design, build and scale custom AI software, automation, ML and modern web, mobile and cloud products — delivering senior-level engineering at a strong cost advantage, with hours that overlap the client&rsquo;s timezone.
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-4">
