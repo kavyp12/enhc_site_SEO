@@ -8,6 +8,7 @@ import Navbar from '@/app/components/navbar';
 import Footer from '@/app/components/footer';
 import Reveal from '@/app/components/Reveal';
 import JsonLd from '@/app/components/JsonLd';
+import BookCallButton from '@/app/components/BookCallButton';
 import { ORG_ID, absoluteUrl, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo';
 import { REGIONS, REGION_SERVICES, type RegionSlug } from '@/data/regions';
 
@@ -80,9 +81,9 @@ export default function RegionLanding({ slug }: { slug: RegionSlug }) {
                 {r.ctaPrimary.label}
                 <ArrowUpRight />
               </Link>
-              <Link href={r.ctaSecondary.href} className={BTN_SECONDARY}>
+              <BookCallButton location={`region-${slug}`} className={BTN_SECONDARY}>
                 {r.ctaSecondary.label}
-              </Link>
+              </BookCallButton>
             </div>
 
             <div className="flex flex-wrap gap-2 sm:gap-3 justify-center md:justify-start pt-2">
@@ -193,9 +194,9 @@ export default function RegionLanding({ slug }: { slug: RegionSlug }) {
                 {r.ctaPrimary.label}
                 <ArrowUpRight />
               </Link>
-              <Link href={r.ctaSecondary.href} className={BTN_SECONDARY}>
+              <BookCallButton location={`region-${slug}`} className={BTN_SECONDARY}>
                 {r.ctaSecondary.label}
-              </Link>
+              </BookCallButton>
             </div>
             <p className="mt-6 text-sm text-[var(--text-muted)]">
               {r.timezoneLine} · {r.currencyLine}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import BookCallButton from '@/app/components/BookCallButton';
 
 // Define icons for theme toggling
 const SunIcon = () => (
@@ -229,6 +230,12 @@ export default function Navbar() {
             >
               {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
             </button>
+            <BookCallButton
+              location="navbar"
+              className={`gap-2 bg-transparent border border-[var(--border-main)] text-[var(--text-main)] hover:border-[var(--brand-primary)] hover:bg-[var(--bg-card-secondary)] ${isScrolled ? 'px-4 py-2 text-sm' : 'px-6 py-2.5 text-base'}`}
+            >
+              Book a call
+            </BookCallButton>
             {/* ✅ Start a Project Button Redirect */}
             <Link href="/startproject">
               <button className={`bg-[var(--brand-primary)] text-white flex items-center space-x-2 hover:bg-[var(--brand-primary-hover)] transition-all duration-300 ease-out origin-center ${isScrolled ? 'px-4 py-2 rounded-full text-sm' : 'px-8 py-3 rounded-full text-base'}`}>
@@ -267,7 +274,14 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2">
+            <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+              <BookCallButton
+                location="navbar"
+                onClick={closeMobileMenu}
+                className="gap-2 bg-transparent border border-[var(--border-main)] text-[var(--text-main)] hover:border-[var(--brand-primary)] hover:bg-[var(--bg-card-secondary)] px-8 py-3 text-base"
+              >
+                Book a call
+              </BookCallButton>
               {/* ✅ Mobile Start a Project Button Redirect */}
               <Link href="/startproject" onClick={closeMobileMenu}>
                 <button className="bg-[var(--brand-primary)] text-white flex items-center space-x-2 hover:bg-[var(--brand-primary-hover)] transition-all duration-300 ease-out px-8 py-3 rounded-full text-base">

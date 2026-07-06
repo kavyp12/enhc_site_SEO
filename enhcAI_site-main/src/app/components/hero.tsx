@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from "next/navigation"; // ✅ Import router
+import BookCallButton from '@/app/components/BookCallButton';
 
 // Font import via CSS-in-JS
 const fontStyles = `
@@ -131,28 +132,28 @@ export default function   Hero() {
           {/* Hero content */}
           <div className="absolute inset-0 flex flex-col justify-center text-center md:text-left">
             <div className="w-full md:w-3/5 flex flex-col justify-center p-6 md:p-12 lg:p-16 relative z-10">
-              <div className="max-w-xl space-y-8 mx-auto md:mx-0">
+              <div className="max-w-lg space-y-6 mx-auto md:mx-0">
                 <div className="flex items-center justify-center md:justify-start gap-3 animate-fade-in">
                   <span className="w-2.5 h-2.5 bg-[var(--brand-primary)] rounded-full animate-pulse shadow-lg shadow-[var(--brand-primary)]/50"></span>
-                  <span className="text-white/95 dark:text-white text-sm font-medium tracking-wider uppercase bg-white/10 dark:bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm border border-[var(--brand-primary)]/40 dark:border-[var(--brand-primary)]/60 product-sans">
+                  <span className="text-white/95 dark:text-white text-xs sm:text-sm font-medium tracking-wider uppercase bg-white/10 dark:bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm border border-[var(--brand-primary)]/40 dark:border-[var(--brand-primary)]/60 product-sans">
                     Your AI Development Partner
                   </span>
                 </div>
 
-                <h1 className="text-white dark:text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] md:leading-[0.9] mb-8 animate-slide-up product-sans drop-shadow-2xl">
+                <h1 className="text-white dark:text-white text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-bold leading-[1.1] md:leading-[1.05] animate-slide-up product-sans drop-shadow-2xl">
                   <span className="block drop-shadow-lg">Your AI development</span>
                   <span className="block text-white drop-shadow-lg">
                     partner, built for scale
                   </span>
                 </h1>
 
-                <p className="text-white/90 text-base sm:text-lg lg:text-xl leading-relaxed product-sans drop-shadow-lg max-w-xl">
+                <p className="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed product-sans drop-shadow-lg max-w-lg">
                   We design, build and ship custom AI, automation and software for businesses across the US, Europe and the Middle East — senior-engineer quality, better economics, and real timezone overlap.
                 </p>
 
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center md:justify-start animate-fade-in-up delay-300">
                   <Button variant="primary" onClick={handleStartProject}>Start Your AI Project</Button>
-                  <Button variant="glass" onClick={handleViewWork}>See Our Work</Button>
+                  <BookCallButton variant="glass" location="hero">Book a Discovery Call</BookCallButton>
                 </div>
 
                 <div className="flex flex-wrap gap-2 sm:gap-3 justify-center md:justify-start">

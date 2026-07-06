@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import BookCallButton from '@/app/components/BookCallButton';
 import { contactFaq } from './faqData';
 
 const ArrowIcon = () => (<svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 sm:h-10 sm:w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>);
@@ -146,6 +147,10 @@ const ContactPage = () => {
         <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             <div className="flex flex-col justify-center space-y-8 lg:animate-fade-in-left lg:-translate-y-27 lg:-translate-x-20 text-center lg:text-left">
                 <p className="text-base md:text-lg leading-relaxed text-[var(--text-muted)]">For general enquiries, please fill out the form to get in touch. Alternatively, if you know your project details — head over to our project planner for a more refined step-by-step process.</p>
+                <div className="flex flex-col items-center lg:items-start gap-2 self-center lg:self-start">
+                  <BookCallButton variant="primary" location="contact">Book a Discovery Call</BookCallButton>
+                  <span className="text-sm text-[var(--text-muted)]">Free 30-min call · shown in your timezone</span>
+                </div>
                 <a href="#" className="group bg-[var(--brand-primary)] text-white font-medium text-sm py-2 px-4 rounded-full self-center lg:self-start flex items-center gap-2 transition-transform hover:scale-105 mt-4">
                     Go to Project Planner
                     <div className="bg-white/20 rounded-full p-1 transition-transform group-hover:rotate-45"><ArrowUpRightIcon className="w-5 h-5" /></div>

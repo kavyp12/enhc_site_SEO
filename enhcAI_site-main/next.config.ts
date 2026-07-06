@@ -14,13 +14,14 @@ const csp = [
   "object-src 'none'",
   "frame-ancestors 'none'",
   "form-action 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com`,
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''} https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://assets.calendly.com`,
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com",
   "font-src 'self' data: https://fonts.gstatic.com",
   "img-src 'self' data: blob: https:",
-  `connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net${isDev ? ' ws: wss:' : ''}`,
+  `connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.google-analytics.com https://www.googletagmanager.com https://stats.g.doubleclick.net https://calendly.com https://*.calendly.com${isDev ? ' ws: wss:' : ''}`,
   "worker-src 'self' blob:",
-  "frame-src 'self'",
+  // Calendly renders its scheduler inside an iframe from calendly.com.
+  "frame-src 'self' https://calendly.com",
   'upgrade-insecure-requests',
 ].join('; ');
 

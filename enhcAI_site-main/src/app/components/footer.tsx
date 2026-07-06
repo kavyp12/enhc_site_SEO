@@ -78,6 +78,7 @@ export default function Footer() {
     { text: "App Development", href: "/app-development" },
     { text: "Projects", href: "/project" },
     { text: "Contact", href: "/contact" },
+    { text: "Book a Call", href: "/book" },
     { text: "Start Project", href: "/startproject" },
   ];
 
