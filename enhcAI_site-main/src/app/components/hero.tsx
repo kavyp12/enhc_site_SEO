@@ -152,8 +152,12 @@ export default function   Hero() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center md:justify-start animate-fade-in-up delay-300">
-                  <Button variant="primary" onClick={handleStartProject}>Start Your AI Project</Button>
-                  <BookCallButton variant="glass" location="hero">Book a Discovery Call</BookCallButton>
+                  <BookCallButton
+                    location="hero"
+                    className="gap-3 px-6 py-3 md:px-8 md:py-4 text-sm md:text-base bg-blue-600 text-white hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/40"
+                  >
+                    Book a Discovery Call
+                  </BookCallButton>
                 </div>
 
                 <div className="flex flex-wrap gap-2 sm:gap-3 justify-center md:justify-start">
