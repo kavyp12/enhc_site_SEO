@@ -1,12 +1,13 @@
-import { buildMetadata, serviceJsonLd, breadcrumbJsonLd } from '@/lib/seo';
+import { buildMetadata, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo';
 import JsonLd from '@/app/components/JsonLd';
+import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'Web Development Company in Ahmedabad — Next.js & React',
+  title: 'Web Development Company — Next.js & React | enhc',
   description:
-    'enhc builds fast, modern, SEO-friendly websites and web applications. Responsive sites, web apps, e-commerce and headless CMS using React, Next.js and TypeScript.',
+    'enhc builds fast, modern, SEO-friendly websites and web applications for clients worldwide. Responsive sites, web apps, e-commerce and headless CMS using React, Next.js and TypeScript, with global delivery from our Ahmedabad, India HQ.',
   path: '/web-development',
-  keywords: ['web development company', 'website development Ahmedabad', 'Next.js development', 'React development', 'web app development', 'e-commerce development'],
+  keywords: ['web development company', 'website development', 'Next.js development', 'React development', 'web app development', 'e-commerce development'],
 });
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -26,6 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             { name: 'Services', path: '/services' },
             { name: 'Web Development', path: '/web-development' },
           ]),
+          faqJsonLd(SERVICE_FAQS['web-development'].faqs.map((f) => ({ question: f.q, answer: f.a }))),
         ]}
       />
       {children}

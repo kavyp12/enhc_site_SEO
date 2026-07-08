@@ -46,7 +46,12 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    unoptimized: true,
+    // Next's built-in image optimizer is ON (unoptimized:true removed). It serves
+    // modern formats (AVIF then WebP) at the right size via /_next/image, and runs
+    // on Vercel out of the box. NOTE: only <Image> from next/image is optimized —
+    // raw <img> tags are untouched, so migrate hot images (hero LCP is done; blog
+    // cards + logos are the next candidates) to <Image> to actually benefit.
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: 'https',

@@ -1,10 +1,11 @@
-import { buildMetadata, serviceJsonLd, breadcrumbJsonLd } from '@/lib/seo';
+import { buildMetadata, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo';
 import JsonLd from '@/app/components/JsonLd';
+import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'Predictive Analytics Services in India',
+  title: 'Predictive Analytics Services | enhc',
   description:
-    'Turn historical data into accurate forecasts. enhc builds predictive analytics that surface trends, anticipate behaviour and power better, data-driven decisions.',
+    'Turn historical data into accurate forecasts. enhc builds predictive analytics that surface trends, anticipate behaviour and power better, data-driven decisions for clients worldwide, with global delivery from our Ahmedabad, India HQ.',
   path: '/predictiveAnalytics',
   keywords: ['predictive analytics', 'data analytics', 'forecasting', 'data-driven decisions', 'business intelligence'],
 });
@@ -26,6 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             { name: 'Services', path: '/services' },
             { name: 'Predictive Analytics', path: '/predictiveAnalytics' },
           ]),
+          faqJsonLd(SERVICE_FAQS['predictiveAnalytics'].faqs.map((f) => ({ question: f.q, answer: f.a }))),
         ]}
       />
       {children}

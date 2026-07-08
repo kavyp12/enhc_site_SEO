@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from "next/navigation"; // ✅ Import router
+import Image from 'next/image';
 import BookCallButton from '@/app/components/BookCallButton';
 
 // Font import via CSS-in-JS
@@ -88,12 +89,13 @@ export default function   Hero() {
           {/* Static image background until video loads */}
           {!isVideoLoaded && (
             <div className="absolute inset-0">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                 alt="Abstract AI technology visualization"
-                className="w-full h-full object-cover"
-                fetchPriority="high"
-                decoding="async"
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
                 style={{
                   filter: 'contrast(1.1) brightness(1.05) saturate(1.1)',
                 }}

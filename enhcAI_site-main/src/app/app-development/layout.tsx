@@ -1,10 +1,11 @@
-import { buildMetadata, serviceJsonLd, breadcrumbJsonLd } from '@/lib/seo';
+import { buildMetadata, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo';
 import JsonLd from '@/app/components/JsonLd';
+import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'App Development Company in Ahmedabad, India',
+  title: 'App & Mobile Development Company — iOS, Android & Cross-Platform | enhc',
   description:
-    'enhc designs and builds fast, intuitive mobile apps for iOS and Android. Native and cross-platform development with React Native, Flutter, Swift and Kotlin.',
+    'enhc designs and builds fast, intuitive mobile apps for iOS and Android for clients worldwide. Native and cross-platform development with React Native, Flutter, Swift and Kotlin, delivered globally from our Ahmedabad, India HQ.',
   path: '/app-development',
   keywords: ['app development company', 'mobile app development Ahmedabad', 'iOS app development', 'Android app development', 'React Native development', 'Flutter development'],
 });
@@ -26,6 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             { name: 'Services', path: '/services' },
             { name: 'App Development', path: '/app-development' },
           ]),
+          faqJsonLd(SERVICE_FAQS['app-development'].faqs.map((f) => ({ question: f.q, answer: f.a }))),
         ]}
       />
       {children}

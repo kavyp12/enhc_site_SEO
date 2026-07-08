@@ -18,12 +18,12 @@ interface Testimonial {
   id: number; avatar: string; author: string; company: string; text: string; rating: number;
 }
 
-const testimonials: Testimonial[] = [
-  { id: 1, avatar: 'https://randomuser.me/api/portraits/men/32.jpg', author: 'Alex Johnson', company: 'CEO, Tech Innovators', text: 'Working with this team has been a game-changer for our business. Their dedication and expertise are second to none. We saw a 150% increase in efficiency.', rating: 5 },
-  { id: 2, avatar: 'https://randomuser.me/api/portraits/women/44.jpg', author: 'Maria Garcia', company: 'Founder, Creative Solutions', text: 'The level of professionalism and the quality of the final product exceeded all our expectations. I would highly recommend them to anyone looking for top-tier results.', rating: 5 },
-  { id: 3, avatar: 'https://randomuser.me/api/portraits/men/46.jpg', author: 'James Smith', company: 'CTO, Future Systems', text: 'An absolutely seamless experience from start to finish. The communication was clear, the deadlines were met, and the outcome was simply outstanding.', rating: 5 },
-  { id: 4, avatar: 'https://randomuser.me/api/portraits/women/68.jpg', author: 'Priya Patel', company: 'Director of Ops, NextGen', text: 'They transformed our entire workflow. Their innovative approach solved problems we didn\'t even know we had. Truly a five-star partner.', rating: 5 },
-];
+// Real client testimonials only. The previous entries were placeholder/fabricated
+// content (randomuser.me stock avatars, invented names) — removed because passing
+// fake reviews as real is a trust liability and violates Google's structured-data
+// review policy. Populate this array with genuine, attributable client quotes
+// (real name, real company, with permission) before re-enabling <Testimonial/>.
+const testimonials: Testimonial[] = [];
 
 const Testimonial: React.FC = () => {
   return (

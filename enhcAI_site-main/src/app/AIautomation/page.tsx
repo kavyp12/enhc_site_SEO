@@ -6,11 +6,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { ArrowUpRight, ArrowLeft, ArrowRight, Star } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Workwith from '../components/workwith';
 import Footer from '../components/footer';
 import Navbar from '../components/navbar';
 import Blog from '../components/blog';
+import ServiceFaq from '../components/ServiceFaq';
+import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 
 // --- LogoCard Component ---
@@ -86,41 +88,6 @@ const ArrowIcon = () => (
 
 
 // --- Main Component ---
-
-const testimonials = [
-  {
-    id: 1,
-    rating: 5,
-    text: "AutomateIQ transformed our accounts payable process, reducing invoice processing time by 95%. Their RPA solution was a game-changer for our finance team.",
-    author: "Samantha Green",
-    company: "Global Logistics Inc.",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop"
-  },
-  {
-    id: 2,
-    rating: 5,
-    text: "The intelligent chatbot they built for our e-commerce site handles over 80% of customer queries, allowing our support team to focus on complex issues. A brilliant execution.",
-    author: "David Lee",
-    company: "Shopify Pro",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop"
-  },
-  {
-    id: 3,
-    rating: 5,
-    text: "Their process mining expertise uncovered bottlenecks we never knew existed. The workflow automations they implemented have significantly boosted our operational efficiency.",
-    author: "Priya Sharma",
-    company: "HealthCare Systems",
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1888&auto=format&fit=crop"
-  },
-  {
-    id: 4,
-    rating: 5,
-    text: "From intelligent document processing to complex API orchestrations, the team at AutomateIQ delivered a seamless and powerful automation solution. Highly recommended!",
-    author: "Marcus Brown",
-    company: "Innovate Legal",
-    avatar: "https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=1888&auto=format&fit=crop"
-  }
-];
 
 const HelpWith = () => {
   return (
@@ -514,92 +481,6 @@ const HelpWith = () => {
 
         </div>
 
-        <section className="bg-[var(--bg-main)] text-[var(--text-main)] w-full py-20 lg:py-28 font-product-sans">
-            <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-                <div className="lg:col-span-4 flex flex-col justify-between h-full text-left">
-                    <div>
-                        <p className="font-semibold tracking-wider text-[var(--text-muted)] text-left flex items-center space-x-2">
-                            <div className="w-2 h-2 bg-[var(--brand-primary)] rounded-full" />
-                            <span>Testimonials</span>
-                        </p>
-                        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold mt-4 leading-tight text-left">
-                                          Trusted by industry leaders
-                                        </h2>
-                                        <button className="mt-8 sm:mt-12 bg-[var(--brand-primary)] text-white font-bold py-3 px-6 rounded-full flex items-center gap-2 hover:bg-[var(--brand-primary-hover)] transition-colors duration-300 w-fit">
-                                          View all success stories
-                                          <ArrowUpRight size={20} />
-                                        </button>
-                                      </div>
-                                      <div className="flex gap-4 sm:gap-8 mt-12 lg:mt-16">
-                                        <button className="testimonial-swiper-prev p-3 rounded-full bg-[var(--bg-secondary)] hover:bg-[var(--bg-secondary-hover)] transition-colors text-[var(--text-main)] disabled:opacity-50">
-                                          <ArrowLeft size={24} />
-                                        </button>
-                                        <button className="testimonial-swiper-next p-3 rounded-full bg-[var(--bg-secondary)] hover:bg-[var(--bg-secondary-hover)] transition-colors text-[var(--text-main)] disabled:opacity-50">
-                                          <ArrowRight size={24} />
-                                        </button>
-                                      </div>
-                                    </div>
-
-                <div className="lg:col-span-8 overflow-hidden">
-                    <Swiper
-                        modules={[Navigation]}
-                        spaceBetween={20}
-                        slidesPerView={1.1}
-                        navigation={{
-                        prevEl: '.testimonial-swiper-prev',
-                        nextEl: '.testimonial-swiper-next',
-                        }}
-                        breakpoints={{
-                        640: { 
-                            slidesPerView: 1.2,
-                            spaceBetween: 20 
-                        },
-                        768: { 
-                            slidesPerView: 1.5,
-                            spaceBetween: 30 
-                        },
-                        1024: { 
-                            slidesPerView: 2.2,
-                            spaceBetween: 40 
-                        },
-                        }}
-                        className="!overflow-visible"
-                    >
-                        {testimonials.map((testimonial) => (
-                        <SwiperSlide key={testimonial.id} className="h-auto">
-                            <div className="bg-[var(--bg-secondary)] p-6 sm:p-8 rounded-2xl h-full flex flex-col justify-between min-h-[380px] sm:min-h-[400px]">
-                            <div>
-                                <div className="flex justify-center text-[var(--brand-primary)] mb-6">
-                                {[...Array(testimonial.rating)].map((_, i) => (
-                                    <Star key={i} fill="var(--brand-primary)" strokeWidth={0} size={20} />
-                                ))}
-                                </div>
-                                <p className="text-[var(--text-muted)] text-base sm:text-lg leading-relaxed text-center">
-                                "{testimonial.text}"
-                                </p>
-                            </div>
-                            <div className="flex items-center gap-4 mt-8 justify-center sm:justify-start">
-                                <img
-                                src={testimonial.avatar}
-                                alt={testimonial.author}
-                                className="w-12 h-12 rounded-full object-cover"
-                                onError={(e) => {
-                                    e.currentTarget.src = 'https://randomuser.me/api/portraits/lego/1.jpg';
-                                }}
-                                />
-                                <div className="text-left">
-                                <h3 className="font-bold text-lg text-[var(--text-main)]">{testimonial.author}</h3>
-                                <p className="text-[var(--text-muted)]">{testimonial.company}</p>
-                                </div>
-                            </div>
-                            </div>
-                        </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </div>
-            </div>
-        </section>
-        
         <Workwith />
 
         {/* Our Work Section */}
@@ -764,6 +645,7 @@ const HelpWith = () => {
             </div>
         </section>
         <Blog/>
+        <ServiceFaq {...SERVICE_FAQS['AIautomation']} />
         <Footer />
     </div>
   </>

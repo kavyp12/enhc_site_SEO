@@ -11,6 +11,7 @@ import {
   WEBSITE_ID,
   LOCALBUSINESS_ID,
   AREA_SERVED,
+  GLOBAL_AREA_SERVED,
   LEADERS,
 } from '@/lib/seo';
 
@@ -26,10 +27,10 @@ export default function StructuredData() {
 
   const contactPoint = {
     '@type': 'ContactPoint',
-    telephone: COMPANY.phone,
+    telephone: COMPANY.phoneE164,
     email: COMPANY.email,
     contactType: 'sales',
-    areaServed: 'IN',
+    areaServed: 'Worldwide',
     availableLanguage: ['en', 'hi'],
   };
 
@@ -54,12 +55,17 @@ export default function StructuredData() {
       },
       image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
       email: COMPANY.email,
-      telephone: COMPANY.phone,
+      telephone: COMPANY.phoneE164,
       foundingDate: COMPANY.founded,
       foundingLocation: { '@type': 'Place', name: `${COMPANY.city}, ${COMPANY.region}, India` },
       address,
       contactPoint,
       sameAs: COMPANY.social,
+      // enhc delivers remotely to these markets — declare the entity's true
+      // global service area (not just the Ahmedabad HQ) so search + AI engines
+      // understand the company operates worldwide. The real HQ address/
+      // foundingLocation below stay (they are factual and help local queries).
+      areaServed: GLOBAL_AREA_SERVED,
       description:
         'enhc (Enhc Tech LLP) is an AI-first IT solutions company in Ahmedabad, India, helping businesses build, automate, transform and scale with custom AI software, AI agents and automation, machine learning, predictive analytics, web and mobile apps, ERP, CRM, SaaS, cloud solutions and IT consulting.',
       slogan: 'An AI-first IT solutions company.',
@@ -96,7 +102,7 @@ export default function StructuredData() {
       image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
       url: SITE_URL,
       email: COMPANY.email,
-      telephone: COMPANY.phone,
+      telephone: COMPANY.phoneE164,
       priceRange: '$$',
       parentOrganization: { '@id': ORG_ID },
       address,

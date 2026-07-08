@@ -1,10 +1,11 @@
-import { buildMetadata, serviceJsonLd, breadcrumbJsonLd } from '@/lib/seo';
+import { buildMetadata, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo';
 import JsonLd from '@/app/components/JsonLd';
+import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'AI Strategy & Consulting Services in India',
+  title: 'AI Consulting & Strategy Services | enhc',
   description:
-    'Strategic guidance for AI transformation. enhc helps you identify high-value AI opportunities and build a clear roadmap to adopt AI across your organisation.',
+    'Strategic guidance for AI transformation. enhc helps organisations worldwide identify high-value AI opportunities and build a clear roadmap to adopt AI with confidence — global delivery from our Ahmedabad, India HQ.',
   path: '/AIstatergy',
   keywords: ['AI strategy', 'AI consulting', 'AI transformation', 'AI roadmap', 'digital transformation'],
 });
@@ -26,6 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             { name: 'Services', path: '/services' },
             { name: 'AI Strategy & Consulting', path: '/AIstatergy' },
           ]),
+          faqJsonLd(SERVICE_FAQS['AIstatergy'].faqs.map((f) => ({ question: f.q, answer: f.a }))),
         ]}
       />
       {children}

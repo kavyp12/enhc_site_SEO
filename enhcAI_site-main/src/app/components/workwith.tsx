@@ -64,7 +64,7 @@ const Workwith = () => {
           <div className="flex flex-col w-full md:ml-130">
             <div className="flex items-center gap-2 text-sm text-left product-sans text-[var(--text-muted)]">
               <span className="w-1.5 h-1.5 bg-[var(--text-main)] rounded-full"></span>
-              Shameful Plug
+              Our Clients
             </div>
             <h2 className="text-3xl sm:text-4xl font-semi text-[var(--text-main)] mt-2 max-w-5xl leading-tight text-left product-sans">
               We work with start-up businesses{' '}<br className="hidden sm:block" />

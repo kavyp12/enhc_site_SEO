@@ -63,6 +63,22 @@ export const AREA_SERVED = [
   { '@type': 'Country', name: 'India' },
 ];
 
+// enhc delivers remotely to these markets. Used as the DEFAULT areaServed for
+// the #organization entity and every Service node so the declared service area
+// matches the US / Europe / worldwide positioning (the on-site homepage/title
+// were already globalized; this aligns the machine-readable layer). The
+// India-only AREA_SERVED above is kept for any genuinely India-local node.
+export const GLOBAL_AREA_SERVED = [
+  { '@type': 'Country', name: 'United States' },
+  { '@type': 'Country', name: 'United Kingdom' },
+  { '@type': 'Country', name: 'Germany' },
+  { '@type': 'Place', name: 'Europe' },
+  { '@type': 'Country', name: 'United Arab Emirates' },
+  { '@type': 'Country', name: 'Canada' },
+  { '@type': 'Country', name: 'Australia' },
+  { '@type': 'Country', name: 'India' },
+];
+
 // Real, named leadership. Emitted once as Person nodes in the sitewide JSON-LD
 // @graph (founders of #organization) and reused as blog-author identities so a
 // byline and the founder resolve to ONE Person entity. Only genuine profile
@@ -209,10 +225,12 @@ type ServiceSeo = {
   /** Path beginning with "/" e.g. "/machinelearningmodel" */
   path: string;
   description: string;
+  /** Markets this service is offered in. Defaults to enhc's global reach. */
+  areaServed?: typeof GLOBAL_AREA_SERVED;
 };
 
 /** Service offered by enhc, tied to the single #organization provider. */
-export function serviceJsonLd({ serviceType, name, path, description }: ServiceSeo) {
+export function serviceJsonLd({ serviceType, name, path, description, areaServed = GLOBAL_AREA_SERVED }: ServiceSeo) {
   return {
     '@type': 'Service',
     '@id': `${absoluteUrl(path)}#service`,
@@ -220,7 +238,7 @@ export function serviceJsonLd({ serviceType, name, path, description }: ServiceS
     name,
     url: absoluteUrl(path),
     provider: { '@id': ORG_ID },
-    areaServed: AREA_SERVED,
+    areaServed,
     description,
   };
 }

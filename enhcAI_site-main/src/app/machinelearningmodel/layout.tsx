@@ -1,12 +1,13 @@
-import { buildMetadata, serviceJsonLd, breadcrumbJsonLd } from '@/lib/seo';
+import { buildMetadata, serviceJsonLd, breadcrumbJsonLd, faqJsonLd } from '@/lib/seo';
 import JsonLd from '@/app/components/JsonLd';
+import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'Machine Learning Development Company in India',
+  title: 'Machine Learning Development Services | enhc',
   description:
-    'Advanced machine learning models that learn and adapt to your data. enhc builds, trains, deploys and maintains production-grade ML systems tailored to your business goals.',
+    'Advanced machine learning models that learn and adapt to your data. enhc builds, trains, deploys and maintains production-grade ML systems for clients worldwide, with global delivery from our Ahmedabad, India HQ.',
   path: '/machinelearningmodel',
-  keywords: ['machine learning models', 'ML development company', 'model training', 'MLOps', 'deep learning', 'machine learning company India'],
+  keywords: ['machine learning models', 'ML development company', 'model training', 'MLOps', 'deep learning', 'machine learning development services'],
 });
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -26,6 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             { name: 'Services', path: '/services' },
             { name: 'Machine Learning Development', path: '/machinelearningmodel' },
           ]),
+          faqJsonLd(SERVICE_FAQS['machinelearningmodel'].faqs.map((f) => ({ question: f.q, answer: f.a }))),
         ]}
       />
       {children}
