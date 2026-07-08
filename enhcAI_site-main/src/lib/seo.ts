@@ -116,6 +116,21 @@ export function absoluteUrl(path: string): string {
   return `${SITE_URL}${path === '/' ? '' : path.startsWith('/') ? path : `/${path}`}`;
 }
 
+/**
+ * Trim a long string into a clean meta-description: collapse whitespace and cut
+ * at a WORD boundary (never mid-word) under `max` chars, adding an ellipsis.
+ * Used for auto-generated snippets (e.g. project case studies) so the SERP
+ * description isn't chopped mid-word like "...secure user authenticati".
+ */
+export function clampDescription(text?: string, max = 155): string {
+  if (!text) return '';
+  const t = text.trim().replace(/\s+/g, ' ');
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > 60 ? cut.slice(0, lastSpace) : cut).replace(/[\s.,;:–—-]+$/, '') + '…';
+}
+
 type PageSeo = {
   title: string;
   description: string;

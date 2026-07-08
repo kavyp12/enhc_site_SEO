@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import projectData from '@/data/projectData';
-import { buildMetadata, creativeWorkJsonLd, breadcrumbJsonLd } from '@/lib/seo';
+import { buildMetadata, creativeWorkJsonLd, breadcrumbJsonLd, clampDescription } from '@/lib/seo';
 import JsonLd from '@/app/components/JsonLd';
 
 // Only real case-study ids are valid; unknown /project/<id> returns a 404
@@ -27,7 +27,7 @@ export async function generateMetadata(
   return buildMetadata({
     title: `${project.title} — ${project.client}`,
     description:
-      project.description?.slice(0, 200) ||
+      clampDescription(project.description) ||
       `${project.title}: a ${project.category} project delivered by enhc for ${project.client}.`,
     path: `/project/${project.id}`,
     image: project.images?.main || undefined,

@@ -13,7 +13,10 @@ import Reveal from '@/app/components/Reveal';
 import { buildMetadata } from '@/lib/seo';
 
 export const metadata = buildMetadata({
-  title: 'AI Development Partner for US, Europe & Middle East',
+  // Brand leads the homepage <title>: "enhc" is ~40% of all impressions (GSC
+  // 3-mo) yet ranks only ~pos 5 for its own name — reinforcing the brand term.
+  // (This is the ROOT segment, so the '%s | enhc' template does NOT apply here.)
+  title: 'enhc — AI Development Partner for US, Europe & Middle East',
   description:
     'enhc is an AI development partner for the US, Europe & Middle East — custom AI software, automation, machine learning and web & mobile apps, with senior-engineer quality and timezone-aligned delivery from Ahmedabad, India.',
   path: '/',
