@@ -79,6 +79,15 @@ const nextConfig: NextConfig = {
         destination: 'https://enhc.tech/:path*',
         permanent: true,
       },
+      // Legacy static-site URL: /index.html is a leftover from a previous build
+      // that Google still has in its index (GSC: 404 on enhc.tech/index.html,
+      // 403 on the www/index.html variant). 308 it to the canonical homepage so
+      // the old URL stops 404-ing and any residual signal consolidates onto '/'.
+      {
+        source: '/index.html',
+        destination: '/',
+        permanent: true,
+      },
     ];
   },
 };
