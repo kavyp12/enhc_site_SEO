@@ -3,7 +3,7 @@ import JsonLd from '@/app/components/JsonLd';
 import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'AI Consulting & Strategy Services | enhc',
+  title: 'AI Consulting & Strategy Services',
   description:
     'Strategic guidance for AI transformation. enhc helps organisations worldwide identify high-value AI opportunities and build a clear roadmap to adopt AI with confidence — global delivery from our Ahmedabad, India HQ.',
   path: '/AIstatergy',

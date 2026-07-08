@@ -3,7 +3,7 @@ import JsonLd from '@/app/components/JsonLd';
 import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'Web Development Company — Next.js & React | enhc',
+  title: 'Web Development Company — Next.js & React',
   description:
     'enhc builds fast, modern, SEO-friendly websites and web applications for clients worldwide. Responsive sites, web apps, e-commerce and headless CMS using React, Next.js and TypeScript, with global delivery from our Ahmedabad, India HQ.',
   path: '/web-development',

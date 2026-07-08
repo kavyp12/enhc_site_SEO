@@ -3,7 +3,7 @@ import JsonLd from '@/app/components/JsonLd';
 import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'Custom AI Software Development Company | enhc',
+  title: 'Custom AI Software Development Company',
   description:
     'Bespoke AI systems built for your business. enhc designs custom AI models, NLP, computer vision and AI integration — from data strategy to deployment and scaling, with global delivery from our Ahmedabad, India HQ.',
   path: '/customeAIsolution',

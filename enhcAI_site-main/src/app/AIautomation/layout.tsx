@@ -3,7 +3,7 @@ import JsonLd from '@/app/components/JsonLd';
 import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'AI Automation Services | enhc',
+  title: 'AI Automation Services',
   description:
     'Streamline operations with intelligent automation. enhc designs AI workflows that cut manual work, reduce errors and scale your processes — global delivery from our Ahmedabad, India HQ.',
   path: '/AIautomation',

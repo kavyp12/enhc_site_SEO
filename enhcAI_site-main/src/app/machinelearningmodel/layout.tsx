@@ -3,7 +3,7 @@ import JsonLd from '@/app/components/JsonLd';
 import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'Machine Learning Development Services | enhc',
+  title: 'Machine Learning Development Services',
   description:
     'Advanced machine learning models that learn and adapt to your data. enhc builds, trains, deploys and maintains production-grade ML systems for clients worldwide, with global delivery from our Ahmedabad, India HQ.',
   path: '/machinelearningmodel',

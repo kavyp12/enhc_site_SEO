@@ -3,7 +3,7 @@ import JsonLd from '@/app/components/JsonLd';
 import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'App & Mobile Development Company — iOS, Android & Cross-Platform | enhc',
+  title: 'App & Mobile Development Company — iOS, Android & Cross-Platform',
   description:
     'enhc designs and builds fast, intuitive mobile apps for iOS and Android for clients worldwide. Native and cross-platform development with React Native, Flutter, Swift and Kotlin, delivered globally from our Ahmedabad, India HQ.',
   path: '/app-development',

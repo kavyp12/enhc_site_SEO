@@ -3,7 +3,7 @@ import JsonLd from '@/app/components/JsonLd';
 import { SERVICE_FAQS } from '@/data/serviceFaqs';
 
 export const metadata = buildMetadata({
-  title: 'Predictive Analytics Services | enhc',
+  title: 'Predictive Analytics Services',
   description:
     'Turn historical data into accurate forecasts. enhc builds predictive analytics that surface trends, anticipate behaviour and power better, data-driven decisions for clients worldwide, with global delivery from our Ahmedabad, India HQ.',
   path: '/predictiveAnalytics',
