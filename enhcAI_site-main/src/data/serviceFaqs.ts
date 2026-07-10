@@ -128,8 +128,12 @@ export const SERVICE_FAQS: Record<string, ServiceFaqContent> = {
 
   AIstatergy: {
     intro:
-      'AI consulting and strategy helps you identify high-ROI AI opportunities, assess your data and readiness, and build a practical adoption roadmap — before committing budget to a build.',
+      'AI strategy and roadmap consulting helps you identify high-ROI AI opportunities, assess your data and readiness, and build a practical, phased implementation roadmap — before committing budget to a build.',
     faqs: [
+      {
+        q: 'What is AI strategy roadmap consulting?',
+        a: 'It is a structured engagement that assesses your data and AI readiness, ranks candidate use cases by ROI and feasibility, and delivers a phased implementation roadmap — so you know exactly what to build, in what order, and what it should return.',
+      },
       {
         q: 'What is AI consulting?',
         a: 'It is expert guidance to decide where AI will actually pay off for your business, what is feasible with your data, and how to sequence adoption — independent of any specific tool.',

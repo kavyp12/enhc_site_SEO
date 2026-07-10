@@ -157,10 +157,10 @@ const HelpWith = () => {
                 <div className="flex-1 text-center lg:text-left">
                     <p className="mb-4 text-lg flex items-center justify-center lg:justify-start space-x-2">
                         <div className="w-2 h-2 bg-[var(--brand-primary)] rounded-full" />
-                        <span className="text-[var(--text-muted)]">AI Strategy & Consulting</span>
+                        <span className="text-[var(--text-muted)]">AI Strategy & Roadmap Consulting</span>
                     </p>
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-none tracking-tight">
-                        Strategic AI Consulting<br />for Business Growth.
+                        AI Strategy &amp; Roadmap<br />Consulting for Growth.
                     </h1>
                 </div>
 
