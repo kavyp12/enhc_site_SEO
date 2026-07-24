@@ -93,9 +93,12 @@ export default function StructuredData() {
       founder: LEADERS.map((l) => ({ '@id': l.id })),
     },
     {
-      // ProfessionalService is a LocalBusiness subtype — a better fit for a
-      // service-based AI/IT firm than the bare LocalBusiness type.
-      '@type': 'ProfessionalService',
+      // The Ahmedabad HQ as a local-business entity. ProfessionalService is the
+      // most specific LocalBusiness subtype (best fit for a service-based AI/IT
+      // firm); LocalBusiness is listed alongside it explicitly so consumers that
+      // only match the literal "LocalBusiness" type still resolve this node. Both
+      // types share ONE @id, so this stays a single entity — not a duplicate.
+      '@type': ['ProfessionalService', 'LocalBusiness'],
       '@id': LOCALBUSINESS_ID,
       name: COMPANY.legalName,
       alternateName: SITE_NAME,
