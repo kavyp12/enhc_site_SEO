@@ -1,6 +1,6 @@
 // src/app/sitemap.ts
 import type { MetadataRoute } from 'next';
-import { SITE_URL, toIso } from '@/lib/seo';
+import { SITE_URL, toIso, clampLastmod } from '@/lib/seo';
 import projectData from '@/data/projectData';
 import { blogData } from '@/data/blogData';
 
@@ -15,11 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/europe', priority: 0.9, freq: 'monthly' },
     { path: '/middle-east', priority: 0.9, freq: 'monthly' },
     { path: '/industries', priority: 0.8, freq: 'monthly' },
-    { path: '/customeAIsolution', priority: 0.8, freq: 'monthly' },
+    { path: '/custom-ai-solutions', priority: 0.8, freq: 'monthly' },
     { path: '/machinelearningmodel', priority: 0.8, freq: 'monthly' },
     { path: '/AIautomation', priority: 0.8, freq: 'monthly' },
     { path: '/predictiveAnalytics', priority: 0.8, freq: 'monthly' },
-    { path: '/AIstatergy', priority: 0.8, freq: 'monthly' },
+    { path: '/ai-strategy', priority: 0.8, freq: 'monthly' },
     { path: '/web-development', priority: 0.8, freq: 'monthly' },
     { path: '/app-development', priority: 0.8, freq: 'monthly' },
     { path: '/about', priority: 0.7, freq: 'monthly' },
@@ -38,25 +38,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: r.priority,
   }));
 
-  // Dynamic project case studies — lastmod from the project year (coarse but
-  // stable across rebuilds) rather than the build timestamp.
+  // Dynamic project case studies — lastmod derived from the project year, then
+  // clamped to [launch, now] so a 2024 project can't claim a pre-launch date and
+  // a 2026 project can't claim a future one (the raw Dec-31-of-year value did both).
   for (const project of projectData) {
     const year = Number(project.year);
     entries.push({
       url: `${SITE_URL}/project/${project.id}`,
-      lastModified: year ? new Date(Date.UTC(year, 11, 31)) : now,
+      lastModified: year ? clampLastmod(new Date(Date.UTC(year, 11, 31)), now) : now,
       changeFrequency: 'monthly',
       priority: 0.6,
     });
   }
 
   // Dynamic blog posts — lastmod from each post's real publish date when known,
-  // so the lastmod signal is trustworthy instead of "everything changed at build".
+  // clamped to [launch, now] so a pre-launch publish date (or any future one)
+  // never leaks into <lastmod> for a URL that didn't exist yet.
   for (const id of Object.keys(blogData)) {
     const iso = toIso(blogData[Number(id)]?.publishDate);
     entries.push({
       url: `${SITE_URL}/blogs/${id}`,
-      lastModified: iso ?? now,
+      lastModified: iso ? clampLastmod(new Date(iso), now) : now,
       changeFrequency: 'monthly',
       priority: 0.5,
     });

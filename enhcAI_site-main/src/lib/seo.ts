@@ -9,6 +9,20 @@ export const SITE_URL = (
 
 export const SITE_NAME = 'enhc';
 export const LEGAL_NAME = 'Enhc Tech LLP';
+
+// Approximate production launch of this Next.js site — the earliest date any URL
+// on it could plausibly have been modified. GSC shows no data before ~mid-Dec
+// 2025 and the property is ~7 months old (per the 24 Jul 2026 audit), so the
+// site went live around Dec 2025. Used to FLOOR sitemap <lastmod> values so no
+// URL ever claims a pre-launch date; the build timestamp is the upper cap so
+// none claims a future date. Adjust this one constant if the real launch differs.
+export const SITE_LAUNCH = new Date('2025-12-01T00:00:00Z');
+
+/** Clamp a date into [SITE_LAUNCH, now] so sitemap lastmods are never pre-launch or future. */
+export function clampLastmod(date: Date, now: Date = new Date()): Date {
+  const t = Math.min(Math.max(date.getTime(), SITE_LAUNCH.getTime()), now.getTime());
+  return new Date(t);
+}
 // 1200x630 branded social card (generated). Falls back gracefully if absent.
 export const DEFAULT_OG_IMAGE = '/og-image.png';
 export const TWITTER_HANDLE = '@enhctech';

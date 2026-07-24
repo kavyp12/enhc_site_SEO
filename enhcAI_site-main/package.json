@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/check-sitemap-routes.mjs",
     "build": " next build",
+    "check:sitemap": "node scripts/check-sitemap-routes.mjs",
     "start": "next start",
     "lint": "next lint",
     "indexnow": "node scripts/indexnow-submit.mjs"
