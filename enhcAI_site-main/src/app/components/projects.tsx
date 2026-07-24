@@ -80,7 +80,7 @@ export default function App() {
       <section className="bg-[var(--bg-main)] text-[var(--text-main)] py-16 px-4 sm:px-8 lg:px-16 product-sans">
         <div className="lg:hidden mb-12">
           <p className="text-sm text-[var(--text-muted)] product-sans">• Our Work</p>
-          <h2 className="text-4xl sm:text-5xl font-bold mt-4 leading-tight product-sans">Take a look at<br />our AI projects</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mt-4 leading-tight product-sans">Take a look at{' '}<br />our AI projects</h2>
         </div>
 
         <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16 items-start">
@@ -90,7 +90,7 @@ export default function App() {
           <div className="flex flex-col gap-16">
             <div className="hidden lg:flex lg:flex-col lg:pt-8">
               <p className="text-sm text-[var(--text-muted)] product-sans">• Our Work</p>
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 leading-tight product-sans">Take a look at<br />our AI projects</h2>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-4 leading-tight product-sans">Take a look at{' '}<br />our AI projects</h2>
             </div>
             {rightColumnProjects.map(project => <ProjectCard key={project.id} project={project} />)}
           </div>

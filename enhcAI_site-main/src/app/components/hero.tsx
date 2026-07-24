@@ -143,7 +143,7 @@ export default function   Hero() {
                 </div>
 
                 <h1 className="text-white dark:text-white text-3xl sm:text-4xl lg:text-4xl xl:text-5xl font-bold leading-[1.1] md:leading-[1.05] animate-slide-up product-sans drop-shadow-2xl">
-                  <span className="block drop-shadow-lg">Your AI development</span>
+                  <span className="block drop-shadow-lg">Your AI development{' '}</span>
                   <span className="block text-white drop-shadow-lg">
                     partner, built for scale
                   </span>

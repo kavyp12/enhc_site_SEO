@@ -299,14 +299,14 @@ function ProjectCard({ project }: { project: Project }) {
 
 function getDynamicHeading(category: string): string {
   const headings: { [key: string]: string } = {
-    'explore all': 'Discover our<br />AI innovations',
-    'healthcare': 'Transforming healthcare<br />with AI solutions',
-    'education': 'Revolutionizing education<br />through AI learning',
-    'construction': 'Revolutionizing construction<br />with AI precision',
-    'marketing': 'Boosting marketing<br />with AI strategies',
-    'business management': 'Running businesses<br />end-to-end with software',
+    'explore all': 'Discover our <br />AI innovations',
+    'healthcare': 'Transforming healthcare <br />with AI solutions',
+    'education': 'Revolutionizing education <br />through AI learning',
+    'construction': 'Revolutionizing construction <br />with AI precision',
+    'marketing': 'Boosting marketing <br />with AI strategies',
+    'business management': 'Running businesses <br />end-to-end with software',
   };
-  return headings[category.toLowerCase()] || 'Discover our<br />AI innovations';
+  return headings[category.toLowerCase()] || 'Discover our <br />AI innovations';
 }
 
 export default function App() {

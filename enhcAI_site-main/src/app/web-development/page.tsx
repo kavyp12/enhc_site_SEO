@@ -439,7 +439,7 @@ const WebDevelopmentPage = () => {
                         <span>2023</span><span>•</span><span>Global Retail Corp</span>
                       </div>
                       <h3 className="text-xl sm:text-2xl font-semibold leading-tight text-[var(--text-main)]">
-                        High-performance marketing<br />website rebuild
+                        High-performance marketing{' '}<br />website rebuild
                       </h3>
                     </div>
                   </div>
@@ -456,7 +456,7 @@ const WebDevelopmentPage = () => {
                         <span>2023</span><span>•</span><span>SaaS Innovations</span>
                       </div>
                       <h3 className="text-xl sm:text-2xl font-semibold leading-tight text-[var(--text-main)]">
-                        Headless e-commerce<br />storefront
+                        Headless e-commerce{' '}<br />storefront
                       </h3>
                     </div>
                   </div>
@@ -473,7 +473,7 @@ const WebDevelopmentPage = () => {
                         <span>2023</span><span>•</span><span>ManuFuture Inc.</span>
                       </div>
                       <h3 className="text-xl sm:text-2xl font-semibold leading-tight text-[var(--text-main)]">
-                        Real-time analytics<br />dashboard web app
+                        Real-time analytics{' '}<br />dashboard web app
                       </h3>
                     </div>
                   </div>

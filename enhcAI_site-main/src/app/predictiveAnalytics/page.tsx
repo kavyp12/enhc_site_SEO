@@ -143,7 +143,7 @@ const HelpWith = () => {
                         <span className="text-[var(--text-muted)]">Predictive Analytics</span>
                     </p>
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-none tracking-tight">
-                        Harnessing Future Insights<br />with Predictive Analytics.
+                        Harnessing Future Insights{' '}<br />with Predictive Analytics.
                     </h1>
                 </div>
 

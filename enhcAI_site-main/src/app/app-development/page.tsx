@@ -442,7 +442,7 @@ const AppDevelopmentPage = () => {
                         <span>2023</span><span>•</span><span>Global Retail Corp</span>
                       </div>
                       <h3 className="text-xl sm:text-2xl font-semibold leading-tight text-[var(--text-main)]">
-                        Consumer fitness<br />mobile app
+                        Consumer fitness{' '}<br />mobile app
                       </h3>
                     </div>
                   </div>
@@ -459,7 +459,7 @@ const AppDevelopmentPage = () => {
                         <span>2023</span><span>•</span><span>SaaS Innovations</span>
                       </div>
                       <h3 className="text-xl sm:text-2xl font-semibold leading-tight text-[var(--text-main)]">
-                        On-demand delivery<br />app for iOS &amp; Android
+                        On-demand delivery{' '}<br />app for iOS &amp; Android
                       </h3>
                     </div>
                   </div>
@@ -476,7 +476,7 @@ const AppDevelopmentPage = () => {
                         <span>2023</span><span>•</span><span>ManuFuture Inc.</span>
                       </div>
                       <h3 className="text-xl sm:text-2xl font-semibold leading-tight text-[var(--text-main)]">
-                        Enterprise field-service<br />mobile app
+                        Enterprise field-service{' '}<br />mobile app
                       </h3>
                     </div>
                   </div>

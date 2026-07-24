@@ -389,7 +389,7 @@ export default function ProjectPage() {
                         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl font-semibold leading-tight text-[var(--text-main)]">
               {project.title.split('|').map((part, index) => (
                 <React.Fragment key={index}>
-                  {part}
+                  {part.trim()}{' '}
                   <br />
                 </React.Fragment>
               ))}

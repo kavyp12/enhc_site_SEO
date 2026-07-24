@@ -43,7 +43,7 @@ const FaqSection = () => {
                     <p className="flex items-center text-[var(--text-muted)] mb-2 justify-center lg:justify-start">
                         <span className="w-2 h-2 bg-[var(--text-muted)] rounded-full mr-3"></span>Anything else?
                     </p>
-                    <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter text-[var(--text-main)] mb-8">The answers to<br />your questions.</h2>
+                    <h2 className="text-4xl sm:text-5xl font-semibold tracking-tighter text-[var(--text-main)] mb-8">The answers to{' '}<br />your questions.</h2>
                     <a href="#" className="group bg-[var(--brand-primary)] text-white font-medium text-sm py-2 px-4 rounded-full self-center lg:self-start inline-flex items-center gap-1 transition-transform hover:scale-105">
                         View all FAQS
                         <div className="bg-white/20 rounded-full p-0.5 transition-transform group-hover:rotate-45"><ArrowUpRightIcon className="w-4 h-4" /></div>
