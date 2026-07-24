@@ -4,6 +4,7 @@ import Projects from '@/app/components/projects';
 import Business from '@/app/components/business';
 import Footer from '@/app/components/footer';
 import Aboutus from '@/app/components/aboutus';
+import GlobalReach from '@/app/components/GlobalReach';
 import Blog from '@/app/components/blog';
 import Workwith from '@/app/components/workwith';
 import Testimonial from '@/app/components/testimonial';
@@ -44,6 +45,8 @@ export default function Home() {
       <Reveal><Business /></Reveal>
       <Reveal><Aboutus /></Reveal>
       {/* <Team/> */}
+      {/* Server-rendered internal links to the region + ML pages (de-orphans them). */}
+      <GlobalReach />
       <Reveal><Workwith/></Reveal>
       <Reveal><Blog /></Reveal>
       {/* <Testimonial /> */}
