@@ -71,22 +71,39 @@ const nextConfig: NextConfig = {
   },
   // Enforce a single canonical host: 301 www.enhc.tech -> apex enhc.tech so the
   // two hosts never serve duplicate 200s (canonical/sitemap/robots all use apex).
+  // All redirects use an explicit 301 (permanent) rather than Next's default 308,
+  // so the permanent signal is the universally-recognised status code and the
+  // curl-based verification reads a uniform "301" across every redirect.
   async redirects() {
     return [
       {
         source: '/:path*',
         has: [{ type: 'host', value: 'www.enhc.tech' }],
         destination: 'https://enhc.tech/:path*',
-        permanent: true,
+        statusCode: 301,
       },
       // Legacy static-site URL: /index.html is a leftover from a previous build
       // that Google still has in its index (GSC: 404 on enhc.tech/index.html,
-      // 403 on the www/index.html variant). 308 it to the canonical homepage so
+      // 403 on the www/index.html variant). 301 it to the canonical homepage so
       // the old URL stops 404-ing and any residual signal consolidates onto '/'.
       {
         source: '/index.html',
         destination: '/',
-        permanent: true,
+        statusCode: 301,
+      },
+      // Typo-route migration: the old misspelled paths (/AIstatergy,
+      // /customeAIsolution) are renamed to clean, hyphenated URLs. 301 the legacy
+      // paths so the few impressions they hold consolidate onto the new URLs and
+      // nothing 404s. No ranking equity to protect (183 impressions, 0 clicks).
+      {
+        source: '/AIstatergy',
+        destination: '/ai-strategy',
+        statusCode: 301,
+      },
+      {
+        source: '/customeAIsolution',
+        destination: '/custom-ai-solutions',
+        statusCode: 301,
       },
     ];
   },

@@ -40,7 +40,7 @@ const CHIPS = ['Timezone-aligned delivery', 'Senior AI engineers', 'Full IP owne
 
 /** Services strip — links to the existing service routes (same for every region). */
 export const REGION_SERVICES: { name: string; href: string }[] = [
-  { name: 'Custom AI Solutions', href: '/customeAIsolution' },
+  { name: 'Custom AI Solutions', href: '/custom-ai-solutions' },
   { name: 'AI Automation', href: '/AIautomation' },
   { name: 'Machine Learning', href: '/machinelearningmodel' },
   { name: 'Predictive Analytics', href: '/predictiveAnalytics' },

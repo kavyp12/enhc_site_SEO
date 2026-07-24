@@ -126,11 +126,11 @@ export default function Navbar() {
   };
 
   const services = [
-    { title: "Custom AI Solutions", description: "Tailored AI systems built for your specific business needs", path: "/customeAIsolution" },
+    { title: "Custom AI Solutions", description: "Tailored AI systems built for your specific business needs", path: "/custom-ai-solutions" },
     { title: "Machine Learning Models", description: "Advanced ML models that learn and adapt to your data", path: "/machinelearningmodel" },
     { title: "AI Automation", description: "Streamline processes with intelligent automation", path: "/AIautomation" },
     { title: "Predictive Analytics", description: "Data-driven insights for better decision making", path:"/predictiveAnalytics" },
-    { title: "AI Strategy & Consulting", description: "Strategic guidance for AI transformation", path: "/AIstatergy" },
+    { title: "AI Strategy & Consulting", description: "Strategic guidance for AI transformation", path: "/ai-strategy" },
     { title: "Web Development", description: "Fast, modern websites and web apps built to convert", path: "/web-development" },
     { title: "App Development", description: "Native and cross-platform mobile apps for iOS and Android", path: "/app-development" }
   ];

@@ -68,11 +68,11 @@ export default function Footer() {
     { text: "About", href: "/about" },
     { text: "Blogs", href: "/blogs" },
     { text: "Services", href: "/services" },
-    { text: "Custom AI Solutions", href: "/customeAIsolution" },
+    { text: "Custom AI Solutions", href: "/custom-ai-solutions" },
     { text: "Machine Learning", href: "/machinelearningmodel" },
     { text: "AI Automation", href: "/AIautomation" },
     { text: "Predictive Analytics", href: "/predictiveAnalytics" },
-    { text: "AI Strategy & Consulting", href: "/AIstatergy" },
+    { text: "AI Strategy & Consulting", href: "/ai-strategy" },
     { text: "Industries", href: "/industries" },
     { text: "Web Development", href: "/web-development" },
     { text: "App Development", href: "/app-development" },
@@ -139,7 +139,7 @@ export default function Footer() {
             {/* CTA */}
             <div className="col-span-1 sm:col-span-2 lg:col-span-4 text-center sm:text-left">
               <h2 className="text-4xl md:text-5xl font-semi tracking-tighter leading-tight product-sans">
-                Do you like<br />what you see?
+                Do you like{' '}<br />what you see?
               </h2>
               <a
                 href="/startproject"

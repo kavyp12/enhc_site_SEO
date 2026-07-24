@@ -625,7 +625,7 @@ const HelpWith = () => {
 
         <Blog />
         <Workwith />
-        <ServiceFaq {...SERVICE_FAQS['customeAIsolution']} />
+        <ServiceFaq {...SERVICE_FAQS['custom-ai-solutions']} />
         <Footer />
       </div>  
     </>

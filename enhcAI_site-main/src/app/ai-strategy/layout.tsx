@@ -10,7 +10,7 @@ export const metadata = buildMetadata({
   title: 'AI Strategy & Roadmap Consulting',
   description:
     'AI strategy and roadmap consulting for US, European and global businesses. enhc assesses your data and AI readiness, ranks use cases by ROI, and delivers a phased AI implementation roadmap you can execute with confidence.',
-  path: '/AIstatergy',
+  path: '/ai-strategy',
   keywords: ['AI strategy roadmap consulting', 'AI roadmap consulting', 'AI implementation roadmap', 'AI consulting', 'AI readiness assessment', 'AI transformation'],
 });
 
@@ -22,16 +22,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           serviceJsonLd({
             serviceType: 'AI Strategy & Roadmap Consulting',
             name: 'AI Strategy & Roadmap Consulting',
-            path: '/AIstatergy',
+            path: '/ai-strategy',
             description:
               'AI strategy and roadmap consulting — readiness assessment, use cases ranked by ROI, and a phased AI implementation roadmap — to help organisations adopt AI with confidence.',
           }),
           breadcrumbJsonLd([
             { name: 'Home', path: '/' },
             { name: 'Services', path: '/services' },
-            { name: 'AI Strategy & Roadmap Consulting', path: '/AIstatergy' },
+            { name: 'AI Strategy & Roadmap Consulting', path: '/ai-strategy' },
           ]),
-          faqJsonLd(SERVICE_FAQS['AIstatergy'].faqs.map((f) => ({ question: f.q, answer: f.a }))),
+          faqJsonLd(SERVICE_FAQS['ai-strategy'].faqs.map((f) => ({ question: f.q, answer: f.a }))),
         ]}
       />
       {children}

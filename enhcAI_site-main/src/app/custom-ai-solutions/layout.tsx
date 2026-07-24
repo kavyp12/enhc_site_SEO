@@ -6,7 +6,7 @@ export const metadata = buildMetadata({
   title: 'Custom AI Software Development Company',
   description:
     'Bespoke AI systems built for your business. enhc designs custom AI models, NLP, computer vision and AI integration — from data strategy to deployment and scaling, with global delivery from our Ahmedabad, India HQ.',
-  path: '/customeAIsolution',
+  path: '/custom-ai-solutions',
   keywords: ['custom AI solutions', 'bespoke AI development', 'AI integration', 'NLP', 'computer vision', 'custom AI software company'],
 });
 
@@ -18,16 +18,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           serviceJsonLd({
             serviceType: 'Custom AI Development',
             name: 'Custom AI Solutions',
-            path: '/customeAIsolution',
+            path: '/custom-ai-solutions',
             description:
               'Bespoke AI software — custom models, NLP, computer vision and LLM integration — designed, built and deployed by enhc for your business.',
           }),
           breadcrumbJsonLd([
             { name: 'Home', path: '/' },
             { name: 'Services', path: '/services' },
-            { name: 'Custom AI Solutions', path: '/customeAIsolution' },
+            { name: 'Custom AI Solutions', path: '/custom-ai-solutions' },
           ]),
-          faqJsonLd(SERVICE_FAQS['customeAIsolution'].faqs.map((f) => ({ question: f.q, answer: f.a }))),
+          faqJsonLd(SERVICE_FAQS['custom-ai-solutions'].faqs.map((f) => ({ question: f.q, answer: f.a }))),
         ]}
       />
       {children}

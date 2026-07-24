@@ -7,7 +7,7 @@
 // the top of the FAQ: it's the highest-value passage for featured snippets and
 // AI-answer citation, and Q1 of each list restates it in question form.
 //
-// Keyed by the service route folder name (e.g. 'customeAIsolution').
+// Keyed by the service route folder name (e.g. 'custom-ai-solutions').
 // Copy is intentionally factual and non-overpromising — REVIEW & adjust prices/
 // timelines to match how enhc actually quotes before relying on them publicly.
 
@@ -18,7 +18,7 @@ export type ServiceFaqContent = {
 };
 
 export const SERVICE_FAQS: Record<string, ServiceFaqContent> = {
-  customeAIsolution: {
+  'custom-ai-solutions': {
     intro:
       'Custom AI software development is the design, training and deployment of AI systems — machine learning models, LLM/generative-AI features, NLP and computer vision — built for your specific data, product and workflows rather than a generic off-the-shelf tool.',
     faqs: [
@@ -126,7 +126,7 @@ export const SERVICE_FAQS: Record<string, ServiceFaqContent> = {
     ],
   },
 
-  AIstatergy: {
+  'ai-strategy': {
     intro:
       'AI strategy and roadmap consulting helps you identify high-ROI AI opportunities, assess your data and readiness, and build a practical, phased implementation roadmap — before committing budget to a build.',
     faqs: [

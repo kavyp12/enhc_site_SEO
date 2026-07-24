@@ -160,7 +160,7 @@ const HelpWith = () => {
                         <span className="text-[var(--text-muted)]">AI Strategy & Roadmap Consulting</span>
                     </p>
                     <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-none tracking-tight">
-                        AI Strategy &amp; Roadmap<br />Consulting for Growth.
+                        AI Strategy &amp; Roadmap{' '}<br />Consulting for Growth.
                     </h1>
                 </div>
 
@@ -679,7 +679,7 @@ const HelpWith = () => {
             </div>
         </section>
         <Blog/>
-        <ServiceFaq {...SERVICE_FAQS['AIstatergy']} />
+        <ServiceFaq {...SERVICE_FAQS['ai-strategy']} />
         <Footer />
     </div>
     </>
